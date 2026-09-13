@@ -1,0 +1,698 @@
+{
+  "stem": "group_021_generated_screen_s43",
+  "fasta": "data/generated/covid/seeds/group_021_generated_screen_s43.fasta",
+  "nwk": "data/generated/covid/seeds/group_021_generated_screen_s43.nwk",
+  "method": "esm_r0_mean_pll",
+  "method_note": "Mean per-position log p(aa) under one unmasked R0 forward (same proxy as generate_tree fitness gate / esm_pll_seq).",
+  "max_seq_len": 1280,
+  "label_convention": {
+    "fasta_header": "node_id|role  (role in {root,internal,leaf})",
+    "json_leaf_keys": "full FASTA header (\u2026|leaf)",
+    "newick_tips": "node_id only (no |leaf suffix)"
+  },
+  "n_leaf_headers_missing_from_newick": 0,
+  "summary": {
+    "n_leaves": 96,
+    "n_scored": 96,
+    "mean": -0.4598594909140526,
+    "min": -0.4731425342555337,
+    "max": -0.4464960857868803,
+    "median": -0.4603475567183142
+  },
+  "leaf_pll": {
+    "root_child_1_child_1_child_0_child_0_child_0_child_1|leaf": -0.46501073938006504,
+    "root_child_0_child_0_child_0_child_1_child_1|leaf": -0.4584041408563833,
+    "root_child_1_child_1_child_1_child_1_child_0|leaf": -0.4464960857868803,
+    "root_child_1_child_0_child_0_child_1_child_1_child_1|leaf": -0.45468991389534696,
+    "root_child_1_child_0_child_1_child_0_child_0_child_1|leaf": -0.45124549942072084,
+    "root_child_1_child_0_child_0_child_0_child_0_child_0|leaf": -0.4562273628187409,
+    "root_child_1_child_0_child_0_child_0_child_0_child_1|leaf": -0.45758704489751045,
+    "root_child_1_child_1_child_0_child_0_child_0_child_0_child_0|leaf": -0.4587704578903998,
+    "root_child_1_child_1_child_0_child_0_child_0_child_0_child_1|leaf": -0.45619896483934613,
+    "root_child_1_child_1_child_0_child_1_child_1_child_0|leaf": -0.45176165100064153,
+    "root_child_1_child_1_child_0_child_1_child_1_child_1|leaf": -0.4614564900565234,
+    "root_child_0_child_0_child_0_child_0_child_1_child_0|leaf": -0.4703749591310546,
+    "root_child_0_child_0_child_0_child_0_child_1_child_1|leaf": -0.46268467762846227,
+    "root_child_0_child_0_child_1_child_1_child_0_child_0|leaf": -0.45319554344249796,
+    "root_child_0_child_0_child_1_child_1_child_1_child_1|leaf": -0.4563418753856306,
+    "root_child_1_child_1_child_0_child_0_child_1_child_1_child_0|leaf": -0.4625179481422653,
+    "root_child_1_child_1_child_0_child_0_child_1_child_1_child_1|leaf": -0.4580092218591856,
+    "root_child_0_child_0_child_0_child_0_child_0_child_0|leaf": -0.4679186387417014,
+    "root_child_0_child_0_child_0_child_0_child_0_child_1|leaf": -0.4617799441458164,
+    "root_child_1_child_1_child_1_child_0_child_0_child_1_child_1_child_0|leaf": -0.45375929948217575,
+    "root_child_1_child_1_child_0_child_0_child_1_child_0_child_0|leaf": -0.45068584163128184,
+    "root_child_1_child_1_child_0_child_0_child_1_child_0_child_1|leaf": -0.4617807378367655,
+    "root_child_0_child_0_child_1_child_0_child_1_child_0|leaf": -0.4731425342555337,
+    "root_child_1_child_0_child_0_child_1_child_0_child_0_child_0|leaf": -0.4564512180792166,
+    "root_child_1_child_0_child_0_child_1_child_0_child_0_child_1|leaf": -0.4625291485794456,
+    "root_child_1_child_0_child_1_child_0_child_1_child_1_child_0_child_1|leaf": -0.4634950964105113,
+    "root_child_0_child_1_child_0_child_1|leaf": -0.4581805820725361,
+    "root_child_0_child_1_child_1_child_0_child_0|leaf": -0.45622776446385543,
+    "root_child_0_child_1_child_1_child_0_child_1|leaf": -0.45695634920571443,
+    "root_child_1_child_1_child_0_child_1_child_0_child_0|leaf": -0.4603475567183142,
+    "root_child_1_child_1_child_0_child_1_child_0_child_1|leaf": -0.46257174458319594,
+    "root_child_1_child_1_child_1_child_0_child_0_child_0_child_0_child_0|leaf": -0.4588243041490406,
+    "root_child_1_child_1_child_1_child_0_child_0_child_0_child_0_child_1|leaf": -0.46476370684703033,
+    "root_child_1_child_0_child_0_child_1_child_0_child_1_child_0|leaf": -0.4543572267801307,
+    "root_child_1_child_0_child_0_child_1_child_0_child_1_child_1|leaf": -0.4505122067115598,
+    "root_child_0_child_1_child_1_child_1_child_1_child_0|leaf": -0.46429528620237454,
+    "root_child_0_child_1_child_1_child_1_child_1_child_1|leaf": -0.46918299644366085,
+    "root_child_1_child_1_child_1_child_0_child_1_child_0|leaf": -0.45672603229460224,
+    "root_child_1_child_1_child_1_child_0_child_1_child_1|leaf": -0.45812945545468853,
+    "root_child_1_child_0_child_1_child_0_child_0_child_0_child_0|leaf": -0.4613666738546618,
+    "root_child_1_child_0_child_1_child_0_child_0_child_0_child_1|leaf": -0.46021900383224423,
+    "root_child_1_child_0_child_0_child_1_child_1_child_0_child_0|leaf": -0.45212140981289384,
+    "root_child_1_child_0_child_0_child_1_child_1_child_0_child_1|leaf": -0.45210610758454683,
+    "root_child_1_child_0_child_1_child_0_child_1_child_0_child_1_child_0|leaf": -0.453161727454885,
+    "root_child_1_child_0_child_1_child_0_child_1_child_0_child_1_child_1|leaf": -0.4689936099423261,
+    "root_child_1_child_0_child_1_child_1_child_0_child_0_child_0_child_0|leaf": -0.46235045335546004,
+    "root_child_1_child_0_child_1_child_1_child_0_child_0_child_0_child_1|leaf": -0.4630522013137824,
+    "root_child_0_child_0_child_1_child_1_child_0_child_1_child_0|leaf": -0.4625354410249386,
+    "root_child_0_child_0_child_1_child_1_child_0_child_1_child_1|leaf": -0.46177548149312375,
+    "root_child_1_child_1_child_1_child_0_child_0_child_0_child_1_child_1_child_0|leaf": -0.456818465577279,
+    "root_child_1_child_1_child_1_child_0_child_0_child_0_child_1_child_1_child_1|leaf": -0.46545547709667884,
+    "root_child_1_child_0_child_1_child_1_child_1_child_1_child_0|leaf": -0.4630540757522701,
+    "root_child_1_child_0_child_1_child_1_child_1_child_1_child_1|leaf": -0.4649915501112462,
+    "root_child_1_child_0_child_1_child_1_child_0_child_1_child_0|leaf": -0.4630484572880245,
+    "root_child_1_child_0_child_1_child_1_child_0_child_1_child_1|leaf": -0.4655772585162815,
+    "root_child_0_child_0_child_0_child_1_child_0_child_0|leaf": -0.4577099555402479,
+    "root_child_0_child_0_child_0_child_1_child_0_child_1|leaf": -0.45824927976537855,
+    "root_child_1_child_1_child_1_child_1_child_1_child_0|leaf": -0.45740687119162177,
+    "root_child_1_child_1_child_1_child_1_child_1_child_1|leaf": -0.45334230183140145,
+    "root_child_1_child_0_child_1_child_0_child_1_child_0_child_0_child_0|leaf": -0.4687457555372382,
+    "root_child_1_child_0_child_1_child_1_child_0_child_0_child_1_child_0|leaf": -0.46385831621681095,
+    "root_child_1_child_0_child_1_child_1_child_0_child_0_child_1_child_1|leaf": -0.46410578353665566,
+    "root_child_0_child_0_child_1_child_1_child_1_child_0_child_0|leaf": -0.4659907415945256,
+    "root_child_0_child_0_child_1_child_1_child_1_child_0_child_1|leaf": -0.4599193310027083,
+    "root_child_1_child_0_child_1_child_0_child_1_child_1_child_1_child_0_child_0|leaf": -0.45296348253512303,
+    "root_child_1_child_0_child_1_child_0_child_1_child_1_child_1_child_0_child_1|leaf": -0.4664514755862359,
+    "root_child_1_child_0_child_1_child_0_child_1_child_1_child_1_child_1_child_0|leaf": -0.46307568363691715,
+    "root_child_1_child_0_child_1_child_0_child_1_child_1_child_1_child_1_child_1|leaf": -0.4612915820017082,
+    "root_child_1_child_1_child_1_child_0_child_0_child_0_child_1_child_0_child_0|leaf": -0.46251442605989507,
+    "root_child_1_child_1_child_1_child_0_child_0_child_0_child_1_child_0_child_1|leaf": -0.4578286368167211,
+    "root_child_0_child_0_child_1_child_0_child_0_child_0|leaf": -0.4601644221773753,
+    "root_child_0_child_0_child_1_child_0_child_0_child_1|leaf": -0.462333029539903,
+    "root_child_1_child_0_child_1_child_1_child_1_child_0_child_1_child_0|leaf": -0.46560644426471604,
+    "root_child_1_child_0_child_1_child_1_child_1_child_0_child_1_child_1|leaf": -0.4624065406033762,
+    "root_child_1_child_0_child_0_child_0_child_1_child_1_child_0|leaf": -0.4498532248327314,
+    "root_child_1_child_0_child_0_child_0_child_1_child_1_child_1|leaf": -0.4530320496884382,
+    "root_child_0_child_1_child_1_child_1_child_0_child_0|leaf": -0.45846025154758346,
+    "root_child_0_child_1_child_1_child_1_child_0_child_1|leaf": -0.46070044915698827,
+    "root_child_1_child_1_child_1_child_0_child_0_child_1_child_0_child_1_child_0|leaf": -0.4544858445288308,
+    "root_child_1_child_1_child_1_child_0_child_0_child_1_child_0_child_1_child_1|leaf": -0.4644609157731998,
+    "root_child_1_child_0_child_1_child_0_child_1_child_1_child_0_child_0_child_0|leaf": -0.46160130655701737,
+    "root_child_1_child_0_child_1_child_0_child_1_child_1_child_0_child_0_child_1|leaf": -0.4674581889251872,
+    "root_child_1_child_0_child_1_child_0_child_1_child_0_child_0_child_1_child_0|leaf": -0.45082979994289757,
+    "root_child_1_child_0_child_1_child_0_child_1_child_0_child_0_child_1_child_1|leaf": -0.4548398069766674,
+    "root_child_1_child_0_child_1_child_1_child_1_child_0_child_0_child_0|leaf": -0.4672916752080677,
+    "root_child_1_child_0_child_1_child_1_child_1_child_0_child_0_child_1|leaf": -0.46586277039073415,
+    "root_child_1_child_0_child_0_child_0_child_1_child_0_child_0|leaf": -0.44839699531906085,
+    "root_child_1_child_0_child_0_child_0_child_1_child_0_child_1|leaf": -0.4540276670709943,
+    "root_child_1_child_1_child_1_child_0_child_0_child_1_child_0_child_0_child_0|leaf": -0.46016268795012305,
+    "root_child_1_child_1_child_1_child_0_child_0_child_1_child_0_child_0_child_1|leaf": -0.46100042625026777,
+    "root_child_1_child_1_child_1_child_0_child_0_child_1_child_1_child_1_child_0|leaf": -0.45325877401284226,
+    "root_child_1_child_1_child_1_child_0_child_0_child_1_child_1_child_1_child_1|leaf": -0.4613034963455616,
+    "root_child_0_child_0_child_1_child_0_child_1_child_1_child_0|leaf": -0.4718735900349792,
+    "root_child_0_child_0_child_1_child_0_child_1_child_1_child_1|leaf": -0.46485632950204475,
+    "root_child_0_child_1_child_0_child_0_child_0|leaf": -0.4612278227635073,
+    "root_child_0_child_1_child_0_child_0_child_1|leaf": -0.45734535400131654
+  },
+  "leaves": {
+    "root_child_1_child_1_child_0_child_0_child_0_child_1|leaf": {
+      "node_id": "root_child_1_child_1_child_0_child_0_child_0_child_1",
+      "in_newick": true,
+      "length": 1273,
+      "pll": -0.46501073938006504
+    },
+    "root_child_0_child_0_child_0_child_1_child_1|leaf": {
+      "node_id": "root_child_0_child_0_child_0_child_1_child_1",
+      "in_newick": true,
+      "length": 1273,
+      "pll": -0.4584041408563833
+    },
+    "root_child_1_child_1_child_1_child_1_child_0|leaf": {
+      "node_id": "root_child_1_child_1_child_1_child_1_child_0",
+      "in_newick": true,
+      "length": 1273,
+      "pll": -0.4464960857868803
+    },
+    "root_child_1_child_0_child_0_child_1_child_1_child_1|leaf": {
+      "node_id": "root_child_1_child_0_child_0_child_1_child_1_child_1",
+      "in_newick": true,
+      "length": 1273,
+      "pll": -0.45468991389534696
+    },
+    "root_child_1_child_0_child_1_child_0_child_0_child_1|leaf": {
+      "node_id": "root_child_1_child_0_child_1_child_0_child_0_child_1",
+      "in_newick": true,
+      "length": 1273,
+      "pll": -0.45124549942072084
+    },
+    "root_child_1_child_0_child_0_child_0_child_0_child_0|leaf": {
+      "node_id": "root_child_1_child_0_child_0_child_0_child_0_child_0",
+      "in_newick": true,
+      "length": 1273,
+      "pll": -0.4562273628187409
+    },
+    "root_child_1_child_0_child_0_child_0_child_0_child_1|leaf": {
+      "node_id": "root_child_1_child_0_child_0_child_0_child_0_child_1",
+      "in_newick": true,
+      "length": 1273,
+      "pll": -0.45758704489751045
+    },
+    "root_child_1_child_1_child_0_child_0_child_0_child_0_child_0|leaf": {
+      "node_id": "root_child_1_child_1_child_0_child_0_child_0_child_0_child_0",
+      "in_newick": true,
+      "length": 1273,
+      "pll": -0.4587704578903998
+    },
+    "root_child_1_child_1_child_0_child_0_child_0_child_0_child_1|leaf": {
+      "node_id": "root_child_1_child_1_child_0_child_0_child_0_child_0_child_1",
+      "in_newick": true,
+      "length": 1273,
+      "pll": -0.45619896483934613
+    },
+    "root_child_1_child_1_child_0_child_1_child_1_child_0|leaf": {
+      "node_id": "root_child_1_child_1_child_0_child_1_child_1_child_0",
+      "in_newick": true,
+      "length": 1273,
+      "pll": -0.45176165100064153
+    },
+    "root_child_1_child_1_child_0_child_1_child_1_child_1|leaf": {
+      "node_id": "root_child_1_child_1_child_0_child_1_child_1_child_1",
+      "in_newick": true,
+      "length": 1273,
+      "pll": -0.4614564900565234
+    },
+    "root_child_0_child_0_child_0_child_0_child_1_child_0|leaf": {
+      "node_id": "root_child_0_child_0_child_0_child_0_child_1_child_0",
+      "in_newick": true,
+      "length": 1273,
+      "pll": -0.4703749591310546
+    },
+    "root_child_0_child_0_child_0_child_0_child_1_child_1|leaf": {
+      "node_id": "root_child_0_child_0_child_0_child_0_child_1_child_1",
+      "in_newick": true,
+      "length": 1273,
+      "pll": -0.46268467762846227
+    },
+    "root_child_0_child_0_child_1_child_1_child_0_child_0|leaf": {
+      "node_id": "root_child_0_child_0_child_1_child_1_child_0_child_0",
+      "in_newick": true,
+      "length": 1273,
+      "pll": -0.45319554344249796
+    },
+    "root_child_0_child_0_child_1_child_1_child_1_child_1|leaf": {
+      "node_id": "root_child_0_child_0_child_1_child_1_child_1_child_1",
+      "in_newick": true,
+      "length": 1273,
+      "pll": -0.4563418753856306
+    },
+    "root_child_1_child_1_child_0_child_0_child_1_child_1_child_0|leaf": {
+      "node_id": "root_child_1_child_1_child_0_child_0_child_1_child_1_child_0",
+      "in_newick": true,
+      "length": 1273,
+      "pll": -0.4625179481422653
+    },
+    "root_child_1_child_1_child_0_child_0_child_1_child_1_child_1|leaf": {
+      "node_id": "root_child_1_child_1_child_0_child_0_child_1_child_1_child_1",
+      "in_newick": true,
+      "length": 1273,
+      "pll": -0.4580092218591856
+    },
+    "root_child_0_child_0_child_0_child_0_child_0_child_0|leaf": {
+      "node_id": "root_child_0_child_0_child_0_child_0_child_0_child_0",
+      "in_newick": true,
+      "length": 1273,
+      "pll": -0.4679186387417014
+    },
+    "root_child_0_child_0_child_0_child_0_child_0_child_1|leaf": {
+      "node_id": "root_child_0_child_0_child_0_child_0_child_0_child_1",
+      "in_newick": true,
+      "length": 1273,
+      "pll": -0.4617799441458164
+    },
+    "root_child_1_child_1_child_1_child_0_child_0_child_1_child_1_child_0|leaf": {
+      "node_id": "root_child_1_child_1_child_1_child_0_child_0_child_1_child_1_child_0",
+      "in_newick": true,
+      "length": 1273,
+      "pll": -0.45375929948217575
+    },
+    "root_child_1_child_1_child_0_child_0_child_1_child_0_child_0|leaf": {
+      "node_id": "root_child_1_child_1_child_0_child_0_child_1_child_0_child_0",
+      "in_newick": true,
+      "length": 1273,
+      "pll": -0.45068584163128184
+    },
+    "root_child_1_child_1_child_0_child_0_child_1_child_0_child_1|leaf": {
+      "node_id": "root_child_1_child_1_child_0_child_0_child_1_child_0_child_1",
+      "in_newick": true,
+      "length": 1273,
+      "pll": -0.4617807378367655
+    },
+    "root_child_0_child_0_child_1_child_0_child_1_child_0|leaf": {
+      "node_id": "root_child_0_child_0_child_1_child_0_child_1_child_0",
+      "in_newick": true,
+      "length": 1273,
+      "pll": -0.4731425342555337
+    },
+    "root_child_1_child_0_child_0_child_1_child_0_child_0_child_0|leaf": {
+      "node_id": "root_child_1_child_0_child_0_child_1_child_0_child_0_child_0",
+      "in_newick": true,
+      "length": 1273,
+      "pll": -0.4564512180792166
+    },
+    "root_child_1_child_0_child_0_child_1_child_0_child_0_child_1|leaf": {
+      "node_id": "root_child_1_child_0_child_0_child_1_child_0_child_0_child_1",
+      "in_newick": true,
+      "length": 1273,
+      "pll": -0.4625291485794456
+    },
+    "root_child_1_child_0_child_1_child_0_child_1_child_1_child_0_child_1|leaf": {
+      "node_id": "root_child_1_child_0_child_1_child_0_child_1_child_1_child_0_child_1",
+      "in_newick": true,
+      "length": 1273,
+      "pll": -0.4634950964105113
+    },
+    "root_child_0_child_1_child_0_child_1|leaf": {
+      "node_id": "root_child_0_child_1_child_0_child_1",
+      "in_newick": true,
+      "length": 1273,
+      "pll": -0.4581805820725361
+    },
+    "root_child_0_child_1_child_1_child_0_child_0|leaf": {
+      "node_id": "root_child_0_child_1_child_1_child_0_child_0",
+      "in_newick": true,
+      "length": 1273,
+      "pll": -0.45622776446385543
+    },
+    "root_child_0_child_1_child_1_child_0_child_1|leaf": {
+      "node_id": "root_child_0_child_1_child_1_child_0_child_1",
+      "in_newick": true,
+      "length": 1273,
+      "pll": -0.45695634920571443
+    },
+    "root_child_1_child_1_child_0_child_1_child_0_child_0|leaf": {
+      "node_id": "root_child_1_child_1_child_0_child_1_child_0_child_0",
+      "in_newick": true,
+      "length": 1273,
+      "pll": -0.4603475567183142
+    },
+    "root_child_1_child_1_child_0_child_1_child_0_child_1|leaf": {
+      "node_id": "root_child_1_child_1_child_0_child_1_child_0_child_1",
+      "in_newick": true,
+      "length": 1273,
+      "pll": -0.46257174458319594
+    },
+    "root_child_1_child_1_child_1_child_0_child_0_child_0_child_0_child_0|leaf": {
+      "node_id": "root_child_1_child_1_child_1_child_0_child_0_child_0_child_0_child_0",
+      "in_newick": true,
+      "length": 1273,
+      "pll": -0.4588243041490406
+    },
+    "root_child_1_child_1_child_1_child_0_child_0_child_0_child_0_child_1|leaf": {
+      "node_id": "root_child_1_child_1_child_1_child_0_child_0_child_0_child_0_child_1",
+      "in_newick": true,
+      "length": 1273,
+      "pll": -0.46476370684703033
+    },
+    "root_child_1_child_0_child_0_child_1_child_0_child_1_child_0|leaf": {
+      "node_id": "root_child_1_child_0_child_0_child_1_child_0_child_1_child_0",
+      "in_newick": true,
+      "length": 1273,
+      "pll": -0.4543572267801307
+    },
+    "root_child_1_child_0_child_0_child_1_child_0_child_1_child_1|leaf": {
+      "node_id": "root_child_1_child_0_child_0_child_1_child_0_child_1_child_1",
+      "in_newick": true,
+      "length": 1273,
+      "pll": -0.4505122067115598
+    },
+    "root_child_0_child_1_child_1_child_1_child_1_child_0|leaf": {
+      "node_id": "root_child_0_child_1_child_1_child_1_child_1_child_0",
+      "in_newick": true,
+      "length": 1273,
+      "pll": -0.46429528620237454
+    },
+    "root_child_0_child_1_child_1_child_1_child_1_child_1|leaf": {
+      "node_id": "root_child_0_child_1_child_1_child_1_child_1_child_1",
+      "in_newick": true,
+      "length": 1273,
+      "pll": -0.46918299644366085
+    },
+    "root_child_1_child_1_child_1_child_0_child_1_child_0|leaf": {
+      "node_id": "root_child_1_child_1_child_1_child_0_child_1_child_0",
+      "in_newick": true,
+      "length": 1273,
+      "pll": -0.45672603229460224
+    },
+    "root_child_1_child_1_child_1_child_0_child_1_child_1|leaf": {
+      "node_id": "root_child_1_child_1_child_1_child_0_child_1_child_1",
+      "in_newick": true,
+      "length": 1273,
+      "pll": -0.45812945545468853
+    },
+    "root_child_1_child_0_child_1_child_0_child_0_child_0_child_0|leaf": {
+      "node_id": "root_child_1_child_0_child_1_child_0_child_0_child_0_child_0",
+      "in_newick": true,
+      "length": 1273,
+      "pll": -0.4613666738546618
+    },
+    "root_child_1_child_0_child_1_child_0_child_0_child_0_child_1|leaf": {
+      "node_id": "root_child_1_child_0_child_1_child_0_child_0_child_0_child_1",
+      "in_newick": true,
+      "length": 1273,
+      "pll": -0.46021900383224423
+    },
+    "root_child_1_child_0_child_0_child_1_child_1_child_0_child_0|leaf": {
+      "node_id": "root_child_1_child_0_child_0_child_1_child_1_child_0_child_0",
+      "in_newick": true,
+      "length": 1273,
+      "pll": -0.45212140981289384
+    },
+    "root_child_1_child_0_child_0_child_1_child_1_child_0_child_1|leaf": {
+      "node_id": "root_child_1_child_0_child_0_child_1_child_1_child_0_child_1",
+      "in_newick": true,
+      "length": 1273,
+      "pll": -0.45210610758454683
+    },
+    "root_child_1_child_0_child_1_child_0_child_1_child_0_child_1_child_0|leaf": {
+      "node_id": "root_child_1_child_0_child_1_child_0_child_1_child_0_child_1_child_0",
+      "in_newick": true,
+      "length": 1273,
+      "pll": -0.453161727454885
+    },
+    "root_child_1_child_0_child_1_child_0_child_1_child_0_child_1_child_1|leaf": {
+      "node_id": "root_child_1_child_0_child_1_child_0_child_1_child_0_child_1_child_1",
+      "in_newick": true,
+      "length": 1273,
+      "pll": -0.4689936099423261
+    },
+    "root_child_1_child_0_child_1_child_1_child_0_child_0_child_0_child_0|leaf": {
+      "node_id": "root_child_1_child_0_child_1_child_1_child_0_child_0_child_0_child_0",
+      "in_newick": true,
+      "length": 1273,
+      "pll": -0.46235045335546004
+    },
+    "root_child_1_child_0_child_1_child_1_child_0_child_0_child_0_child_1|leaf": {
+      "node_id": "root_child_1_child_0_child_1_child_1_child_0_child_0_child_0_child_1",
+      "in_newick": true,
+      "length": 1273,
+      "pll": -0.4630522013137824
+    },
+    "root_child_0_child_0_child_1_child_1_child_0_child_1_child_0|leaf": {
+      "node_id": "root_child_0_child_0_child_1_child_1_child_0_child_1_child_0",
+      "in_newick": true,
+      "length": 1273,
+      "pll": -0.4625354410249386
+    },
+    "root_child_0_child_0_child_1_child_1_child_0_child_1_child_1|leaf": {
+      "node_id": "root_child_0_child_0_child_1_child_1_child_0_child_1_child_1",
+      "in_newick": true,
+      "length": 1273,
+      "pll": -0.46177548149312375
+    },
+    "root_child_1_child_1_child_1_child_0_child_0_child_0_child_1_child_1_child_0|leaf": {
+      "node_id": "root_child_1_child_1_child_1_child_0_child_0_child_0_child_1_child_1_child_0",
+      "in_newick": true,
+      "length": 1273,
+      "pll": -0.456818465577279
+    },
+    "root_child_1_child_1_child_1_child_0_child_0_child_0_child_1_child_1_child_1|leaf": {
+      "node_id": "root_child_1_child_1_child_1_child_0_child_0_child_0_child_1_child_1_child_1",
+      "in_newick": true,
+      "length": 1273,
+      "pll": -0.46545547709667884
+    },
+    "root_child_1_child_0_child_1_child_1_child_1_child_1_child_0|leaf": {
+      "node_id": "root_child_1_child_0_child_1_child_1_child_1_child_1_child_0",
+      "in_newick": true,
+      "length": 1273,
+      "pll": -0.4630540757522701
+    },
+    "root_child_1_child_0_child_1_child_1_child_1_child_1_child_1|leaf": {
+      "node_id": "root_child_1_child_0_child_1_child_1_child_1_child_1_child_1",
+      "in_newick": true,
+      "length": 1273,
+      "pll": -0.4649915501112462
+    },
+    "root_child_1_child_0_child_1_child_1_child_0_child_1_child_0|leaf": {
+      "node_id": "root_child_1_child_0_child_1_child_1_child_0_child_1_child_0",
+      "in_newick": true,
+      "length": 1273,
+      "pll": -0.4630484572880245
+    },
+    "root_child_1_child_0_child_1_child_1_child_0_child_1_child_1|leaf": {
+      "node_id": "root_child_1_child_0_child_1_child_1_child_0_child_1_child_1",
+      "in_newick": true,
+      "length": 1273,
+      "pll": -0.4655772585162815
+    },
+    "root_child_0_child_0_child_0_child_1_child_0_child_0|leaf": {
+      "node_id": "root_child_0_child_0_child_0_child_1_child_0_child_0",
+      "in_newick": true,
+      "length": 1273,
+      "pll": -0.4577099555402479
+    },
+    "root_child_0_child_0_child_0_child_1_child_0_child_1|leaf": {
+      "node_id": "root_child_0_child_0_child_0_child_1_child_0_child_1",
+      "in_newick": true,
+      "length": 1273,
+      "pll": -0.45824927976537855
+    },
+    "root_child_1_child_1_child_1_child_1_child_1_child_0|leaf": {
+      "node_id": "root_child_1_child_1_child_1_child_1_child_1_child_0",
+      "in_newick": true,
+      "length": 1273,
+      "pll": -0.45740687119162177
+    },
+    "root_child_1_child_1_child_1_child_1_child_1_child_1|leaf": {
+      "node_id": "root_child_1_child_1_child_1_child_1_child_1_child_1",
+      "in_newick": true,
+      "length": 1273,
+      "pll": -0.45334230183140145
+    },
+    "root_child_1_child_0_child_1_child_0_child_1_child_0_child_0_child_0|leaf": {
+      "node_id": "root_child_1_child_0_child_1_child_0_child_1_child_0_child_0_child_0",
+      "in_newick": true,
+      "length": 1273,
+      "pll": -0.4687457555372382
+    },
+    "root_child_1_child_0_child_1_child_1_child_0_child_0_child_1_child_0|leaf": {
+      "node_id": "root_child_1_child_0_child_1_child_1_child_0_child_0_child_1_child_0",
+      "in_newick": true,
+      "length": 1273,
+      "pll": -0.46385831621681095
+    },
+    "root_child_1_child_0_child_1_child_1_child_0_child_0_child_1_child_1|leaf": {
+      "node_id": "root_child_1_child_0_child_1_child_1_child_0_child_0_child_1_child_1",
+      "in_newick": true,
+      "length": 1273,
+      "pll": -0.46410578353665566
+    },
+    "root_child_0_child_0_child_1_child_1_child_1_child_0_child_0|leaf": {
+      "node_id": "root_child_0_child_0_child_1_child_1_child_1_child_0_child_0",
+      "in_newick": true,
+      "length": 1273,
+      "pll": -0.4659907415945256
+    },
+    "root_child_0_child_0_child_1_child_1_child_1_child_0_child_1|leaf": {
+      "node_id": "root_child_0_child_0_child_1_child_1_child_1_child_0_child_1",
+      "in_newick": true,
+      "length": 1273,
+      "pll": -0.4599193310027083
+    },
+    "root_child_1_child_0_child_1_child_0_child_1_child_1_child_1_child_0_child_0|leaf": {
+      "node_id": "root_child_1_child_0_child_1_child_0_child_1_child_1_child_1_child_0_child_0",
+      "in_newick": true,
+      "length": 1273,
+      "pll": -0.45296348253512303
+    },
+    "root_child_1_child_0_child_1_child_0_child_1_child_1_child_1_child_0_child_1|leaf": {
+      "node_id": "root_child_1_child_0_child_1_child_0_child_1_child_1_child_1_child_0_child_1",
+      "in_newick": true,
+      "length": 1273,
+      "pll": -0.4664514755862359
+    },
+    "root_child_1_child_0_child_1_child_0_child_1_child_1_child_1_child_1_child_0|leaf": {
+      "node_id": "root_child_1_child_0_child_1_child_0_child_1_child_1_child_1_child_1_child_0",
+      "in_newick": true,
+      "length": 1273,
+      "pll": -0.46307568363691715
+    },
+    "root_child_1_child_0_child_1_child_0_child_1_child_1_child_1_child_1_child_1|leaf": {
+      "node_id": "root_child_1_child_0_child_1_child_0_child_1_child_1_child_1_child_1_child_1",
+      "in_newick": true,
+      "length": 1273,
+      "pll": -0.4612915820017082
+    },
+    "root_child_1_child_1_child_1_child_0_child_0_child_0_child_1_child_0_child_0|leaf": {
+      "node_id": "root_child_1_child_1_child_1_child_0_child_0_child_0_child_1_child_0_child_0",
+      "in_newick": true,
+      "length": 1273,
+      "pll": -0.46251442605989507
+    },
+    "root_child_1_child_1_child_1_child_0_child_0_child_0_child_1_child_0_child_1|leaf": {
+      "node_id": "root_child_1_child_1_child_1_child_0_child_0_child_0_child_1_child_0_child_1",
+      "in_newick": true,
+      "length": 1273,
+      "pll": -0.4578286368167211
+    },
+    "root_child_0_child_0_child_1_child_0_child_0_child_0|leaf": {
+      "node_id": "root_child_0_child_0_child_1_child_0_child_0_child_0",
+      "in_newick": true,
+      "length": 1273,
+      "pll": -0.4601644221773753
+    },
+    "root_child_0_child_0_child_1_child_0_child_0_child_1|leaf": {
+      "node_id": "root_child_0_child_0_child_1_child_0_child_0_child_1",
+      "in_newick": true,
+      "length": 1273,
+      "pll": -0.462333029539903
+    },
+    "root_child_1_child_0_child_1_child_1_child_1_child_0_child_1_child_0|leaf": {
+      "node_id": "root_child_1_child_0_child_1_child_1_child_1_child_0_child_1_child_0",
+      "in_newick": true,
+      "length": 1273,
+      "pll": -0.46560644426471604
+    },
+    "root_child_1_child_0_child_1_child_1_child_1_child_0_child_1_child_1|leaf": {
+      "node_id": "root_child_1_child_0_child_1_child_1_child_1_child_0_child_1_child_1",
+      "in_newick": true,
+      "length": 1273,
+      "pll": -0.4624065406033762
+    },
+    "root_child_1_child_0_child_0_child_0_child_1_child_1_child_0|leaf": {
+      "node_id": "root_child_1_child_0_child_0_child_0_child_1_child_1_child_0",
+      "in_newick": true,
+      "length": 1273,
+      "pll": -0.4498532248327314
+    },
+    "root_child_1_child_0_child_0_child_0_child_1_child_1_child_1|leaf": {
+      "node_id": "root_child_1_child_0_child_0_child_0_child_1_child_1_child_1",
+      "in_newick": true,
+      "length": 1273,
+      "pll": -0.4530320496884382
+    },
+    "root_child_0_child_1_child_1_child_1_child_0_child_0|leaf": {
+      "node_id": "root_child_0_child_1_child_1_child_1_child_0_child_0",
+      "in_newick": true,
+      "length": 1273,
+      "pll": -0.45846025154758346
+    },
+    "root_child_0_child_1_child_1_child_1_child_0_child_1|leaf": {
+      "node_id": "root_child_0_child_1_child_1_child_1_child_0_child_1",
+      "in_newick": true,
+      "length": 1273,
+      "pll": -0.46070044915698827
+    },
+    "root_child_1_child_1_child_1_child_0_child_0_child_1_child_0_child_1_child_0|leaf": {
+      "node_id": "root_child_1_child_1_child_1_child_0_child_0_child_1_child_0_child_1_child_0",
+      "in_newick": true,
+      "length": 1273,
+      "pll": -0.4544858445288308
+    },
+    "root_child_1_child_1_child_1_child_0_child_0_child_1_child_0_child_1_child_1|leaf": {
+      "node_id": "root_child_1_child_1_child_1_child_0_child_0_child_1_child_0_child_1_child_1",
+      "in_newick": true,
+      "length": 1273,
+      "pll": -0.4644609157731998
+    },
+    "root_child_1_child_0_child_1_child_0_child_1_child_1_child_0_child_0_child_0|leaf": {
+      "node_id": "root_child_1_child_0_child_1_child_0_child_1_child_1_child_0_child_0_child_0",
+      "in_newick": true,
+      "length": 1273,
+      "pll": -0.46160130655701737
+    },
+    "root_child_1_child_0_child_1_child_0_child_1_child_1_child_0_child_0_child_1|leaf": {
+      "node_id": "root_child_1_child_0_child_1_child_0_child_1_child_1_child_0_child_0_child_1",
+      "in_newick": true,
+      "length": 1273,
+      "pll": -0.4674581889251872
+    },
+    "root_child_1_child_0_child_1_child_0_child_1_child_0_child_0_child_1_child_0|leaf": {
+      "node_id": "root_child_1_child_0_child_1_child_0_child_1_child_0_child_0_child_1_child_0",
+      "in_newick": true,
+      "length": 1273,
+      "pll": -0.45082979994289757
+    },
+    "root_child_1_child_0_child_1_child_0_child_1_child_0_child_0_child_1_child_1|leaf": {
+      "node_id": "root_child_1_child_0_child_1_child_0_child_1_child_0_child_0_child_1_child_1",
+      "in_newick": true,
+      "length": 1273,
+      "pll": -0.4548398069766674
+    },
+    "root_child_1_child_0_child_1_child_1_child_1_child_0_child_0_child_0|leaf": {
+      "node_id": "root_child_1_child_0_child_1_child_1_child_1_child_0_child_0_child_0",
+      "in_newick": true,
+      "length": 1273,
+      "pll": -0.4672916752080677
+    },
+    "root_child_1_child_0_child_1_child_1_child_1_child_0_child_0_child_1|leaf": {
+      "node_id": "root_child_1_child_0_child_1_child_1_child_1_child_0_child_0_child_1",
+      "in_newick": true,
+      "length": 1273,
+      "pll": -0.46586277039073415
+    },
+    "root_child_1_child_0_child_0_child_0_child_1_child_0_child_0|leaf": {
+      "node_id": "root_child_1_child_0_child_0_child_0_child_1_child_0_child_0",
+      "in_newick": true,
+      "length": 1273,
+      "pll": -0.44839699531906085
+    },
+    "root_child_1_child_0_child_0_child_0_child_1_child_0_child_1|leaf": {
+      "node_id": "root_child_1_child_0_child_0_child_0_child_1_child_0_child_1",
+      "in_newick": true,
+      "length": 1273,
+      "pll": -0.4540276670709943
+    },
+    "root_child_1_child_1_child_1_child_0_child_0_child_1_child_0_child_0_child_0|leaf": {
+      "node_id": "root_child_1_child_1_child_1_child_0_child_0_child_1_child_0_child_0_child_0",
+      "in_newick": true,
+      "length": 1273,
+      "pll": -0.46016268795012305
+    },
+    "root_child_1_child_1_child_1_child_0_child_0_child_1_child_0_child_0_child_1|leaf": {
+      "node_id": "root_child_1_child_1_child_1_child_0_child_0_child_1_child_0_child_0_child_1",
+      "in_newick": true,
+      "length": 1273,
+      "pll": -0.46100042625026777
+    },
+    "root_child_1_child_1_child_1_child_0_child_0_child_1_child_1_child_1_child_0|leaf": {
+      "node_id": "root_child_1_child_1_child_1_child_0_child_0_child_1_child_1_child_1_child_0",
+      "in_newick": true,
+      "length": 1273,
+      "pll": -0.45325877401284226
+    },
+    "root_child_1_child_1_child_1_child_0_child_0_child_1_child_1_child_1_child_1|leaf": {
+      "node_id": "root_child_1_child_1_child_1_child_0_child_0_child_1_child_1_child_1_child_1",
+      "in_newick": true,
+      "length": 1273,
+      "pll": -0.4613034963455616
+    },
+    "root_child_0_child_0_child_1_child_0_child_1_child_1_child_0|leaf": {
+      "node_id": "root_child_0_child_0_child_1_child_0_child_1_child_1_child_0",
+      "in_newick": true,
+      "length": 1273,
+      "pll": -0.4718735900349792
+    },
+    "root_child_0_child_0_child_1_child_0_child_1_child_1_child_1|leaf": {
+      "node_id": "root_child_0_child_0_child_1_child_0_child_1_child_1_child_1",
+      "in_newick": true,
+      "length": 1273,
+      "pll": -0.46485632950204475
+    },
+    "root_child_0_child_1_child_0_child_0_child_0|leaf": {
+      "node_id": "root_child_0_child_1_child_0_child_0_child_0",
+      "in_newick": true,
+      "length": 1273,
+      "pll": -0.4612278227635073
+    },
+    "root_child_0_child_1_child_0_child_0_child_1|leaf": {
+      "node_id": "root_child_0_child_1_child_0_child_0_child_1",
+      "in_newick": true,
+      "length": 1273,
+      "pll": -0.45734535400131654
+    }
+  }
+}
