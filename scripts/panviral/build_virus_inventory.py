@@ -54,7 +54,15 @@ NON_EUKARYOTIC = {
     "Matshushitaviridae", "Sphaerolipoviricetes",
     # prokaryote-infecting branches of Monodnaviria / Varidnaviria
     "Sangervirae", "Loebvirae", "Trapavirae", "Helvetiavirae",
-    "Laserviricetes", "Tectiliviricetes",
+    "Laserviricetes", "Tectiliviricetes"
+}
+COVID_FLU = {
+    # explicitly exclude the two broad mammalian-virus clades we do not want in
+    # the pan-viral benchmark inventory: influenza and SARS-/MERS-like coronaviruses.
+    "Orthomyxovirales", "Orthomyxoviridae", "Influenza A virus", "Influenza B virus",
+    "Influenza C virus", "Influenza D virus", "Coronaviridae", "Nidovirales",
+    "Severe acute respiratory syndrome-related coronavirus",
+    "Middle East respiratory syndrome-related coronavirus",
 }
 
 
@@ -124,10 +132,17 @@ def lineage_names(tid: int, parent: dict[int, int], name: dict[int, str]) -> lis
 
 def is_eukaryotic(tid: int, parent: dict[int, int], name: dict[int, str]) -> bool:
     lin = lineage_names(tid, parent, name)
-    if any(x in NON_EUKARYOTIC for x in lin):
+    lin_norm = {str(x).lower() for x in lin if x}
+    if lin_norm & {str(x).lower() for x in NON_EUKARYOTIC}:
         return False
     label = (lin[0] if lin else "").lower()
-    return "phage" not in label
+    if "phage" in label:
+        return False
+    # Exclude influenza and coronavirus taxa even when they are not labeled as
+    # phages or obvious prokaryote-infecting lineages.
+    if any(tok in label for tok in ("influenza", "coronavirus", "sars", "mers")):
+        return False
+    return True
 
 
 # ── counts ──────────────────────────────────────────────────────────────────
@@ -178,7 +193,13 @@ def main() -> None:
     ap.add_argument("--limit", type=int, default=None,
                     help="only query this many species (smoke test)")
     ap.add_argument("--ranks", nargs="+", default=["species"])
+    ap.add_argument("--exclude-covid-flu", action="store_true",
+                    help="exclude influenza and SARS-/MERS-like coronaviruses?")
     args = ap.parse_args()
+
+    if args.exclude_covid_flu:
+        global NON_EUKARYOTIC
+        NON_EUKARYOTIC |= COVID_FLU
 
     args.cache.mkdir(parents=True, exist_ok=True)
     args.out.parent.mkdir(parents=True, exist_ok=True)

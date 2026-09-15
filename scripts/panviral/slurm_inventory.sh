@@ -29,7 +29,13 @@ fi
 export PATH="$(dirname "$PY"):${PATH}"
 
 echo "host=$(hostname)  start=$(date -Is)  repo=$REPO"
+if [ "${EXCLUDE_COVID_FLU:-0}" = "1" ]; then
+  FLAG=(--exclude-covid-flu)
+else
+  FLAG=()
+fi
 $PY scripts/panviral/build_virus_inventory.py \
     --min-count "${MIN_COUNT:-150}" \
+    "${FLAG[@]}" \
     --out data/panviral/virus_inventory.json
 echo "done=$(date -Is)"
