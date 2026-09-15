@@ -198,6 +198,7 @@ def main() -> None:
     args = ap.parse_args()
 
     if args.exclude_covid_flu:
+        global NON_EUKARYOTIC
         NON_EUKARYOTIC |= COVID_FLU
 
     args.cache.mkdir(parents=True, exist_ok=True)
