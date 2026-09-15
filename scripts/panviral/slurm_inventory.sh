@@ -31,5 +31,6 @@ export PATH="$(dirname "$PY"):${PATH}"
 echo "host=$(hostname)  start=$(date -Is)  repo=$REPO"
 $PY scripts/panviral/build_virus_inventory.py \
     --min-count "${MIN_COUNT:-150}" \
+    --exclude-covid-flu "${EXCLUDE_COVID_FLU:-}" \
     --out data/panviral/virus_inventory.json
 echo "done=$(date -Is)"
