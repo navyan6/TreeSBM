@@ -4,7 +4,7 @@
 #   conda activate treesbm-data
 #   TREESBM_PY=$(which python) bash scripts/panviral/kickoff.sh
 #
-name: treesbm-data
+name: treesbm-data-liz
 channels:
   - conda-forge
   - bioconda
@@ -14,4 +14,4 @@ dependencies:
   - biopython>=1.83
   - mafft
   - fasttree
-  - nextstrain-augur>=22.0.0
+  - augur>=22.0.0
