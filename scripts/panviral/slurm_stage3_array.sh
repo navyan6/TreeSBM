@@ -46,6 +46,7 @@ echo "[$(date -Is)] task ${SLURM_ARRAY_TASK_ID}: $slug/$split ($ng groups)"
 # data/TRANSLATION_MODES.md). Do not inherit flu/HIV "ungapped" mode here.
 export TREESBM_TRANSLATE_MODE=aligned
 export TREESBM_CDS_START=0
+export TREESBM_CLOCK_RATE="${TREESBM_CLOCK_RATE:-0.001}"
 
 $PY scripts/run_all_groups.py \
     --data-dir "$data_dir" \

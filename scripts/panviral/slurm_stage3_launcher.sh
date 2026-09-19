@@ -37,6 +37,7 @@ fi
 
 echo "submitting stage-3 array 1-${N}%${CONCURRENCY}"
 jid=$(sbatch --parsable --array="1-${N}%${CONCURRENCY}" \
+      --export=ALL,TREESBM_ROOT="$REPO",TREESBM_PY="$PY",TREESBM_CLOCK_RATE="${TREESBM_CLOCK_RATE:-0.001}",WORKERS="${WORKERS:-4}" \
       scripts/panviral/slurm_stage3_array.sh)
 echo "stage 3 array job: $jid"
 echo "$jid" > data/panviral/stage3_array_jobid.txt

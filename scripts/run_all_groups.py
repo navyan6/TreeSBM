@@ -139,6 +139,10 @@ def stage_refine(g: int, treefile: Path, aligned: Path, meta_csv: Path) -> tuple
     bl_json = DATA / f"group_{g:03d}_bl.json"
     if done(rooted) and done(bl_json):
         return rooted, bl_json
+    # Fixed clock: TreeTime cannot estimate μ when tip dates lack variation
+    # (common for year-only GenBank dates / year-bins). Override via
+    # TREESBM_CLOCK_RATE (subst/site/year). Default ~RNA-virus mid-range.
+    clock_rate = os.environ.get("TREESBM_CLOCK_RATE", "0.001")
     nextstrain_run([
         "augur", "refine",
         "--tree", str(treefile),
@@ -148,11 +152,12 @@ def stage_refine(g: int, treefile: Path, aligned: Path, meta_csv: Path) -> tuple
         "--output-tree", str(rooted),
         "--output-node-data", str(bl_json),
         "--timetree",
+        "--clock-rate", clock_rate,
         "--coalescent", "opt",
         "--date-inference", "marginal",
         "--clock-filter-iqd", "4",
     ], "augur refine")
-    log(g, "refine done")
+    log(g, f"refine done (clock-rate={clock_rate})")
     return rooted, bl_json
 
 
