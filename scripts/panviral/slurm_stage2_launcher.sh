@@ -63,10 +63,12 @@ jid=$(sbatch --parsable --array="1-${N}%${CONCURRENCY}" \
 echo "stage 2 array job: $jid"
 echo "$jid" > data/panviral/stage2_array_jobid.txt
 
-# Fan out stage 3 only after every fetch task has finished (including the ones
-# that skipped empty viruses). CHAIN_STAGE3=0 to stop after the CDS pull.
+# Fan out stage 3 only after every fetch task has finished. Use afterany (not
+# afterok) so one failed array element does not block the whole pipeline;
+# stage 3 only consumes viruses that wrote manifests.
+# CHAIN_STAGE3=0 to stop after the CDS pull.
 if [ "$CHAIN_STAGE3" = "1" ]; then
-    s3=$(sbatch --parsable --dependency=afterok:"$jid" \
+  s3=$(sbatch --parsable --dependency=afterany:"$jid" \
           --export=ALL,TREESBM_ROOT="$REPO",TREESBM_PY="$PY" \
           scripts/panviral/slurm_stage3_launcher.sh)
     echo "stage 3 launcher: $s3 (waits on array $jid)"
