@@ -2,7 +2,6 @@
 
 TreeSBM learns branch substitution patterns on **FastTree topologies**. When a group mixes unrelated transmission chains, the tree is biologically wrong and metrics are hard to interpret. This doc plans a **v2 retrain wave** with coherent trees across all paper viruses.
 
-**Do not overwrite Wave-1–5 ckpts.** New dirs: `*_v2_epidemic` (or `filo_l_v1_*` for the new filo track).
 
 ---
 
@@ -24,25 +23,6 @@ Expected effect:
 - **Interpretability:** large ↑ — reviewers can understand what each tree is.
 
 Compute: ~1 train job per domain × (lit + no-lit). Active wave: **COVID + flu epidemic only** (`bash scripts/betty_submit_epidemic_retrain.sh`).
-
----
-
-## Filovirus L (paused — split metadata only)
-
-**Status:** Ingest/split scripts remain in repo; **no active Betty train/eval wave.** Golden test metadata (`bdbv_2026`) is committed under `data/filo_l/`.
-
-| Item | Value |
-|------|-------|
-| Script | `scripts/prepare_filo_outbreak.py` |
-| Data | `data/filo_l/` |
-| Train trees | one outbreak per group (single species) |
-| Val | auto-held-out EBOV outbreak (~60 seqs) |
-| Test | `bdbv_2026` (Track A) |
-| Sanity | `data/filo_l_track_b/` — test = `ebov_wa_2013_2016` |
-| Ckpts | `checkpoints/filo_l_v1_*` (frozen; do not submit unless `--with-filo`) |
-| Re-enable | `bash scripts/betty_submit_epidemic_retrain.sh --with-filo` |
-
-See [`FILOVIRUS_L_DATA_PLAN.md`](FILOVIRUS_L_DATA_PLAN.md), [`BDBV_SPLITS.md`](BDBV_SPLITS.md).
 
 ---
 

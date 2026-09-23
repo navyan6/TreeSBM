@@ -141,6 +141,5 @@ Eval: `benchmarks/coverage_curves.py` + [`eval_everest_forecasting.py`](../scrip
 
 ## C) Epidemic-aware trees (v2 retrain wave)
 
-Filovirus L uses **outbreak-defined trees** (`data/filo_l/`). Planned v2 for COVID (country×clade), flu (NH season), HIV (cluster) — same philosophy, new ckpt dirs only.
 
 Full plan: [`EPIDEMIC_TREE_SPLITS.md`](EPIDEMIC_TREE_SPLITS.md).
