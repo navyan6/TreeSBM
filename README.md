@@ -25,7 +25,7 @@ where \(R_0\) is ESM-2’s masked language model head (amino-acid substitution p
 - **TreeEncoder** — graph transformer with temporal causal attention, conditioned on \(t\)
 - **RateHeads** — per active leaf: mutation logits \([L×20]\), branching rate \(λ\), branch length, stop probability
 
-**Losses:** sequence CE (\(L_\mathrm{seq}\)), topology Poisson NLL (\(L_\mathrm{top}\)), branch-length MSE (\(L_\mathrm{br}\)), stop BCE (\(L_\mathrm{stop}\)), optional ESM PLL regularizer.
+**Losses:** sequence CE, topology Poisson NLL, branch-length MSE, stop BCE, optional ESM PLL regularizer.
 
 ## Setup
 
