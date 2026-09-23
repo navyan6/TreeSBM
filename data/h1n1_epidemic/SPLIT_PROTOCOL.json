@@ -1,0 +1,21 @@
+{
+  "dataset": "h1n1",
+  "split_type": "epidemic",
+  "out_base": "data/h1n1_epidemic",
+  "train_end_year": 2023,
+  "val_year": 2024,
+  "test_start_year": 2025,
+  "test_end_year": 2025,
+  "tree_semantics": "one tree per (location|country, NH flu season)",
+  "counts": {
+    "train": 27318,
+    "val": 6855,
+    "test": 7485
+  },
+  "n_groups": {
+    "train": 206,
+    "val": 36,
+    "test": 30
+  },
+  "checkpoint_target": "checkpoints/h1n1_v3_epidemic_mutrec"
+}

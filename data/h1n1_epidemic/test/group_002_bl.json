@@ -1,0 +1,4218 @@
+{
+  "alignment": "/vast/home/n/nnori/DiscreteTreeFlows/data/h1n1_epidemic/test/group_002_aligned.fasta",
+  "clock": {
+    "cov": [
+      [
+        0.00030414919034364545,
+        -0.6159110345629872
+      ],
+      [
+        -0.6159110345629873,
+        1247.2379193415695
+      ]
+    ],
+    "intercept": -3.8164443146019273,
+    "rate": 0.0018913255465701014,
+    "rate_std": 0.017439873575907754,
+    "rtt_Tmrca": 2017.8674800448862
+  },
+  "generated_by": {
+    "program": "augur",
+    "version": "33.4.1"
+  },
+  "input_tree": "/vast/home/n/nnori/DiscreteTreeFlows/data/h1n1_epidemic/test/group_002_tree.nwk",
+  "nodes": {
+    "NODE_0000000": {
+      "branch_length": 0.001,
+      "clock_length": 0.001,
+      "date": "2019-04-29",
+      "date_inferred": true,
+      "mutation_length": 0.001,
+      "numdate": 2019.325220107422
+    },
+    "NODE_0000003": {
+      "branch_length": 0.00036531147022680335,
+      "clock_length": 0.00036531147022680335,
+      "confidence": 0.919,
+      "date": "2024-12-23",
+      "date_inferred": true,
+      "mutation_length": 0.001137098586315196,
+      "numdate": 2024.977511173837
+    },
+    "NODE_0000004": {
+      "branch_length": 0.000508888581272268,
+      "clock_length": 0.000508888581272268,
+      "date": "2025-01-20",
+      "date_inferred": true,
+      "mutation_length": 0.0005683783824775551,
+      "numdate": 2025.0534246575342
+    },
+    "NODE_0000006": {
+      "branch_length": 9.667993916435969e-05,
+      "clock_length": 9.667993916435969e-05,
+      "date": "2025-01-05",
+      "date_inferred": true,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0123287671233
+    },
+    "NODE_0000013": {
+      "branch_length": 0.0004985251536199801,
+      "clock_length": 0.0004985251536199801,
+      "date": "2025-01-18",
+      "date_inferred": true,
+      "mutation_length": 0.0011370971594681849,
+      "numdate": 2025.0479452054794
+    },
+    "NODE_0000014": {
+      "branch_length": 0.0003917494918743666,
+      "clock_length": 0.0003917494918743666,
+      "date": "2025-01-02",
+      "date_inferred": true,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.004109589041
+    },
+    "NODE_0000019": {
+      "branch_length": 0.00045590105827044564,
+      "clock_length": 0.00045590105827044564,
+      "date": "2025-01-09",
+      "date_inferred": true,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0232876712328
+    },
+    "NODE_0000020": {
+      "branch_length": 1.2469903165115646e-05,
+      "clock_length": 1.2469903165115646e-05,
+      "confidence": 0.824,
+      "date": "2024-10-16",
+      "date_inferred": true,
+      "mutation_length": 0.0005682487518280542,
+      "numdate": 2024.790953355855
+    },
+    "NODE_0000021": {
+      "branch_length": 9.081292772182168e-05,
+      "clock_length": 9.081292772182168e-05,
+      "confidence": 0.939,
+      "date": "2024-11-03",
+      "date_inferred": true,
+      "mutation_length": 0.0011368730076177231,
+      "numdate": 2024.8389688484215
+    },
+    "NODE_0000028": {
+      "branch_length": 0.00023029399817306884,
+      "clock_length": 0.00023029399817306884,
+      "confidence": 0.928,
+      "date": "2024-12-17",
+      "date_inferred": true,
+      "mutation_length": 0.0011368710919237336,
+      "numdate": 2024.960732126346
+    },
+    "NODE_0000031": {
+      "branch_length": 0.00011466371357077931,
+      "clock_length": 0.00011466371357077931,
+      "confidence": 0.859,
+      "date": "2024-11-07",
+      "date_inferred": true,
+      "mutation_length": 0.0005682655001945703,
+      "numdate": 2024.8515794674088
+    },
+    "NODE_0000032": {
+      "branch_length": 0.0002076417679651014,
+      "clock_length": 0.0002076417679651014,
+      "confidence": 0.941,
+      "date": "2024-12-17",
+      "date_inferred": true,
+      "mutation_length": 0.0011373933290571424,
+      "numdate": 2024.9613658383175
+    },
+    "NODE_0000033": {
+      "branch_length": 0.00012229605830940118,
+      "clock_length": 0.00012229605830940118,
+      "date": "2025-01-10",
+      "date_inferred": true,
+      "mutation_length": 0.0011376181921149246,
+      "numdate": 2025.0260273972603
+    },
+    "NODE_0000034": {
+      "branch_length": 7.528188372137598e-05,
+      "clock_length": 7.528188372137598e-05,
+      "date": "2024-12-31",
+      "date_inferred": true,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2024.9998797513938
+    },
+    "NODE_0000035": {
+      "branch_length": 8.602406152553258e-05,
+      "clock_length": 8.602406152553258e-05,
+      "date": "2025-01-03",
+      "date_inferred": true,
+      "mutation_length": 0.0005686383604149981,
+      "numdate": 2025.0068493150684
+    },
+    "NODE_0000036": {
+      "branch_length": 8.000000000000194e-06,
+      "clock_length": 8.000000000000194e-06,
+      "date": "2025-01-02",
+      "date_inferred": true,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.004109589041
+    },
+    "NODE_0000037": {
+      "branch_length": 3.909028295729462e-05,
+      "clock_length": 3.909028295729462e-05,
+      "date": "2025-01-08",
+      "date_inferred": true,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0205479452054
+    },
+    "NODE_0000038": {
+      "branch_length": 3.6271996783868166e-05,
+      "clock_length": 3.6271996783868166e-05,
+      "date": "2025-01-15",
+      "date_inferred": true,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0397260273974
+    },
+    "NODE_0000039": {
+      "branch_length": 0.0004186929707141315,
+      "clock_length": 0.0004186929707141315,
+      "date": "2025-01-05",
+      "date_inferred": true,
+      "mutation_length": 0.0005682655001945703,
+      "numdate": 2025.0123287671233
+    },
+    "NODE_0000040": {
+      "branch_length": 1.036342765228836e-05,
+      "clock_length": 1.036342765228836e-05,
+      "date": "2025-01-17",
+      "date_inferred": true,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.045205479452
+    },
+    "NODE_0000041": {
+      "branch_length": 0.0004186929707141315,
+      "clock_length": 0.0004186929707141315,
+      "date": "2025-01-05",
+      "date_inferred": true,
+      "mutation_length": 0.0005682486811454832,
+      "numdate": 2025.0123287671233
+    },
+    "NODE_0000046": {
+      "branch_length": 8.513463477355233e-05,
+      "clock_length": 8.513463477355233e-05,
+      "confidence": 0.844,
+      "date": "2024-11-01",
+      "date_inferred": true,
+      "mutation_length": 0.0005681358393475024,
+      "numdate": 2024.8359665662608
+    },
+    "NODE_0000048": {
+      "branch_length": 0.00024118561436380559,
+      "clock_length": 0.00024118561436380559,
+      "confidence": 0.902,
+      "date": "2024-12-18",
+      "date_inferred": true,
+      "mutation_length": 0.0005680055420695208,
+      "numdate": 2024.9634885652108
+    },
+    "NODE_0000049": {
+      "branch_length": 0.00010269364701972735,
+      "clock_length": 0.00010269364701972735,
+      "date": "2025-01-07",
+      "date_inferred": true,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.017808219178
+    },
+    "NODE_0000050": {
+      "branch_length": 0.00042528146163319175,
+      "clock_length": 0.00042528146163319175,
+      "date": "2025-01-05",
+      "date_inferred": true,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0135783815308
+    },
+    "NODE_0000051": {
+      "branch_length": 8.000000000000194e-06,
+      "clock_length": 8.000000000000194e-06,
+      "date": "2025-01-07",
+      "date_inferred": true,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.017808219178
+    },
+    "NODE_0000052": {
+      "branch_length": 1.5545141478862535e-05,
+      "clock_length": 1.5545141478862535e-05,
+      "date": "2025-01-10",
+      "date_inferred": true,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0260273972603
+    },
+    "NODE_0000053": {
+      "branch_length": 0.0004216474709863179,
+      "clock_length": 0.0004216474709863179,
+      "date": "2025-01-22",
+      "date_inferred": true,
+      "mutation_length": 0.001136645104992729,
+      "numdate": 2025.058904109589
+    },
+    "NODE_0000054": {
+      "branch_length": 1.1582374420291211e-05,
+      "clock_length": 1.1582374420291211e-05,
+      "date": "2025-01-12",
+      "date_inferred": true,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0321513426811
+    },
+    "NODE_0000055": {
+      "branch_length": 1.1507908537002585e-05,
+      "clock_length": 1.1507908537002585e-05,
+      "date": "2025-01-14",
+      "date_inferred": true,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0382359157775
+    },
+    "NODE_0000056": {
+      "branch_length": 5.540588626897062e-05,
+      "clock_length": 5.540588626897062e-05,
+      "confidence": 0.913,
+      "date": "2024-10-27",
+      "date_inferred": true,
+      "mutation_length": 0.0005682655001945703,
+      "numdate": 2024.8202480938073
+    },
+    "NODE_0000057": {
+      "branch_length": 8.000000000000194e-06,
+      "clock_length": 8.000000000000194e-06,
+      "date": "2025-01-16",
+      "date_inferred": true,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0424657534247
+    },
+    "NODE_0000058": {
+      "branch_length": 1.3181713826144591e-05,
+      "clock_length": 1.3181713826144591e-05,
+      "date": "2025-01-17",
+      "date_inferred": true,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.045205479452
+    },
+    "NODE_0000059": {
+      "branch_length": 1.0363427652287927e-05,
+      "clock_length": 1.0363427652287927e-05,
+      "date": "2025-01-19",
+      "date_inferred": true,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0506849315068
+    },
+    "NODE_0000060": {
+      "branch_length": 1.2726860486719869e-05,
+      "clock_length": 1.2726860486719869e-05,
+      "date": "2025-01-21",
+      "date_inferred": true,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.057414000709
+    },
+    "NODE_0000061": {
+      "branch_length": 7.999994818286196e-06,
+      "clock_length": 7.999994818286196e-06,
+      "date": "2025-01-23",
+      "date_inferred": true,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0616438356165
+    },
+    "NODE_0000062": {
+      "branch_length": 5.540424641168462e-05,
+      "clock_length": 5.540424641168462e-05,
+      "confidence": 0.851,
+      "date": "2024-10-27",
+      "date_inferred": true,
+      "mutation_length": 0.0005682486811454832,
+      "numdate": 2024.820247226766
+    },
+    "NODE_0000070": {
+      "branch_length": 0.00015772500113752158,
+      "clock_length": 0.00015772500113752158,
+      "confidence": 0.839,
+      "date": "2024-11-26",
+      "date_inferred": true,
+      "mutation_length": 0.0005683783824775551,
+      "numdate": 2024.9036411202305
+    },
+    "NODE_0000071": {
+      "branch_length": 0.00011680020706011885,
+      "clock_length": 0.00011680020706011885,
+      "confidence": 0.853,
+      "date": "2024-12-19",
+      "date_inferred": true,
+      "mutation_length": 0.0005689483182755124,
+      "numdate": 2024.9653968593586
+    },
+    "NODE_0000074": {
+      "branch_length": 0.000739761364106029,
+      "clock_length": 0.000739761364106029,
+      "confidence": 0.852,
+      "date": "2024-10-14",
+      "date_inferred": true,
+      "mutation_length": 0.0017067370550807389,
+      "numdate": 2024.784360147622
+    },
+    "NODE_0000075": {
+      "branch_length": 0.0001748307838762243,
+      "clock_length": 0.0001748307838762243,
+      "date": "2025-01-20",
+      "date_inferred": true,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0534246575342
+    },
+    "NODE_0000076": {
+      "branch_length": 0.00042395086904205206,
+      "clock_length": 0.00042395086904205206,
+      "date": "2025-01-03",
+      "date_inferred": true,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0074937992667
+    },
+    "NODE_0000077": {
+      "branch_length": 0.0005188871043269078,
+      "clock_length": 0.0005188871043269078,
+      "confidence": 0.799,
+      "date": "2024-10-11",
+      "date_inferred": true,
+      "mutation_length": 0.0005682337979272605,
+      "numdate": 2024.778212997071
+    },
+    "NODE_0000078": {
+      "branch_length": 0.00043760742292851384,
+      "clock_length": 0.00043760742292851384,
+      "date": "2025-01-04",
+      "date_inferred": true,
+      "mutation_length": 0.0005682339776872028,
+      "numdate": 2025.009589041096
+    },
+    "NODE_0000079": {
+      "branch_length": 1.150792587650308e-05,
+      "clock_length": 1.150792587650308e-05,
+      "date": "2025-01-05",
+      "date_inferred": true,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0135783815308
+    },
+    "NODE_0000080": {
+      "branch_length": 0.0006974228615732924,
+      "clock_length": 0.0006974228615732924,
+      "confidence": 0.73,
+      "date": "2024-05-23",
+      "date_inferred": true,
+      "mutation_length": 0.0005686730812682451,
+      "numdate": 2024.3932263391416
+    },
+    "NODE_0000081": {
+      "branch_length": 8.000000000000194e-06,
+      "clock_length": 8.000000000000194e-06,
+      "date": "2025-01-07",
+      "date_inferred": true,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.017808219178
+    },
+    "NODE_0000082": {
+      "branch_length": 1.3181713826144591e-05,
+      "clock_length": 1.3181713826144591e-05,
+      "date": "2025-01-08",
+      "date_inferred": true,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0205479452054
+    },
+    "NODE_0000083": {
+      "branch_length": 2.0726855305006064e-05,
+      "clock_length": 2.0726855305006064e-05,
+      "date": "2025-01-12",
+      "date_inferred": true,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.031506849315
+    },
+    "NODE_0000084": {
+      "branch_length": 0.0006572920238863402,
+      "clock_length": 0.0006572920238863402,
+      "confidence": 0.757,
+      "date": "2024-05-16",
+      "date_inferred": true,
+      "mutation_length": 0.0005682697545374002,
+      "numdate": 2024.372007973134
+    },
+    "NODE_0000085": {
+      "branch_length": 0.0007983277781059214,
+      "clock_length": 0.0007983277781059214,
+      "confidence": 0.767,
+      "date": "2024-10-17",
+      "date_inferred": true,
+      "mutation_length": 0.0005682872385297972,
+      "numdate": 2024.794107584464
+    },
+    "NODE_0000086": {
+      "branch_length": 0.001883892241037001,
+      "clock_length": 0.001883892241037001,
+      "date": "2025-01-08",
+      "date_inferred": true,
+      "mutation_length": 0.0017117915412123296,
+      "numdate": 2025.0205479452054
+    },
+    "NODE_0000087": {
+      "branch_length": 0.0001576902631464159,
+      "clock_length": 0.0001576902631464159,
+      "confidence": 0.104,
+      "date": "2024-01-09",
+      "date_inferred": true,
+      "mutation_length": 0.0005682532005276247,
+      "numdate": 2024.0244781546537
+    },
+    "NODE_0000088": {
+      "branch_length": 0.00021913583837292368,
+      "clock_length": 0.00021913583837292368,
+      "confidence": 0.94,
+      "date": "2024-02-21",
+      "date_inferred": true,
+      "mutation_length": 0.001136846479610404,
+      "numdate": 2024.140341782029
+    },
+    "NODE_0000089": {
+      "branch_length": 0.00043681073198469653,
+      "clock_length": 0.00043681073198469653,
+      "date": "2025-01-09",
+      "date_inferred": true,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0232876712328
+    },
+    "NODE_0000090": {
+      "branch_length": 0.00044829947648684747,
+      "clock_length": 0.00044829947648684747,
+      "confidence": 0.873,
+      "date": "2024-05-18",
+      "date_inferred": true,
+      "mutation_length": 0.0005682189646295436,
+      "numdate": 2024.3773710323871
+    },
+    "NODE_0000092": {
+      "branch_length": 0.001226820353829948,
+      "clock_length": 0.001226820353829948,
+      "date": "2025-01-10",
+      "date_inferred": true,
+      "mutation_length": 0.0017061198124061054,
+      "numdate": 2025.0260273972603
+    },
+    "NODE_0000093": {
+      "branch_length": 0.0001159067975763707,
+      "clock_length": 0.0001159067975763707,
+      "confidence": 0.821,
+      "date": "2024-03-14",
+      "date_inferred": true,
+      "mutation_length": 0.0005681059537681747,
+      "numdate": 2024.2016251490234
+    },
+    "NODE_0000094": {
+      "branch_length": 0.0003359724423655933,
+      "clock_length": 0.0003359724423655933,
+      "confidence": 0.863,
+      "date": "2024-05-18",
+      "date_inferred": true,
+      "mutation_length": 0.0005680746332880962,
+      "numdate": 2024.379263759666
+    },
+    "NODE_0000096": {
+      "branch_length": 0.0007711121949930989,
+      "clock_length": 0.0007711121949930989,
+      "confidence": 0.897,
+      "date": "2024-10-15",
+      "date_inferred": true,
+      "mutation_length": 0.0005679905750824492,
+      "numdate": 2024.7869736837408
+    },
+    "NODE_0000097": {
+      "branch_length": 0.0003276475782571578,
+      "clock_length": 0.0003276475782571578,
+      "confidence": 0.864,
+      "date": "2024-12-17",
+      "date_inferred": true,
+      "mutation_length": 0.0005681211581066823,
+      "numdate": 2024.960210691432
+    },
+    "NODE_0000099": {
+      "branch_length": 0.0003270928824934873,
+      "clock_length": 0.0003270928824934873,
+      "confidence": 0.867,
+      "date": "2024-12-17",
+      "date_inferred": true,
+      "mutation_length": 0.0005681211581066823,
+      "numdate": 2024.959917407304
+    },
+    "NODE_0000100": {
+      "branch_length": 0.0003218470910216286,
+      "clock_length": 0.0003218470910216286,
+      "confidence": 0.885,
+      "date": "2024-12-16",
+      "date_inferred": true,
+      "mutation_length": 0.0005681211581066823,
+      "numdate": 2024.9571438015216
+    },
+    "NODE_0000103": {
+      "branch_length": 0.00014387679574114838,
+      "clock_length": 0.00014387679574114838,
+      "confidence": 0.745,
+      "date": "2024-06-15",
+      "date_inferred": true,
+      "mutation_length": 0.0005679739954816976,
+      "numdate": 2024.4553356955641
+    },
+    "NODE_0000104": {
+      "branch_length": 0.0006324176687701696,
+      "clock_length": 0.0006324176687701696,
+      "confidence": 0.884,
+      "date": "2024-10-16",
+      "date_inferred": true,
+      "mutation_length": 0.0011370097221703294,
+      "numdate": 2024.789713703579
+    },
+    "NODE_0000106": {
+      "branch_length": 0.0003441845226626345,
+      "clock_length": 0.0003441845226626345,
+      "confidence": 0.924,
+      "date": "2024-12-21",
+      "date_inferred": true,
+      "mutation_length": 0.0005682532005276247,
+      "numdate": 2024.971694285022
+    },
+    "NODE_0000107": {
+      "branch_length": 0.0007543655393974676,
+      "clock_length": 0.0007543655393974676,
+      "date": "2024-10-11",
+      "date_inferred": true,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2024.778119229453
+    },
+    "NODE_0000108": {
+      "branch_length": 0.00017381528811731117,
+      "clock_length": 0.00017381528811731117,
+      "confidence": 0.935,
+      "date": "2024-11-14",
+      "date_inferred": true,
+      "mutation_length": 0.0005678437521531533,
+      "numdate": 2024.8700205356204
+    },
+    "NODE_0000109": {
+      "branch_length": 0.0,
+      "clock_length": 0.0,
+      "date": "2024-10-11",
+      "date_inferred": true,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2024.778119229453
+    },
+    "NODE_0000110": {
+      "branch_length": 0.0,
+      "clock_length": 0.0,
+      "date": "2024-10-11",
+      "date_inferred": true,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2024.778119229453
+    },
+    "NODE_0000111": {
+      "branch_length": 0.00039665059115479365,
+      "clock_length": 0.00039665059115479365,
+      "confidence": 0.895,
+      "date": "2024-08-03",
+      "date_inferred": true,
+      "mutation_length": 0.0011374209072120699,
+      "numdate": 2024.5889847100725
+    },
+    "NODE_0000112": {
+      "branch_length": 0.00036051072792606196,
+      "clock_length": 0.00036051072792606196,
+      "confidence": 0.817,
+      "date": "2024-10-12",
+      "date_inferred": true,
+      "mutation_length": 0.0005679712929334732,
+      "numdate": 2024.779597441223
+    },
+    "NODE_0000113": {
+      "branch_length": 0.0,
+      "clock_length": 0.0,
+      "date": "2024-10-11",
+      "date_inferred": true,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2024.778119229453
+    },
+    "NODE_0000114": {
+      "branch_length": 0.0002155592475030204,
+      "clock_length": 0.0002155592475030204,
+      "confidence": 0.786,
+      "date": "2024-09-14",
+      "date_inferred": true,
+      "mutation_length": 0.0005681015220867733,
+      "numdate": 2024.7029572876088
+    },
+    "NODE_0000115": {
+      "branch_length": 0.0003365134734696347,
+      "clock_length": 0.0003365134734696347,
+      "date": "2025-01-18",
+      "date_inferred": true,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0479452054794
+    },
+    "NODE_0000116": {
+      "branch_length": 7.264215457418321e-06,
+      "clock_length": 7.264215457418321e-06,
+      "date": "2024-10-13",
+      "date_inferred": true,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2024.7819600359555
+    },
+    "NODE_0000118": {
+      "branch_length": 0.0002935368350461447,
+      "clock_length": 0.0002935368350461447,
+      "confidence": 0.765,
+      "date": "2024-07-14",
+      "date_inferred": true,
+      "mutation_length": 0.0005679905750824492,
+      "numdate": 2024.534465404131
+    },
+    "NODE_0000119": {
+      "branch_length": 7.937135795540567e-06,
+      "clock_length": 7.937135795540567e-06,
+      "date": "2024-10-14",
+      "date_inferred": true,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2024.7861566354302
+    },
+    "NODE_0000120": {
+      "branch_length": 0.0003344991672950795,
+      "clock_length": 0.0003344991672950795,
+      "date": "2024-12-18",
+      "date_inferred": true,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2024.9630162817782
+    },
+    "NODE_0000121": {
+      "branch_length": 0.00034331889273446145,
+      "clock_length": 0.00034331889273446145,
+      "confidence": 0.854,
+      "date": "2024-12-18",
+      "date_inferred": true,
+      "mutation_length": 0.0005679739954816976,
+      "numdate": 2024.963482933141
+    },
+    "NODE_0000122": {
+      "branch_length": 0.00016580995686505144,
+      "clock_length": 0.00016580995686505144,
+      "date": "2025-01-19",
+      "date_inferred": true,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0506849315068
+    },
+    "NODE_0000124": {
+      "branch_length": 0.0002092479969037107,
+      "clock_length": 0.0002092479969037107,
+      "date": "2024-07-03",
+      "date_inferred": true,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2024.5038619710049
+    },
+    "NODE_0000125": {
+      "branch_length": 0.0005217509598193599,
+      "clock_length": 0.0005217509598193599,
+      "date": "2024-10-12",
+      "date_inferred": true,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2024.7797272025434
+    },
+    "NODE_0000126": {
+      "branch_length": 0.0010988105791444685,
+      "clock_length": 0.0010988105791444685,
+      "confidence": 0.944,
+      "date": "2024-12-17",
+      "date_inferred": true,
+      "mutation_length": 0.001136321035321032,
+      "numdate": 2024.9602375540173
+    },
+    "NODE_0000132": {
+      "branch_length": 0.00031340299645049325,
+      "clock_length": 0.00031340299645049325,
+      "confidence": 0.915,
+      "date": "2024-05-14",
+      "date_inferred": true,
+      "mutation_length": 0.000567993498854814,
+      "numdate": 2024.367330623165
+    },
+    "NODE_0000133": {
+      "branch_length": 0.0003775151344582524,
+      "clock_length": 0.0003775151344582524,
+      "date": "2024-12-26",
+      "date_inferred": true,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2024.9839636136371
+    },
+    "NODE_0000134": {
+      "branch_length": 1.150789691837465e-05,
+      "clock_length": 1.150789691837465e-05,
+      "date": "2024-12-28",
+      "date_inferred": true,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2024.9900481805903
+    },
+    "NODE_0000135": {
+      "branch_length": 0.0008038175904786604,
+      "clock_length": 0.0008038175904786604,
+      "confidence": 0.874,
+      "date": "2024-10-16",
+      "date_inferred": true,
+      "mutation_length": 0.0011363946540055988,
+      "numdate": 2024.7923328613763
+    },
+    "NODE_0000136": {
+      "branch_length": 0.00043681073198469653,
+      "clock_length": 0.00043681073198469653,
+      "date": "2025-01-09",
+      "date_inferred": true,
+      "mutation_length": 0.0017068047993586792,
+      "numdate": 2025.0232876712328
+    },
+    "NODE_0000137": {
+      "branch_length": 3.695812867647629e-05,
+      "clock_length": 3.695812867647629e-05,
+      "date": "2025-01-04",
+      "date_inferred": true,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.009589041096
+    },
+    "NODE_0000138": {
+      "branch_length": 1.150790324456379e-05,
+      "clock_length": 1.150790324456379e-05,
+      "date": "2024-12-30",
+      "date_inferred": true,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2024.9961327508884
+    },
+    "NODE_0000139": {
+      "branch_length": 3.063193925805646e-05,
+      "clock_length": 3.063193925805646e-05,
+      "date": "2025-01-05",
+      "date_inferred": true,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0123287671233
+    },
+    "NODE_0000140": {
+      "branch_length": 0.000777898413927175,
+      "clock_length": 0.000777898413927175,
+      "confidence": 0.916,
+      "date": "2024-10-11",
+      "date_inferred": true,
+      "mutation_length": 0.0005680099326710662,
+      "numdate": 2024.778628622781
+    },
+    "NODE_0000141": {
+      "branch_length": 7.999972186319149e-06,
+      "clock_length": 7.999972186319149e-06,
+      "date": "2025-01-01",
+      "date_inferred": true,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0003625738295
+    },
+    "NODE_0000142": {
+      "branch_length": 7.999969822861195e-06,
+      "clock_length": 7.999969822861195e-06,
+      "date": "2025-01-02",
+      "date_inferred": true,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0045923955213
+    },
+    "NODE_0000143": {
+      "branch_length": 7.999972641120276e-06,
+      "clock_length": 7.999972641120276e-06,
+      "date": "2025-01-04",
+      "date_inferred": true,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.008822218703
+    },
+    "NODE_0000144": {
+      "branch_length": 1.1507895504304401e-05,
+      "clock_length": 1.1507895504304401e-05,
+      "date": "2025-01-06",
+      "date_inferred": true,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0149067849086
+    },
+    "NODE_0000145": {
+      "branch_length": 0.00018992706173427993,
+      "clock_length": 0.00018992706173427993,
+      "confidence": 0.423,
+      "date": "2024-11-17",
+      "date_inferred": true,
+      "mutation_length": 0.0005681402014636945,
+      "numdate": 2024.8790487022743
+    },
+    "NODE_0000146": {
+      "branch_length": 2.1032698234601903e-05,
+      "clock_length": 2.1032698234601903e-05,
+      "date": "2025-01-10",
+      "date_inferred": true,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0260273972603
+    },
+    "NODE_0000147": {
+      "branch_length": 1.1507901830492238e-05,
+      "clock_length": 1.1507901830492238e-05,
+      "date": "2025-01-08",
+      "date_inferred": true,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0209913544588
+    },
+    "NODE_0000148": {
+      "branch_length": 0.0003480578233006552,
+      "clock_length": 0.0003480578233006552,
+      "confidence": 0.828,
+      "date": "2024-12-18",
+      "date_inferred": true,
+      "mutation_length": 0.0005681402014636945,
+      "numdate": 2024.9626571333313
+    },
+    "NODE_0000149": {
+      "branch_length": 1.4706510230253628e-05,
+      "clock_length": 1.4706510230253628e-05,
+      "date": "2025-01-11",
+      "date_inferred": true,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0287671232877
+    },
+    "NODE_0000150": {
+      "branch_length": 7.99998811176414e-06,
+      "clock_length": 7.99998811176414e-06,
+      "date": "2025-01-10",
+      "date_inferred": true,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0252211858203
+    },
+    "NODE_0000151": {
+      "branch_length": 0.00043697871611503145,
+      "clock_length": 0.00043697871611503145,
+      "confidence": 0.885,
+      "date": "2024-06-07",
+      "date_inferred": true,
+      "mutation_length": 0.001136585869514174,
+      "numdate": 2024.4326687770797
+    },
+    "NODE_0000152": {
+      "branch_length": 0.0010859623198415246,
+      "clock_length": 0.0010859623198415246,
+      "date": "2025-01-03",
+      "date_inferred": true,
+      "mutation_length": 0.0034169038099629884,
+      "numdate": 2025.0068493150684
+    },
+    "NODE_0000153": {
+      "branch_length": 0.0011002090963430065,
+      "clock_length": 0.0011002090963430065,
+      "confidence": 0.975,
+      "date": "2024-10-13",
+      "date_inferred": true,
+      "mutation_length": 0.0017057300158262387,
+      "numdate": 2024.7833383809618
+    },
+    "NODE_0000154": {
+      "branch_length": 1.1507895429806701e-05,
+      "clock_length": 1.1507895429806701e-05,
+      "date": "2025-01-12",
+      "date_inferred": true,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0313057519866
+    },
+    "NODE_0000155": {
+      "branch_length": 2.1107195819832815e-05,
+      "clock_length": 2.1107195819832815e-05,
+      "date": "2025-01-16",
+      "date_inferred": true,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0424657534247
+    },
+    "NODE_0000156": {
+      "branch_length": 7.999976529352894e-06,
+      "clock_length": 7.999976529352894e-06,
+      "date": "2025-01-13",
+      "date_inferred": true,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.035535577224
+    },
+    "NODE_0000157": {
+      "branch_length": 1.1507894210822153e-05,
+      "clock_length": 1.1507894210822153e-05,
+      "date": "2025-01-16",
+      "date_inferred": true,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0416201427456
+    },
+    "NODE_0000158": {
+      "branch_length": 2.2326180384234055e-05,
+      "clock_length": 2.2326180384234055e-05,
+      "date": "2025-01-20",
+      "date_inferred": true,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0534246575342
+    },
+    "NODE_0000159": {
+      "branch_length": 7.99998567380545e-06,
+      "clock_length": 7.99998567380545e-06,
+      "date": "2025-01-17",
+      "date_inferred": true,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0458499728181
+    },
+    "NODE_0000160": {
+      "branch_length": 1.1507908537002585e-05,
+      "clock_length": 1.1507908537002585e-05,
+      "date": "2025-01-19",
+      "date_inferred": true,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0519345459145
+    },
+    "NODE_0000161": {
+      "branch_length": 0.0004175502257874053,
+      "clock_length": 0.0004175502257874053,
+      "date": "2025-01-02",
+      "date_inferred": true,
+      "mutation_length": 0.0011370041025456118,
+      "numdate": 2025.004109589041
+    },
+    "NODE_0000162": {
+      "branch_length": 8.000000000000194e-06,
+      "clock_length": 8.000000000000194e-06,
+      "date": "2025-01-21",
+      "date_inferred": true,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0561643835617
+    },
+    "NODE_0000163": {
+      "branch_length": 1.2726858122862495e-05,
+      "clock_length": 1.2726858122862495e-05,
+      "date": "2025-01-22",
+      "date_inferred": true,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0586636138669
+    },
+    "NODE_0000164": {
+      "branch_length": 0.0003359902907830637,
+      "clock_length": 0.0003359902907830637,
+      "confidence": 0.87,
+      "date": "2024-12-17",
+      "date_inferred": true,
+      "mutation_length": 0.0005680544549001013,
+      "numdate": 2024.9609864285928
+    },
+    "NODE_0000165": {
+      "branch_length": 7.999997181713792e-06,
+      "clock_length": 7.999997181713792e-06,
+      "date": "2025-01-23",
+      "date_inferred": true,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.062893450024
+    },
+    "NODE_0000166": {
+      "branch_length": 8.000000000000194e-06,
+      "clock_length": 8.000000000000194e-06,
+      "date": "2025-01-25",
+      "date_inferred": true,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0671232876712
+    },
+    "NODE_0000168": {
+      "branch_length": 0.0008248449117230503,
+      "clock_length": 0.0008248449117230503,
+      "confidence": 0.969,
+      "date": "2024-05-18",
+      "date_inferred": true,
+      "mutation_length": 0.0022760431413344473,
+      "numdate": 2024.3772226357858
+    },
+    "NODE_0000169": {
+      "branch_length": 0.0002487364671855533,
+      "clock_length": 0.0002487364671855533,
+      "confidence": 0.754,
+      "date": "2024-07-05",
+      "date_inferred": true,
+      "mutation_length": 0.0005685404964241218,
+      "numdate": 2024.5087369949276
+    },
+    "NODE_0000170": {
+      "branch_length": 0.0006214926482383089,
+      "clock_length": 0.0006214926482383089,
+      "confidence": 0.925,
+      "date": "2024-09-15",
+      "date_inferred": true,
+      "mutation_length": 0.0017051487896292106,
+      "numdate": 2024.7058242609082
+    },
+    "NODE_0000171": {
+      "branch_length": 0.00039796611540912543,
+      "clock_length": 0.00039796611540912543,
+      "date": "2025-01-01",
+      "date_inferred": true,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0013698630137
+    },
+    "NODE_0000172": {
+      "branch_length": 3.109028295729399e-05,
+      "clock_length": 3.109028295729399e-05,
+      "date": "2025-01-07",
+      "date_inferred": true,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.017808219178
+    },
+    "NODE_0000173": {
+      "branch_length": 0.00015678176876272095,
+      "clock_length": 0.00015678176876272095,
+      "confidence": 0.944,
+      "date": "2024-10-15",
+      "date_inferred": true,
+      "mutation_length": 0.000567782636683949,
+      "numdate": 2024.7887194393966
+    },
+    "NODE_0000174": {
+      "branch_length": 5.181713826230092e-05,
+      "clock_length": 5.181713826230092e-05,
+      "date": "2025-01-17",
+      "date_inferred": true,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.045205479452
+    },
+    "NODE_0000176": {
+      "branch_length": 0.0003529236567924427,
+      "clock_length": 0.0003529236567924427,
+      "date": "2025-01-03",
+      "date_inferred": true,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0068493150684
+    },
+    "NODE_0000180": {
+      "branch_length": 0.0003305878146134646,
+      "clock_length": 0.0003305878146134646,
+      "confidence": 0.893,
+      "date": "2024-12-18",
+      "date_inferred": true,
+      "mutation_length": 0.000567765130642247,
+      "numdate": 2024.9635110373915
+    },
+    "NODE_0000181": {
+      "branch_length": 7.520577817039277e-05,
+      "clock_length": 7.520577817039277e-05,
+      "date": "2025-01-01",
+      "date_inferred": true,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0011293672917
+    },
+    "NODE_0000182": {
+      "branch_length": 7.999997181713792e-06,
+      "clock_length": 7.999997181713792e-06,
+      "date": "2025-01-02",
+      "date_inferred": true,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0053592034487
+    },
+    "NODE_0000183": {
+      "branch_length": 0.0002772897344760642,
+      "clock_length": 0.0002772897344760642,
+      "confidence": 0.417,
+      "date": "2023-12-10",
+      "date_inferred": true,
+      "mutation_length": 0.000568382849429296,
+      "numdate": 2023.941102628197
+    },
+    "NODE_0000184": {
+      "branch_length": 0.0011534910471992952,
+      "clock_length": 0.0011534910471992952,
+      "confidence": 0.742,
+      "date": "2023-10-17",
+      "date_inferred": true,
+      "mutation_length": 0.002277670406032461,
+      "numdate": 2023.7944913084382
+    },
+    "NODE_0000185": {
+      "branch_length": 8.000000000000194e-06,
+      "clock_length": 8.000000000000194e-06,
+      "date": "2025-01-04",
+      "date_inferred": true,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.009589041096
+    },
+    "NODE_0000186": {
+      "branch_length": 2.590856913072025e-05,
+      "clock_length": 2.590856913072025e-05,
+      "date": "2025-01-09",
+      "date_inferred": true,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0232876712328
+    },
+    "NODE_0000187": {
+      "branch_length": 0.001290481318371642,
+      "clock_length": 0.001290481318371642,
+      "confidence": 0.886,
+      "date": "2023-03-09",
+      "date_inferred": true,
+      "mutation_length": 0.0011380464016176833,
+      "numdate": 2023.1846063262938
+    },
+    "NODE_0000188": {
+      "branch_length": 0.006008874431461192,
+      "clock_length": 0.006008874431461192,
+      "confidence": 0.867,
+      "date": "2022-07-03",
+      "date_inferred": true,
+      "mutation_length": 0.007437287159410163,
+      "numdate": 2022.5022905183612
+    },
+    "NODE_0000189": {
+      "branch_length": 0.0003485129887402379,
+      "clock_length": 0.0003485129887402379,
+      "confidence": 0.764,
+      "date": "2022-09-08",
+      "date_inferred": true,
+      "mutation_length": 0.0005687051286335909,
+      "numdate": 2022.6865596884002
+    },
+    "NODE_0000190": {
+      "branch_length": 0.0036710665025910727,
+      "clock_length": 0.0036710665025910727,
+      "confidence": 0.996,
+      "date": "2024-08-17",
+      "date_inferred": true,
+      "mutation_length": 0.005139977616738744,
+      "numdate": 2024.6275616006562
+    },
+    "NODE_0000191": {
+      "branch_length": 0.00028758234574331526,
+      "clock_length": 0.00028758234574331526,
+      "confidence": 0.767,
+      "date": "2024-10-12",
+      "date_inferred": true,
+      "mutation_length": 0.0005690804528532516,
+      "numdate": 2024.7796149297433
+    },
+    "NODE_0000192": {
+      "branch_length": 6.218056591501863e-05,
+      "clock_length": 6.218056591501863e-05,
+      "date": "2025-01-21",
+      "date_inferred": true,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0561643835617
+    },
+    "NODE_0000194": {
+      "branch_length": 0.00020150306442062718,
+      "clock_length": 0.00020150306442062718,
+      "confidence": 0.788,
+      "date": "2024-11-20",
+      "date_inferred": true,
+      "mutation_length": 0.0005690805857916269,
+      "numdate": 2024.8861555857325
+    },
+    "NODE_0000196": {
+      "branch_length": 0.00048159133628694227,
+      "clock_length": 0.00048159133628694227,
+      "date": "2025-01-13",
+      "date_inferred": true,
+      "mutation_length": 0.001708799412055071,
+      "numdate": 2025.0342465753424
+    },
+    "NODE_0000197": {
+      "branch_length": 0.0004682222640389953,
+      "clock_length": 0.0004682222640389953,
+      "confidence": 0.412,
+      "date": "2022-12-07",
+      "date_inferred": true,
+      "mutation_length": 0.0005686877873172017,
+      "numdate": 2022.9341227083617
+    },
+    "NODE_0000198": {
+      "branch_length": 0.0038536626425098833,
+      "clock_length": 0.0038536626425098833,
+      "confidence": 0.998,
+      "date": "2024-12-21",
+      "date_inferred": true,
+      "mutation_length": 0.0057075755602313625,
+      "numdate": 2024.9716686239753
+    },
+    "NODE_0000199": {
+      "branch_length": 0.003507131123442113,
+      "clock_length": 0.003507131123442113,
+      "confidence": 0.978,
+      "date": "2024-10-15",
+      "date_inferred": true,
+      "mutation_length": 0.002847682714403662,
+      "numdate": 2024.7884471158134
+    },
+    "NODE_0000200": {
+      "branch_length": 0.0003477435828235847,
+      "clock_length": 0.0003477435828235847,
+      "date": "2025-01-02",
+      "date_inferred": true,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.004109589041
+    },
+    "NODE_0000201": {
+      "branch_length": 5.699885208844445e-05,
+      "clock_length": 5.699885208844445e-05,
+      "date": "2025-01-13",
+      "date_inferred": true,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0342465753424
+    },
+    "NODE_0000204": {
+      "branch_length": 0.00018515684748519152,
+      "clock_length": 0.00018515684748519152,
+      "confidence": 0.81,
+      "date": "2024-11-20",
+      "date_inferred": true,
+      "mutation_length": 0.0005684273362635914,
+      "numdate": 2024.8863450413298
+    },
+    "NODE_0000205": {
+      "branch_length": 0.0003246060613304011,
+      "clock_length": 0.0003246060613304011,
+      "confidence": 0.933,
+      "date": "2024-12-17",
+      "date_inferred": true,
+      "mutation_length": 0.0011375249820510152,
+      "numdate": 2024.9600759831542
+    },
+    "NODE_0000206": {
+      "branch_length": 0.0001545532874913623,
+      "clock_length": 0.0001545532874913623,
+      "date": "2025-01-17",
+      "date_inferred": true,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.045205479452
+    },
+    "NODE_0000207": {
+      "branch_length": 0.00034392176359286696,
+      "clock_length": 0.00034392176359286696,
+      "date": "2025-01-07",
+      "date_inferred": true,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.017808219178
+    },
+    "NODE_0000208": {
+      "branch_length": 0.0027377656938301735,
+      "clock_length": 0.0027377656938301735,
+      "confidence": 1.0,
+      "date": "2020-10-09",
+      "date_inferred": true,
+      "mutation_length": 0.004572619978633906,
+      "numdate": 2020.7727581575452
+    },
+    "NODE_0000209": {
+      "branch_length": 0.0060004328096736346,
+      "clock_length": 0.0060004328096736346,
+      "confidence": 0.987,
+      "date": "2023-12-12",
+      "date_inferred": true,
+      "mutation_length": 0.00513801791045028,
+      "numdate": 2023.9453652322793
+    },
+    "NODE_0000210": {
+      "branch_length": 0.002033520532187802,
+      "clock_length": 0.002033520532187802,
+      "date": "2025-01-08",
+      "date_inferred": true,
+      "mutation_length": 0.0028440667294869376,
+      "numdate": 2025.0205479452054
+    },
+    "NODE_0000211": {
+      "branch_length": 0.0009458579685309096,
+      "clock_length": 0.0009458579685309096,
+      "confidence": 0.709,
+      "date": "2024-06-12",
+      "date_inferred": true,
+      "mutation_length": 0.0005677393865914719,
+      "numdate": 2024.4454684378043
+    },
+    "NODE_0000212": {
+      "branch_length": 0.0009754374830141005,
+      "clock_length": 0.0009754374830141005,
+      "confidence": 0.93,
+      "date": "2024-12-17",
+      "date_inferred": true,
+      "mutation_length": 0.0005677394707852082,
+      "numdate": 2024.9612112113225
+    },
+    "NODE_0000213": {
+      "branch_length": 6.7068246674306355e-06,
+      "clock_length": 6.7068246674306355e-06,
+      "date": "2025-01-08",
+      "date_inferred": true,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.021354316612
+    },
+    "NODE_0000214": {
+      "branch_length": 8.838316811431851e-06,
+      "clock_length": 8.838316811431851e-06,
+      "date": "2025-01-10",
+      "date_inferred": true,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0260273972603
+    },
+    "NODE_0000215": {
+      "branch_length": 8.838316811431851e-06,
+      "clock_length": 8.838316811431851e-06,
+      "date": "2025-01-10",
+      "date_inferred": true,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0260273972603
+    },
+    "NODE_0000217": {
+      "branch_length": 0.0002597822567717829,
+      "clock_length": 0.0002597822567717829,
+      "confidence": 0.873,
+      "date": "2024-08-01",
+      "date_inferred": true,
+      "mutation_length": 0.0005678400011808298,
+      "numdate": 2024.5828230340253
+    },
+    "NODE_0000218": {
+      "branch_length": 0.00037161112736423113,
+      "clock_length": 0.00037161112736423113,
+      "confidence": 0.77,
+      "date": "2024-10-12",
+      "date_inferred": true,
+      "mutation_length": 0.0005682909758019184,
+      "numdate": 2024.779304876106
+    },
+    "NODE_0000219": {
+      "branch_length": 0.00035897032594960424,
+      "clock_length": 0.00035897032594960424,
+      "date": "2025-01-11",
+      "date_inferred": true,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0287671232877
+    },
+    "NODE_0000220": {
+      "branch_length": 0.0007199568127599669,
+      "clock_length": 0.0007199568127599669,
+      "confidence": 0.885,
+      "date": "2024-12-18",
+      "date_inferred": true,
+      "mutation_length": 0.000567888114577768,
+      "numdate": 2024.963485587897
+    },
+    "NODE_0000221": {
+      "branch_length": 0.0015211506593961442,
+      "clock_length": 0.0015211506593961442,
+      "confidence": 0.749,
+      "date": "2021-07-30",
+      "date_inferred": true,
+      "mutation_length": 0.0017083656019829133,
+      "numdate": 2021.577035698318
+    },
+    "NODE_0000222": {
+      "branch_length": 0.005296926623473382,
+      "clock_length": 0.005296926623473382,
+      "confidence": 0.969,
+      "date": "2024-05-18",
+      "date_inferred": true,
+      "mutation_length": 0.0045672659192530175,
+      "numdate": 2024.3776781541233
+    },
+    "NODE_0000223": {
+      "branch_length": 5.758609891055562e-05,
+      "clock_length": 5.758609891055562e-05,
+      "date": "2024-12-28",
+      "date_inferred": true,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2024.991179607487
+    },
+    "NODE_0000224": {
+      "branch_length": 0.0011082290948312575,
+      "clock_length": 0.0011082290948312575,
+      "confidence": 0.954,
+      "date": "2024-12-18",
+      "date_inferred": true,
+      "mutation_length": 0.0017104462025417959,
+      "numdate": 2024.9636317975037
+    },
+    "NODE_0000225": {
+      "branch_length": 0.0007930362841602497,
+      "clock_length": 0.0007930362841602497,
+      "confidence": 0.953,
+      "date": "2024-10-18",
+      "date_inferred": true,
+      "mutation_length": 0.0011389325070840168,
+      "numdate": 2024.7969799954158
+    },
+    "NODE_0000226": {
+      "branch_length": 7.999988726897951e-06,
+      "clock_length": 7.999988726897951e-06,
+      "date": "2024-12-30",
+      "date_inferred": true,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2024.9954094391737
+    },
+    "NODE_0000227": {
+      "branch_length": 0.0004002008220731487,
+      "clock_length": 0.0004002008220731487,
+      "confidence": 0.828,
+      "date": "2024-08-03",
+      "date_inferred": true,
+      "mutation_length": 0.0005694252166957057,
+      "numdate": 2024.589276217079
+    },
+    "NODE_0000228": {
+      "branch_length": 7.999986363456911e-06,
+      "clock_length": 7.999986363456911e-06,
+      "date": "2024-12-31",
+      "date_inferred": true,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2024.999639269611
+    },
+    "NODE_0000229": {
+      "branch_length": 0.0003649558924744599,
+      "clock_length": 0.0003649558924744599,
+      "confidence": 0.848,
+      "date": "2024-10-13",
+      "date_inferred": true,
+      "mutation_length": 0.0005696569495251525,
+      "numdate": 2024.7822392387736
+    },
+    "NODE_0000230": {
+      "branch_length": 7.999994363451241e-06,
+      "clock_length": 7.999994363451241e-06,
+      "date": "2025-01-02",
+      "date_inferred": true,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.003869104278
+    },
+    "NODE_0000231": {
+      "branch_length": 7.999997181734608e-06,
+      "clock_length": 7.999997181734608e-06,
+      "date": "2025-01-03",
+      "date_inferred": true,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.008098940435
+    },
+    "NODE_0000232": {
+      "branch_length": 7.999979273144633e-06,
+      "clock_length": 7.999979273144633e-06,
+      "date": "2025-01-05",
+      "date_inferred": true,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0123287671233
+    },
+    "NODE_0000236": {
+      "branch_length": 0.00041962906148700725,
+      "clock_length": 0.00041962906148700725,
+      "date": "2025-01-02",
+      "date_inferred": true,
+      "mutation_length": 0.0005696574911781188,
+      "numdate": 2025.004109589041
+    },
+    "NODE_0000238": {
+      "branch_length": 0.00035347049237487507,
+      "clock_length": 0.00035347049237487507,
+      "confidence": 0.859,
+      "date": "2024-12-20",
+      "date_inferred": true,
+      "mutation_length": 0.0005696889585777032,
+      "numdate": 2024.9691295882517
+    },
+    "PZ060954.1": {
+      "branch_length": 0.00030715318768730375,
+      "clock_length": 0.00030715318768730375,
+      "date": "2025-01-01",
+      "date_inferred": false,
+      "mutation_length": 0.0005682655001945703,
+      "numdate": 2025.0013698630137,
+      "raw_date": "2025-01-01"
+    },
+    "PZ060956.1": {
+      "branch_length": 0.0002484243384238958,
+      "clock_length": 0.0002484243384238958,
+      "date": "2025-01-01",
+      "date_inferred": false,
+      "mutation_length": 0.0005678270592546188,
+      "numdate": 2025.0013698630137,
+      "raw_date": "2025-01-01"
+    },
+    "PZ060962.1": {
+      "branch_length": 1.1273101876781329e-05,
+      "clock_length": 1.1273101876781329e-05,
+      "date": "2025-01-01",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0013698630137,
+      "raw_date": "2025-01-01"
+    },
+    "PZ060966.1": {
+      "branch_length": 0.0,
+      "clock_length": 0.0,
+      "date": "2025-01-01",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0013698630137,
+      "raw_date": "2025-01-01"
+    },
+    "PZ060968.1": {
+      "branch_length": 1.927309060367928e-05,
+      "clock_length": 1.927309060367928e-05,
+      "date": "2025-01-01",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0013698630137,
+      "raw_date": "2025-01-01"
+    },
+    "PZ061060.1": {
+      "branch_length": 0.00042079944622652916,
+      "clock_length": 0.00042079944622652916,
+      "date": "2025-01-03",
+      "date_inferred": false,
+      "mutation_length": 0.0011381649738170302,
+      "numdate": 2025.0068493150684,
+      "raw_date": "2025-01-03"
+    },
+    "PZ061062.1": {
+      "branch_length": 0.0034464547167276254,
+      "clock_length": 0.0034464547167276254,
+      "date": "2025-01-03",
+      "date_inferred": false,
+      "mutation_length": 0.002849163758236923,
+      "numdate": 2025.0068493150684,
+      "raw_date": "2025-01-03"
+    },
+    "PZ061074.1": {
+      "branch_length": 2.8182654470006695e-06,
+      "clock_length": 2.8182654470006695e-06,
+      "date": "2025-01-04",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.009589041096,
+      "raw_date": "2025-01-04"
+    },
+    "PZ061077.1": {
+      "branch_length": 9.394522993095037e-05,
+      "clock_length": 9.394522993095037e-05,
+      "date": "2025-01-04",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.009589041096,
+      "raw_date": "2025-01-04"
+    },
+    "PZ061078.1": {
+      "branch_length": 3.962784398071385e-06,
+      "clock_length": 3.962784398071385e-06,
+      "date": "2025-01-04",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.009589041096,
+      "raw_date": "2025-01-04"
+    },
+    "PZ061079.1": {
+      "branch_length": 8.876351610480641e-05,
+      "clock_length": 8.876351610480641e-05,
+      "date": "2025-01-04",
+      "date_inferred": false,
+      "mutation_length": 0.0005682697545374002,
+      "numdate": 2025.009589041096,
+      "raw_date": "2025-01-04"
+    },
+    "PZ061080.1": {
+      "branch_length": 0.00043682133940546163,
+      "clock_length": 0.00043682133940546163,
+      "date": "2025-01-04",
+      "date_inferred": false,
+      "mutation_length": 0.001706716417144162,
+      "numdate": 2025.009589041096,
+      "raw_date": "2025-01-04"
+    },
+    "PZ061084.1": {
+      "branch_length": 0.0,
+      "clock_length": 0.0,
+      "date": "2025-01-04",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.009589041096,
+      "raw_date": "2025-01-04"
+    },
+    "PZ061086.1": {
+      "branch_length": 0.00042127619792659953,
+      "clock_length": 0.00042127619792659953,
+      "date": "2025-01-01",
+      "date_inferred": false,
+      "mutation_length": 0.0011366556388480193,
+      "numdate": 2025.0013698630137,
+      "raw_date": "2025-01-01"
+    },
+    "PZ061089.1": {
+      "branch_length": 0.001644029547359501,
+      "clock_length": 0.001644029547359501,
+      "date": "2025-01-04",
+      "date_inferred": false,
+      "mutation_length": 0.0011368115443607565,
+      "numdate": 2025.009589041096,
+      "raw_date": "2025-01-04"
+    },
+    "PZ061093.1": {
+      "branch_length": 0.0004186929707141315,
+      "clock_length": 0.0004186929707141315,
+      "date": "2025-01-05",
+      "date_inferred": false,
+      "mutation_length": 0.0011371656299448984,
+      "numdate": 2025.0123287671233,
+      "raw_date": "2025-01-05"
+    },
+    "PZ061095.1": {
+      "branch_length": 0.0,
+      "clock_length": 0.0,
+      "date": "2025-01-05",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0123287671233,
+      "raw_date": "2025-01-05"
+    },
+    "PZ061096.1": {
+      "branch_length": 0.0011801849293937914,
+      "clock_length": 0.0011801849293937914,
+      "date": "2025-01-01",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0013698630137,
+      "raw_date": "2025-01-01"
+    },
+    "PZ061099.1": {
+      "branch_length": 9.394522993095037e-05,
+      "clock_length": 9.394522993095037e-05,
+      "date": "2025-01-05",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0123287671233,
+      "raw_date": "2025-01-05"
+    },
+    "PZ061100.1": {
+      "branch_length": 0.0,
+      "clock_length": 0.0,
+      "date": "2025-01-02",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.004109589041,
+      "raw_date": "2025-01-02"
+    },
+    "PZ061107.1": {
+      "branch_length": 0.000412727297566307,
+      "clock_length": 0.000412727297566307,
+      "date": "2025-01-05",
+      "date_inferred": false,
+      "mutation_length": 0.001137176288569404,
+      "numdate": 2025.0123287671233,
+      "raw_date": "2025-01-05"
+    },
+    "PZ061108.1": {
+      "branch_length": 0.00010791786305520577,
+      "clock_length": 0.00010791786305520577,
+      "date": "2025-01-08",
+      "date_inferred": false,
+      "mutation_length": 0.0005679887529221356,
+      "numdate": 2025.0205479452054,
+      "raw_date": "2025-01-08"
+    },
+    "PZ061109.1": {
+      "branch_length": 0.0005851221825858666,
+      "clock_length": 0.0005851221825858666,
+      "date": "2025-01-05",
+      "date_inferred": false,
+      "mutation_length": 0.0011372320929895403,
+      "numdate": 2025.0123287671233,
+      "raw_date": "2025-01-05"
+    },
+    "PZ061111.1": {
+      "branch_length": 0.0004311628738792473,
+      "clock_length": 0.0004311628738792473,
+      "date": "2025-01-05",
+      "date_inferred": false,
+      "mutation_length": 0.0011377063920620842,
+      "numdate": 2025.0123287671233,
+      "raw_date": "2025-01-05"
+    },
+    "PZ061113.1": {
+      "branch_length": 0.00023827623904544787,
+      "clock_length": 0.00023827623904544787,
+      "date": "2025-01-05",
+      "date_inferred": false,
+      "mutation_length": 0.0005684106336031797,
+      "numdate": 2025.0123287671233,
+      "raw_date": "2025-01-05"
+    },
+    "PZ061115.1": {
+      "branch_length": 0.0,
+      "clock_length": 0.0,
+      "date": "2025-01-05",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0123287671233,
+      "raw_date": "2025-01-05"
+    },
+    "PZ061116.1": {
+      "branch_length": 0.0,
+      "clock_length": 0.0,
+      "date": "2025-01-05",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0123287671233,
+      "raw_date": "2025-01-05"
+    },
+    "PZ061117.1": {
+      "branch_length": 0.0,
+      "clock_length": 0.0,
+      "date": "2025-01-08",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0205479452054,
+      "raw_date": "2025-01-08"
+    },
+    "PZ061118.1": {
+      "branch_length": 0.0006004266580482013,
+      "clock_length": 0.0006004266580482013,
+      "date": "2025-01-09",
+      "date_inferred": false,
+      "mutation_length": 0.0017052493291483796,
+      "numdate": 2025.0232876712328,
+      "raw_date": "2025-01-09"
+    },
+    "PZ061122.1": {
+      "branch_length": 0.0,
+      "clock_length": 0.0,
+      "date": "2025-01-05",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0123287671233,
+      "raw_date": "2025-01-05"
+    },
+    "PZ061127.1": {
+      "branch_length": 5.636569528995848e-06,
+      "clock_length": 5.636569528995848e-06,
+      "date": "2025-01-02",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.004109589041,
+      "raw_date": "2025-01-02"
+    },
+    "PZ061128.1": {
+      "branch_length": 0.0,
+      "clock_length": 0.0,
+      "date": "2025-01-05",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0123287671233,
+      "raw_date": "2025-01-05"
+    },
+    "PZ061130.1": {
+      "branch_length": 0.0,
+      "clock_length": 0.0,
+      "date": "2025-01-05",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0123287671233,
+      "raw_date": "2025-01-05"
+    },
+    "PZ061131.1": {
+      "branch_length": 0.00043992528126220566,
+      "clock_length": 0.00043992528126220566,
+      "date": "2025-01-05",
+      "date_inferred": false,
+      "mutation_length": 0.0005681036723321464,
+      "numdate": 2025.0123287671233,
+      "raw_date": "2025-01-05"
+    },
+    "PZ061132.1": {
+      "branch_length": 2.8182861734260198e-06,
+      "clock_length": 2.8182861734260198e-06,
+      "date": "2025-01-03",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0068493150684,
+      "raw_date": "2025-01-03"
+    },
+    "PZ061134.1": {
+      "branch_length": 5.181713826143963e-06,
+      "clock_length": 5.181713826143963e-06,
+      "date": "2025-01-03",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0068493150684,
+      "raw_date": "2025-01-03"
+    },
+    "PZ061138.1": {
+      "branch_length": 1.55451414788621e-05,
+      "clock_length": 1.55451414788621e-05,
+      "date": "2025-01-06",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0150684931507,
+      "raw_date": "2025-01-06"
+    },
+    "PZ061139.1": {
+      "branch_length": 9.394522993095037e-05,
+      "clock_length": 9.394522993095037e-05,
+      "date": "2025-01-06",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0150684931507,
+      "raw_date": "2025-01-06"
+    },
+    "PZ061140.1": {
+      "branch_length": 2.7813680897881277e-05,
+      "clock_length": 2.7813680897881277e-05,
+      "date": "2025-01-06",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0150684931507,
+      "raw_date": "2025-01-06"
+    },
+    "PZ061141.1": {
+      "branch_length": 0.00025725770532346965,
+      "clock_length": 0.00025725770532346965,
+      "date": "2025-01-06",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0150684931507,
+      "raw_date": "2025-01-06"
+    },
+    "PZ061142.1": {
+      "branch_length": 5.181713826143963e-06,
+      "clock_length": 5.181713826143963e-06,
+      "date": "2025-01-06",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0150684931507,
+      "raw_date": "2025-01-06"
+    },
+    "PZ061143.1": {
+      "branch_length": 2.818286173856231e-06,
+      "clock_length": 2.818286173856231e-06,
+      "date": "2025-01-06",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0150684931507,
+      "raw_date": "2025-01-06"
+    },
+    "PZ061148.1": {
+      "branch_length": 0.0004073728925020419,
+      "clock_length": 0.0004073728925020419,
+      "date": "2025-01-02",
+      "date_inferred": false,
+      "mutation_length": 0.0011361636527816817,
+      "numdate": 2025.004109589041,
+      "raw_date": "2025-01-02"
+    },
+    "PZ061149.1": {
+      "branch_length": 8.204090334037887e-05,
+      "clock_length": 8.204090334037887e-05,
+      "date": "2025-01-02",
+      "date_inferred": false,
+      "mutation_length": 0.0005682486811454832,
+      "numdate": 2025.004109589041,
+      "raw_date": "2025-01-02"
+    },
+    "PZ061157.1": {
+      "branch_length": 0.0,
+      "clock_length": 0.0,
+      "date": "2025-01-02",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.004109589041,
+      "raw_date": "2025-01-02"
+    },
+    "PZ061159.1": {
+      "branch_length": 0.00043827708109241137,
+      "clock_length": 0.00043827708109241137,
+      "date": "2025-01-06",
+      "date_inferred": false,
+      "mutation_length": 0.0011384177861969984,
+      "numdate": 2025.0150684931507,
+      "raw_date": "2025-01-06"
+    },
+    "PZ061161.1": {
+      "branch_length": 0.0009576376976225243,
+      "clock_length": 0.0009576376976225243,
+      "date": "2025-01-06",
+      "date_inferred": false,
+      "mutation_length": 0.0011362823662828322,
+      "numdate": 2025.0150684931507,
+      "raw_date": "2025-01-06"
+    },
+    "PZ061165.1": {
+      "branch_length": 0.0004156177324003852,
+      "clock_length": 0.0004156177324003852,
+      "date": "2025-01-02",
+      "date_inferred": false,
+      "mutation_length": 0.001136837792762453,
+      "numdate": 2025.004109589041,
+      "raw_date": "2025-01-02"
+    },
+    "PZ061167.1": {
+      "branch_length": 0.0,
+      "clock_length": 0.0,
+      "date": "2025-01-02",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.004109589041,
+      "raw_date": "2025-01-02"
+    },
+    "PZ061168.1": {
+      "branch_length": 0.0,
+      "clock_length": 0.0,
+      "date": "2025-01-02",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.004109589041,
+      "raw_date": "2025-01-02"
+    },
+    "PZ061171.1": {
+      "branch_length": 0.0,
+      "clock_length": 0.0,
+      "date": "2025-01-07",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.017808219178,
+      "raw_date": "2025-01-07"
+    },
+    "PZ061172.1": {
+      "branch_length": 5.181713826143963e-06,
+      "clock_length": 5.181713826143963e-06,
+      "date": "2025-01-06",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0150684931507,
+      "raw_date": "2025-01-06"
+    },
+    "PZ061173.1": {
+      "branch_length": 0.0,
+      "clock_length": 0.0,
+      "date": "2025-01-07",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.017808219178,
+      "raw_date": "2025-01-07"
+    },
+    "PZ061179.1": {
+      "branch_length": 0.0,
+      "clock_length": 0.0,
+      "date": "2025-01-07",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.017808219178,
+      "raw_date": "2025-01-07"
+    },
+    "PZ061180.1": {
+      "branch_length": 0.00041306965887792126,
+      "clock_length": 0.00041306965887792126,
+      "date": "2025-01-03",
+      "date_inferred": false,
+      "mutation_length": 0.0005685745545479853,
+      "numdate": 2025.0068493150684,
+      "raw_date": "2025-01-03"
+    },
+    "PZ061182.1": {
+      "branch_length": 0.0011605608103325581,
+      "clock_length": 0.0011605608103325581,
+      "date": "2025-01-03",
+      "date_inferred": false,
+      "mutation_length": 0.002846558195260342,
+      "numdate": 2025.0068493150684,
+      "raw_date": "2025-01-03"
+    },
+    "PZ061185.1": {
+      "branch_length": 0.0004523664808838935,
+      "clock_length": 0.0004523664808838935,
+      "date": "2025-01-07",
+      "date_inferred": false,
+      "mutation_length": 0.0011370833251792903,
+      "numdate": 2025.017808219178,
+      "raw_date": "2025-01-07"
+    },
+    "PZ061189.1": {
+      "branch_length": 5.636548802161103e-06,
+      "clock_length": 5.636548802161103e-06,
+      "date": "2025-01-03",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0068493150684,
+      "raw_date": "2025-01-03"
+    },
+    "PZ061193.1": {
+      "branch_length": 1.0363427652287927e-05,
+      "clock_length": 1.0363427652287927e-05,
+      "date": "2025-01-07",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.017808219178,
+      "raw_date": "2025-01-07"
+    },
+    "PZ061194.1": {
+      "branch_length": 1.3636543165612344e-05,
+      "clock_length": 1.3636543165612344e-05,
+      "date": "2025-01-03",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0068493150684,
+      "raw_date": "2025-01-03"
+    },
+    "PZ061195.1": {
+      "branch_length": 0.00037365215195473474,
+      "clock_length": 0.00037365215195473474,
+      "date": "2025-01-07",
+      "date_inferred": false,
+      "mutation_length": 0.0005682487518280542,
+      "numdate": 2025.017808219178,
+      "raw_date": "2025-01-07"
+    },
+    "PZ061198.1": {
+      "branch_length": 0.0,
+      "clock_length": 0.0,
+      "date": "2025-01-07",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.017808219178,
+      "raw_date": "2025-01-07"
+    },
+    "PZ061202.1": {
+      "branch_length": 0.0004502887089144936,
+      "clock_length": 0.0004502887089144936,
+      "date": "2025-01-07",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.017808219178,
+      "raw_date": "2025-01-07"
+    },
+    "PZ061205.1": {
+      "branch_length": 0.0004297741980246418,
+      "clock_length": 0.0004297741980246418,
+      "date": "2025-01-03",
+      "date_inferred": false,
+      "mutation_length": 0.0005690805857916269,
+      "numdate": 2025.0068493150684,
+      "raw_date": "2025-01-03"
+    },
+    "PZ061207.1": {
+      "branch_length": 0.0,
+      "clock_length": 0.0,
+      "date": "2025-01-03",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0068493150684,
+      "raw_date": "2025-01-03"
+    },
+    "PZ061221.1": {
+      "branch_length": 0.00011955388050481457,
+      "clock_length": 0.00011955388050481457,
+      "date": "2025-01-09",
+      "date_inferred": false,
+      "mutation_length": 0.000568608938693138,
+      "numdate": 2025.0232876712328,
+      "raw_date": "2025-01-09"
+    },
+    "PZ061225.1": {
+      "branch_length": 0.0,
+      "clock_length": 0.0,
+      "date": "2025-01-09",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0232876712328,
+      "raw_date": "2025-01-09"
+    },
+    "PZ061226.1": {
+      "branch_length": 0.0,
+      "clock_length": 0.0,
+      "date": "2025-01-09",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0232876712328,
+      "raw_date": "2025-01-09"
+    },
+    "PZ061227.1": {
+      "branch_length": 0.0004246255606839629,
+      "clock_length": 0.0004246255606839629,
+      "date": "2025-01-02",
+      "date_inferred": false,
+      "mutation_length": 0.0011362823972297905,
+      "numdate": 2025.004109589041,
+      "raw_date": "2025-01-02"
+    },
+    "PZ061228.1": {
+      "branch_length": 0.00010274680130662123,
+      "clock_length": 0.00010274680130662123,
+      "date": "2025-01-07",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.017808219178,
+      "raw_date": "2025-01-07"
+    },
+    "PZ061232.1": {
+      "branch_length": 2.0726855304576287e-05,
+      "clock_length": 2.0726855304576287e-05,
+      "date": "2025-01-09",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0232876712328,
+      "raw_date": "2025-01-09"
+    },
+    "PZ061233.1": {
+      "branch_length": 0.0,
+      "clock_length": 0.0,
+      "date": "2025-01-13",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0342465753424,
+      "raw_date": "2025-01-13"
+    },
+    "PZ061237.1": {
+      "branch_length": 0.0003529236567924427,
+      "clock_length": 0.0003529236567924427,
+      "date": "2025-01-03",
+      "date_inferred": false,
+      "mutation_length": 0.0017070442723214963,
+      "numdate": 2025.0068493150684,
+      "raw_date": "2025-01-03"
+    },
+    "PZ061238.1": {
+      "branch_length": 0.0004766279135754517,
+      "clock_length": 0.0004766279135754517,
+      "date": "2025-01-13",
+      "date_inferred": false,
+      "mutation_length": 0.0005697057477374761,
+      "numdate": 2025.0342465753424,
+      "raw_date": "2025-01-13"
+    },
+    "PZ061239.1": {
+      "branch_length": 0.00044874834396281104,
+      "clock_length": 0.00044874834396281104,
+      "date": "2025-01-13",
+      "date_inferred": false,
+      "mutation_length": 0.0011389324919762113,
+      "numdate": 2025.0342465753424,
+      "raw_date": "2025-01-13"
+    },
+    "PZ061242.1": {
+      "branch_length": 0.0004610827720970198,
+      "clock_length": 0.0004610827720970198,
+      "date": "2025-01-10",
+      "date_inferred": false,
+      "mutation_length": 0.0005695757488131592,
+      "numdate": 2025.0260273972603,
+      "raw_date": "2025-01-10"
+    },
+    "PZ061243.1": {
+      "branch_length": 3.62719967838686e-05,
+      "clock_length": 3.62719967838686e-05,
+      "date": "2025-01-10",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0260273972603,
+      "raw_date": "2025-01-10"
+    },
+    "PZ061246.1": {
+      "branch_length": 0.00045707144301039776,
+      "clock_length": 0.00045707144301039776,
+      "date": "2025-01-10",
+      "date_inferred": false,
+      "mutation_length": 0.0005683783824775551,
+      "numdate": 2025.0260273972603,
+      "raw_date": "2025-01-10"
+    },
+    "PZ061247.1": {
+      "branch_length": 0.003482726713511494,
+      "clock_length": 0.003482726713511494,
+      "date": "2025-01-10",
+      "date_inferred": false,
+      "mutation_length": 0.002279796903131125,
+      "numdate": 2025.0260273972603,
+      "raw_date": "2025-01-10"
+    },
+    "PZ061250.1": {
+      "branch_length": 0.00010792349412514293,
+      "clock_length": 0.00010792349412514293,
+      "date": "2025-01-08",
+      "date_inferred": false,
+      "mutation_length": 0.0005680183901323317,
+      "numdate": 2025.0205479452054,
+      "raw_date": "2025-01-08"
+    },
+    "PZ061253.1": {
+      "branch_length": 0.0003477435828235847,
+      "clock_length": 0.0003477435828235847,
+      "date": "2025-01-02",
+      "date_inferred": false,
+      "mutation_length": 0.001138058869309447,
+      "numdate": 2025.004109589041,
+      "raw_date": "2025-01-02"
+    },
+    "PZ061257.1": {
+      "branch_length": 0.0,
+      "clock_length": 0.0,
+      "date": "2025-01-02",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.004109589041,
+      "raw_date": "2025-01-02"
+    },
+    "PZ061259.1": {
+      "branch_length": 0.0,
+      "clock_length": 0.0,
+      "date": "2025-01-11",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0287671232877,
+      "raw_date": "2025-01-11"
+    },
+    "PZ061265.1": {
+      "branch_length": 0.00010794331702702236,
+      "clock_length": 0.00010794331702702236,
+      "date": "2025-01-11",
+      "date_inferred": false,
+      "mutation_length": 0.0005681227211948556,
+      "numdate": 2025.0287671232877,
+      "raw_date": "2025-01-11"
+    },
+    "PZ061267.1": {
+      "branch_length": 0.00044717415963741467,
+      "clock_length": 0.00044717415963741467,
+      "date": "2025-01-11",
+      "date_inferred": false,
+      "mutation_length": 0.0005680440538405718,
+      "numdate": 2025.0287671232877,
+      "raw_date": "2025-01-11"
+    },
+    "PZ061272.1": {
+      "branch_length": 5.5487975999725814e-05,
+      "clock_length": 5.5487975999725814e-05,
+      "date": "2025-01-03",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0068493150684,
+      "raw_date": "2025-01-03"
+    },
+    "PZ061273.1": {
+      "branch_length": 0.0,
+      "clock_length": 0.0,
+      "date": "2025-01-12",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.031506849315,
+      "raw_date": "2025-01-12"
+    },
+    "PZ061274.1": {
+      "branch_length": 0.0004674348706626857,
+      "clock_length": 0.0004674348706626857,
+      "date": "2025-01-12",
+      "date_inferred": false,
+      "mutation_length": 0.0005683613350657926,
+      "numdate": 2025.031506849315,
+      "raw_date": "2025-01-12"
+    },
+    "PZ061275.1": {
+      "branch_length": 5.181713826230049e-05,
+      "clock_length": 5.181713826230049e-05,
+      "date": "2025-01-12",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.031506849315,
+      "raw_date": "2025-01-12"
+    },
+    "PZ061276.1": {
+      "branch_length": 0.0004674348706626857,
+      "clock_length": 0.0004674348706626857,
+      "date": "2025-01-12",
+      "date_inferred": false,
+      "mutation_length": 0.0005682314481975776,
+      "numdate": 2025.031506849315,
+      "raw_date": "2025-01-12"
+    },
+    "PZ061277.1": {
+      "branch_length": 0.0023188722386594807,
+      "clock_length": 0.0023188722386594807,
+      "date": "2025-01-08",
+      "date_inferred": false,
+      "mutation_length": 0.0022811051994060354,
+      "numdate": 2025.0205479452054,
+      "raw_date": "2025-01-08"
+    },
+    "PZ061279.1": {
+      "branch_length": 0.00047699603482588473,
+      "clock_length": 0.00047699603482588473,
+      "date": "2025-01-12",
+      "date_inferred": false,
+      "mutation_length": 0.0005678524224117673,
+      "numdate": 2025.031506849315,
+      "raw_date": "2025-01-12"
+    },
+    "PZ061282.1": {
+      "branch_length": 3.0177138727308442e-05,
+      "clock_length": 3.0177138727308442e-05,
+      "date": "2025-01-08",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0205479452054,
+      "raw_date": "2025-01-08"
+    },
+    "PZ061283.1": {
+      "branch_length": 0.00011830674467931028,
+      "clock_length": 0.00011830674467931028,
+      "date": "2025-01-13",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0342465753424,
+      "raw_date": "2025-01-13"
+    },
+    "PZ061284.1": {
+      "branch_length": 0.0,
+      "clock_length": 0.0,
+      "date": "2025-01-08",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0205479452054,
+      "raw_date": "2025-01-08"
+    },
+    "PZ061285.1": {
+      "branch_length": 0.0,
+      "clock_length": 0.0,
+      "date": "2025-01-13",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0342465753424,
+      "raw_date": "2025-01-13"
+    },
+    "PZ061287.1": {
+      "branch_length": 0.0004608975574674013,
+      "clock_length": 0.0004608975574674013,
+      "date": "2025-01-09",
+      "date_inferred": false,
+      "mutation_length": 0.0005679713485694693,
+      "numdate": 2025.0232876712328,
+      "raw_date": "2025-01-09"
+    },
+    "PZ061288.1": {
+      "branch_length": 0.0004433102720716865,
+      "clock_length": 0.0004433102720716865,
+      "date": "2025-01-08",
+      "date_inferred": false,
+      "mutation_length": 0.0005679905750824492,
+      "numdate": 2025.0205479452054,
+      "raw_date": "2025-01-08"
+    },
+    "PZ061291.1": {
+      "branch_length": 0.0009452488968071182,
+      "clock_length": 0.0009452488968071182,
+      "date": "2025-01-13",
+      "date_inferred": false,
+      "mutation_length": 0.001705927943037736,
+      "numdate": 2025.0342465753424,
+      "raw_date": "2025-01-13"
+    },
+    "PZ061293.1": {
+      "branch_length": 0.00036933375360189216,
+      "clock_length": 0.00036933375360189216,
+      "date": "2025-01-13",
+      "date_inferred": false,
+      "mutation_length": 0.001136906109749569,
+      "numdate": 2025.0342465753424,
+      "raw_date": "2025-01-13"
+    },
+    "PZ061298.1": {
+      "branch_length": 0.0007845849539614672,
+      "clock_length": 0.0007845849539614672,
+      "date": "2025-01-02",
+      "date_inferred": false,
+      "mutation_length": 0.0011396878952317413,
+      "numdate": 2025.004109589041,
+      "raw_date": "2025-01-02"
+    },
+    "PZ061299.1": {
+      "branch_length": 0.000272802846801902,
+      "clock_length": 0.000272802846801902,
+      "date": "2025-01-09",
+      "date_inferred": false,
+      "mutation_length": 0.0011373097117407256,
+      "numdate": 2025.0232876712328,
+      "raw_date": "2025-01-09"
+    },
+    "PZ061303.1": {
+      "branch_length": 0.00013383708426391566,
+      "clock_length": 0.00013383708426391566,
+      "date": "2025-01-13",
+      "date_inferred": false,
+      "mutation_length": 0.0005679739172357579,
+      "numdate": 2025.0342465753424,
+      "raw_date": "2025-01-13"
+    },
+    "PZ061304.1": {
+      "branch_length": 0.00043827708109241137,
+      "clock_length": 0.00043827708109241137,
+      "date": "2025-01-06",
+      "date_inferred": false,
+      "mutation_length": 0.0005686041865308232,
+      "numdate": 2025.0150684931507,
+      "raw_date": "2025-01-06"
+    },
+    "PZ061310.1": {
+      "branch_length": 0.00043162901815855257,
+      "clock_length": 0.00043162901815855257,
+      "date": "2025-01-08",
+      "date_inferred": false,
+      "mutation_length": 0.001136655542246088,
+      "numdate": 2025.0205479452054,
+      "raw_date": "2025-01-08"
+    },
+    "PZ061313.1": {
+      "branch_length": 0.001111870888972675,
+      "clock_length": 0.001111870888972675,
+      "date": "2025-01-08",
+      "date_inferred": false,
+      "mutation_length": 0.0005679757930938652,
+      "numdate": 2025.0205479452054,
+      "raw_date": "2025-01-08"
+    },
+    "PZ061315.1": {
+      "branch_length": 0.0,
+      "clock_length": 0.0,
+      "date": "2025-01-08",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0205479452054,
+      "raw_date": "2025-01-08"
+    },
+    "PZ061316.1": {
+      "branch_length": 0.0004575481947100379,
+      "clock_length": 0.0004575481947100379,
+      "date": "2025-01-08",
+      "date_inferred": false,
+      "mutation_length": 0.0011368222767009462,
+      "numdate": 2025.0205479452054,
+      "raw_date": "2025-01-08"
+    },
+    "PZ061319.1": {
+      "branch_length": 0.0004896019062819394,
+      "clock_length": 0.0004896019062819394,
+      "date": "2025-01-14",
+      "date_inferred": false,
+      "mutation_length": 0.001136581851826534,
+      "numdate": 2025.0369863013698,
+      "raw_date": "2025-01-14"
+    },
+    "PZ061321.1": {
+      "branch_length": 0.0,
+      "clock_length": 0.0,
+      "date": "2025-01-08",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0205479452054,
+      "raw_date": "2025-01-08"
+    },
+    "PZ061323.1": {
+      "branch_length": 0.00013355553329180312,
+      "clock_length": 0.00013355553329180312,
+      "date": "2025-01-13",
+      "date_inferred": false,
+      "mutation_length": 0.0005698369420450265,
+      "numdate": 2025.0342465753424,
+      "raw_date": "2025-01-13"
+    },
+    "PZ061324.1": {
+      "branch_length": 0.0003486068982968861,
+      "clock_length": 0.0003486068982968861,
+      "date": "2025-01-09",
+      "date_inferred": false,
+      "mutation_length": 0.0017062092540979794,
+      "numdate": 2025.0232876712328,
+      "raw_date": "2025-01-09"
+    },
+    "PZ061325.1": {
+      "branch_length": 0.0001613075096716832,
+      "clock_length": 0.0001613075096716832,
+      "date": "2025-01-17",
+      "date_inferred": false,
+      "mutation_length": 0.000568337833926723,
+      "numdate": 2025.045205479452,
+      "raw_date": "2025-01-17"
+    },
+    "PZ061327.1": {
+      "branch_length": 0.0,
+      "clock_length": 0.0,
+      "date": "2025-01-09",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0232876712328,
+      "raw_date": "2025-01-09"
+    },
+    "PZ061330.1": {
+      "branch_length": 0.0004518897291838236,
+      "clock_length": 0.0004518897291838236,
+      "date": "2025-01-09",
+      "date_inferred": false,
+      "mutation_length": 0.0011370971594681849,
+      "numdate": 2025.0232876712328,
+      "raw_date": "2025-01-09"
+    },
+    "PZ061331.1": {
+      "branch_length": 0.00012258850829551015,
+      "clock_length": 0.00012258850829551015,
+      "date": "2025-01-10",
+      "date_inferred": false,
+      "mutation_length": 0.0005678208021141928,
+      "numdate": 2025.0260273972603,
+      "raw_date": "2025-01-10"
+    },
+    "PZ061333.1": {
+      "branch_length": 0.00044934165566178986,
+      "clock_length": 0.00044934165566178986,
+      "date": "2025-01-10",
+      "date_inferred": false,
+      "mutation_length": 0.0005685745545479853,
+      "numdate": 2025.0260273972603,
+      "raw_date": "2025-01-10"
+    },
+    "PZ061335.1": {
+      "branch_length": 2.0726855304576287e-05,
+      "clock_length": 2.0726855304576287e-05,
+      "date": "2025-01-09",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0232876712328,
+      "raw_date": "2025-01-09"
+    },
+    "PZ061336.1": {
+      "branch_length": 0.0,
+      "clock_length": 0.0,
+      "date": "2025-01-10",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0260273972603,
+      "raw_date": "2025-01-10"
+    },
+    "PZ061337.1": {
+      "branch_length": 5.181713826574175e-06,
+      "clock_length": 5.181713826574175e-06,
+      "date": "2025-01-10",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0260273972603,
+      "raw_date": "2025-01-10"
+    },
+    "PZ061341.1": {
+      "branch_length": 0.0008589705898424038,
+      "clock_length": 0.0008589705898424038,
+      "date": "2025-01-14",
+      "date_inferred": false,
+      "mutation_length": 0.001706038250844898,
+      "numdate": 2025.0369863013698,
+      "raw_date": "2025-01-14"
+    },
+    "PZ061342.1": {
+      "branch_length": 0.00010281013659401957,
+      "clock_length": 0.00010281013659401957,
+      "date": "2025-01-10",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0260273972603,
+      "raw_date": "2025-01-10"
+    },
+    "PZ061343.1": {
+      "branch_length": 1.0363427652718138e-05,
+      "clock_length": 1.0363427652718138e-05,
+      "date": "2025-01-10",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0260273972603,
+      "raw_date": "2025-01-10"
+    },
+    "PZ061345.1": {
+      "branch_length": 0.0004829800121415478,
+      "clock_length": 0.0004829800121415478,
+      "date": "2025-01-15",
+      "date_inferred": false,
+      "mutation_length": 0.0011370971594681849,
+      "numdate": 2025.0397260273974,
+      "raw_date": "2025-01-15"
+    },
+    "PZ061349.1": {
+      "branch_length": 0.00046488679714022174,
+      "clock_length": 0.00046488679714022174,
+      "date": "2025-01-13",
+      "date_inferred": false,
+      "mutation_length": 0.0005685577704368027,
+      "numdate": 2025.0342465753424,
+      "raw_date": "2025-01-13"
+    },
+    "PZ061350.1": {
+      "branch_length": 0.0,
+      "clock_length": 0.0,
+      "date": "2025-01-11",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0287671232877,
+      "raw_date": "2025-01-11"
+    },
+    "PZ061351.1": {
+      "branch_length": 1.0363427652718138e-05,
+      "clock_length": 1.0363427652718138e-05,
+      "date": "2025-01-10",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0260273972603,
+      "raw_date": "2025-01-10"
+    },
+    "PZ061357.1": {
+      "branch_length": 0.0,
+      "clock_length": 0.0,
+      "date": "2025-01-10",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0260273972603,
+      "raw_date": "2025-01-10"
+    },
+    "PZ061361.1": {
+      "branch_length": 0.0010793637946336825,
+      "clock_length": 0.0010793637946336825,
+      "date": "2025-01-10",
+      "date_inferred": false,
+      "mutation_length": 0.003415602934389438,
+      "numdate": 2025.0260273972603,
+      "raw_date": "2025-01-10"
+    },
+    "PZ061362.1": {
+      "branch_length": 0.0,
+      "clock_length": 0.0,
+      "date": "2025-01-20",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0534246575342,
+      "raw_date": "2025-01-20"
+    },
+    "PZ061363.1": {
+      "branch_length": 0.0004610827720970198,
+      "clock_length": 0.0004610827720970198,
+      "date": "2025-01-10",
+      "date_inferred": false,
+      "mutation_length": 0.0005695580554455052,
+      "numdate": 2025.0260273972603,
+      "raw_date": "2025-01-10"
+    },
+    "PZ061364.1": {
+      "branch_length": 0.00046972614965475144,
+      "clock_length": 0.00046972614965475144,
+      "date": "2025-01-16",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0424657534247,
+      "raw_date": "2025-01-16"
+    },
+    "PZ061365.1": {
+      "branch_length": 0.00015942941798401502,
+      "clock_length": 0.00015942941798401502,
+      "date": "2025-01-20",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0534246575342,
+      "raw_date": "2025-01-20"
+    },
+    "PZ061366.1": {
+      "branch_length": 0.0,
+      "clock_length": 0.0,
+      "date": "2025-01-10",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0260273972603,
+      "raw_date": "2025-01-10"
+    },
+    "PZ061370.1": {
+      "branch_length": 0.0,
+      "clock_length": 0.0,
+      "date": "2025-01-20",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0534246575342,
+      "raw_date": "2025-01-20"
+    },
+    "PZ061371.1": {
+      "branch_length": 0.0005178633330703807,
+      "clock_length": 0.0005178633330703807,
+      "date": "2025-01-20",
+      "date_inferred": false,
+      "mutation_length": 0.0005690805857916269,
+      "numdate": 2025.0534246575342,
+      "raw_date": "2025-01-20"
+    },
+    "PZ061379.1": {
+      "branch_length": 0.0,
+      "clock_length": 0.0,
+      "date": "2025-01-02",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.004109589041,
+      "raw_date": "2025-01-02"
+    },
+    "PZ061380.1": {
+      "branch_length": 0.003482726713511494,
+      "clock_length": 0.003482726713511494,
+      "date": "2025-01-10",
+      "date_inferred": false,
+      "mutation_length": 0.0017083238834337171,
+      "numdate": 2025.0260273972603,
+      "raw_date": "2025-01-10"
+    },
+    "PZ061384.1": {
+      "branch_length": 0.00046607927129397545,
+      "clock_length": 0.00046607927129397545,
+      "date": "2025-01-10",
+      "date_inferred": false,
+      "mutation_length": 0.000568822909283265,
+      "numdate": 2025.0260273972603,
+      "raw_date": "2025-01-10"
+    },
+    "PZ061386.1": {
+      "branch_length": 0.0002645431303878831,
+      "clock_length": 0.0002645431303878831,
+      "date": "2025-01-10",
+      "date_inferred": false,
+      "mutation_length": 0.0005692283791948615,
+      "numdate": 2025.0260273972603,
+      "raw_date": "2025-01-10"
+    },
+    "PZ061388.1": {
+      "branch_length": 0.00045071934444430167,
+      "clock_length": 0.00045071934444430167,
+      "date": "2025-01-08",
+      "date_inferred": false,
+      "mutation_length": 0.001139458820472427,
+      "numdate": 2025.0205479452054,
+      "raw_date": "2025-01-08"
+    },
+    "PZ061390.1": {
+      "branch_length": 0.00015094408201939526,
+      "clock_length": 0.00015094408201939526,
+      "date": "2025-01-17",
+      "date_inferred": false,
+      "mutation_length": 0.0011376923233514778,
+      "numdate": 2025.045205479452,
+      "raw_date": "2025-01-17"
+    },
+    "PZ061392.1": {
+      "branch_length": 0.0,
+      "clock_length": 0.0,
+      "date": "2025-01-09",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0232876712328,
+      "raw_date": "2025-01-09"
+    },
+    "PZ061394.1": {
+      "branch_length": 0.0003891972934335973,
+      "clock_length": 0.0003891972934335973,
+      "date": "2025-01-10",
+      "date_inferred": false,
+      "mutation_length": 0.0011375603550920668,
+      "numdate": 2025.0260273972603,
+      "raw_date": "2025-01-10"
+    },
+    "PZ061395.1": {
+      "branch_length": 0.0,
+      "clock_length": 0.0,
+      "date": "2025-01-10",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0260273972603,
+      "raw_date": "2025-01-10"
+    },
+    "PZ061396.1": {
+      "branch_length": 0.0012595125871582694,
+      "clock_length": 0.0012595125871582694,
+      "date": "2025-01-17",
+      "date_inferred": false,
+      "mutation_length": 0.0028442660117561453,
+      "numdate": 2025.045205479452,
+      "raw_date": "2025-01-17"
+    },
+    "PZ061399.1": {
+      "branch_length": 0.0,
+      "clock_length": 0.0,
+      "date": "2025-01-10",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0260273972603,
+      "raw_date": "2025-01-10"
+    },
+    "PZ061401.1": {
+      "branch_length": 0.0010928442774830365,
+      "clock_length": 0.0010928442774830365,
+      "date": "2025-01-09",
+      "date_inferred": false,
+      "mutation_length": 0.0005676268072700659,
+      "numdate": 2025.0232876712328,
+      "raw_date": "2025-01-09"
+    },
+    "PZ061402.1": {
+      "branch_length": 0.0001817344464198332,
+      "clock_length": 0.0001817344464198332,
+      "date": "2025-01-21",
+      "date_inferred": false,
+      "mutation_length": 0.0005690315347783428,
+      "numdate": 2025.0561643835617,
+      "raw_date": "2025-01-21"
+    },
+    "PZ061403.1": {
+      "branch_length": 0.00010799185042016353,
+      "clock_length": 0.00010799185042016353,
+      "date": "2025-01-11",
+      "date_inferred": false,
+      "mutation_length": 0.0005683781601061243,
+      "numdate": 2025.0287671232877,
+      "raw_date": "2025-01-11"
+    },
+    "PZ061405.1": {
+      "branch_length": 0.00018147966921301878,
+      "clock_length": 0.00018147966921301878,
+      "date": "2025-01-21",
+      "date_inferred": false,
+      "mutation_length": 0.0005682337979272605,
+      "numdate": 2025.0561643835617,
+      "raw_date": "2025-01-21"
+    },
+    "PZ061407.1": {
+      "branch_length": 5.181713826143963e-06,
+      "clock_length": 5.181713826143963e-06,
+      "date": "2025-01-11",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0287671232877,
+      "raw_date": "2025-01-11"
+    },
+    "PZ061408.1": {
+      "branch_length": 0.00010787536084587174,
+      "clock_length": 0.00010787536084587174,
+      "date": "2025-01-08",
+      "date_inferred": false,
+      "mutation_length": 0.0005677650570835362,
+      "numdate": 2025.0205479452054,
+      "raw_date": "2025-01-08"
+    },
+    "PZ061409.1": {
+      "branch_length": 0.0,
+      "clock_length": 0.0,
+      "date": "2025-01-07",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.017808219178,
+      "raw_date": "2025-01-07"
+    },
+    "PZ061411.1": {
+      "branch_length": 1.55451414788621e-05,
+      "clock_length": 1.55451414788621e-05,
+      "date": "2025-01-21",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0561643835617,
+      "raw_date": "2025-01-21"
+    },
+    "PZ061412.1": {
+      "branch_length": 0.0,
+      "clock_length": 0.0,
+      "date": "2025-01-10",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0260273972603,
+      "raw_date": "2025-01-10"
+    },
+    "PZ061417.1": {
+      "branch_length": 0.0,
+      "clock_length": 0.0,
+      "date": "2025-01-04",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.009589041096,
+      "raw_date": "2025-01-04"
+    },
+    "PZ061419.1": {
+      "branch_length": 0.0004518897291838236,
+      "clock_length": 0.0004518897291838236,
+      "date": "2025-01-09",
+      "date_inferred": false,
+      "mutation_length": 0.0011373583967031495,
+      "numdate": 2025.0232876712328,
+      "raw_date": "2025-01-09"
+    },
+    "PZ061422.1": {
+      "branch_length": 0.0,
+      "clock_length": 0.0,
+      "date": "2025-01-17",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.045205479452,
+      "raw_date": "2025-01-17"
+    },
+    "PZ061423.1": {
+      "branch_length": 0.0,
+      "clock_length": 0.0,
+      "date": "2025-01-10",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0260273972603,
+      "raw_date": "2025-01-10"
+    },
+    "PZ061425.1": {
+      "branch_length": 0.0012820820330733695,
+      "clock_length": 0.0012820820330733695,
+      "date": "2025-01-17",
+      "date_inferred": false,
+      "mutation_length": 0.003988281203365761,
+      "numdate": 2025.045205479452,
+      "raw_date": "2025-01-17"
+    },
+    "PZ061426.1": {
+      "branch_length": 0.0006418803686582138,
+      "clock_length": 0.0006418803686582138,
+      "date": "2025-01-17",
+      "date_inferred": false,
+      "mutation_length": 0.0005677993181775169,
+      "numdate": 2025.045205479452,
+      "raw_date": "2025-01-17"
+    },
+    "PZ061428.1": {
+      "branch_length": 0.0020571276456622786,
+      "clock_length": 0.0020571276456622786,
+      "date": "2025-01-11",
+      "date_inferred": false,
+      "mutation_length": 0.0017069546414509962,
+      "numdate": 2025.0287671232877,
+      "raw_date": "2025-01-11"
+    },
+    "PZ061432.1": {
+      "branch_length": 0.000789900537335264,
+      "clock_length": 0.000789900537335264,
+      "date": "2025-01-17",
+      "date_inferred": false,
+      "mutation_length": 0.0005694022936445115,
+      "numdate": 2025.045205479452,
+      "raw_date": "2025-01-17"
+    },
+    "PZ061433.1": {
+      "branch_length": 0.001240628322463357,
+      "clock_length": 0.001240628322463357,
+      "date": "2025-01-09",
+      "date_inferred": false,
+      "mutation_length": 0.0022751920543272234,
+      "numdate": 2025.0232876712328,
+      "raw_date": "2025-01-09"
+    },
+    "PZ061434.1": {
+      "branch_length": 0.0,
+      "clock_length": 0.0,
+      "date": "2025-01-13",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0342465753424,
+      "raw_date": "2025-01-13"
+    },
+    "PZ061438.1": {
+      "branch_length": 0.0005016003919337264,
+      "clock_length": 0.0005016003919337264,
+      "date": "2025-01-21",
+      "date_inferred": false,
+      "mutation_length": 0.001137257248929105,
+      "numdate": 2025.0561643835617,
+      "raw_date": "2025-01-21"
+    },
+    "PZ061439.1": {
+      "branch_length": 0.0,
+      "clock_length": 0.0,
+      "date": "2025-01-09",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0232876712328,
+      "raw_date": "2025-01-09"
+    },
+    "PZ061442.1": {
+      "branch_length": 0.00041646575716017395,
+      "clock_length": 0.00041646575716017395,
+      "date": "2025-01-21",
+      "date_inferred": false,
+      "mutation_length": 0.0017063122428142986,
+      "numdate": 2025.0561643835617,
+      "raw_date": "2025-01-21"
+    },
+    "PZ061446.1": {
+      "branch_length": 0.00018142886331880704,
+      "clock_length": 0.00018142886331880704,
+      "date": "2025-01-21",
+      "date_inferred": false,
+      "mutation_length": 0.000568074718806441,
+      "numdate": 2025.0561643835617,
+      "raw_date": "2025-01-21"
+    },
+    "PZ061447.1": {
+      "branch_length": 0.001248649945378297,
+      "clock_length": 0.001248649945378297,
+      "date": "2025-01-20",
+      "date_inferred": false,
+      "mutation_length": 0.0028458092550059243,
+      "numdate": 2025.0534246575342,
+      "raw_date": "2025-01-20"
+    },
+    "PZ061448.1": {
+      "branch_length": 0.0,
+      "clock_length": 0.0,
+      "date": "2025-01-20",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0534246575342,
+      "raw_date": "2025-01-20"
+    },
+    "PZ061451.1": {
+      "branch_length": 0.0012802394424632755,
+      "clock_length": 0.0012802394424632755,
+      "date": "2025-01-21",
+      "date_inferred": false,
+      "mutation_length": 0.0022780680113921275,
+      "numdate": 2025.0561643835617,
+      "raw_date": "2025-01-21"
+    },
+    "PZ061453.1": {
+      "branch_length": 0.0,
+      "clock_length": 0.0,
+      "date": "2025-01-21",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0561643835617,
+      "raw_date": "2025-01-21"
+    },
+    "PZ061457.1": {
+      "branch_length": 0.00018721607880283321,
+      "clock_length": 0.00018721607880283321,
+      "date": "2025-01-23",
+      "date_inferred": false,
+      "mutation_length": 0.0005682697545374002,
+      "numdate": 2025.0616438356165,
+      "raw_date": "2025-01-23"
+    },
+    "PZ061467.1": {
+      "branch_length": 5.699885208844445e-05,
+      "clock_length": 5.699885208844445e-05,
+      "date": "2025-01-23",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0616438356165,
+      "raw_date": "2025-01-23"
+    },
+    "PZ061469.1": {
+      "branch_length": 1.55451414788621e-05,
+      "clock_length": 1.55451414788621e-05,
+      "date": "2025-01-23",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0616438356165,
+      "raw_date": "2025-01-23"
+    },
+    "PZ061471.1": {
+      "branch_length": 0.0,
+      "clock_length": 0.0,
+      "date": "2025-01-11",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0287671232877,
+      "raw_date": "2025-01-11"
+    },
+    "PZ061473.1": {
+      "branch_length": 0.0004730933361889,
+      "clock_length": 0.0004730933361889,
+      "date": "2025-01-11",
+      "date_inferred": false,
+      "mutation_length": 0.0017058831449759198,
+      "numdate": 2025.0287671232877,
+      "raw_date": "2025-01-11"
+    },
+    "PZ061478.1": {
+      "branch_length": 2.0726855305006064e-05,
+      "clock_length": 2.0726855305006064e-05,
+      "date": "2025-01-23",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0616438356165,
+      "raw_date": "2025-01-23"
+    },
+    "PZ061479.1": {
+      "branch_length": 0.0011705699848764874,
+      "clock_length": 0.0011705699848764874,
+      "date": "2025-01-24",
+      "date_inferred": false,
+      "mutation_length": 0.0017039497339321904,
+      "numdate": 2025.0643835616438,
+      "raw_date": "2025-01-24"
+    },
+    "PZ061481.1": {
+      "branch_length": 0.0005414190445442403,
+      "clock_length": 0.0005414190445442403,
+      "date": "2025-01-24",
+      "date_inferred": false,
+      "mutation_length": 0.0011365484054017007,
+      "numdate": 2025.0643835616438,
+      "raw_date": "2025-01-24"
+    },
+    "PZ061482.1": {
+      "branch_length": 2.818286173856231e-06,
+      "clock_length": 2.818286173856231e-06,
+      "date": "2025-01-24",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0643835616438,
+      "raw_date": "2025-01-24"
+    },
+    "PZ061486.1": {
+      "branch_length": 0.0005315479299642946,
+      "clock_length": 0.0005315479299642946,
+      "date": "2025-01-24",
+      "date_inferred": false,
+      "mutation_length": 0.0005680719035304359,
+      "numdate": 2025.0643835616438,
+      "raw_date": "2025-01-24"
+    },
+    "PZ061487.1": {
+      "branch_length": 0.00046173964714318807,
+      "clock_length": 0.00046173964714318807,
+      "date": "2025-01-24",
+      "date_inferred": false,
+      "mutation_length": 0.0011374269718873815,
+      "numdate": 2025.0643835616438,
+      "raw_date": "2025-01-24"
+    },
+    "PZ061489.1": {
+      "branch_length": 0.0005347971504034185,
+      "clock_length": 0.0005347971504034185,
+      "date": "2025-01-25",
+      "date_inferred": false,
+      "mutation_length": 0.0011370635627987913,
+      "numdate": 2025.0671232876712,
+      "raw_date": "2025-01-25"
+    },
+    "PZ061492.1": {
+      "branch_length": 0.00010881599035074538,
+      "clock_length": 0.00010881599035074538,
+      "date": "2025-01-24",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0643835616438,
+      "raw_date": "2025-01-24"
+    },
+    "PZ061495.1": {
+      "branch_length": 5.181713826144397e-06,
+      "clock_length": 5.181713826144397e-06,
+      "date": "2025-01-24",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0643835616438,
+      "raw_date": "2025-01-24"
+    },
+    "PZ061498.1": {
+      "branch_length": 0.0005296154365772745,
+      "clock_length": 0.0005296154365772745,
+      "date": "2025-01-24",
+      "date_inferred": false,
+      "mutation_length": 0.0017066518105276361,
+      "numdate": 2025.0643835616438,
+      "raw_date": "2025-01-24"
+    },
+    "PZ061500.1": {
+      "branch_length": 3.627199678343839e-05,
+      "clock_length": 3.627199678343839e-05,
+      "date": "2025-01-24",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0643835616438,
+      "raw_date": "2025-01-24"
+    },
+    "PZ061507.1": {
+      "branch_length": 2.0726855304576287e-05,
+      "clock_length": 2.0726855304576287e-05,
+      "date": "2025-01-25",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0671232876712,
+      "raw_date": "2025-01-25"
+    },
+    "PZ061508.1": {
+      "branch_length": 0.0003004568049600367,
+      "clock_length": 0.0003004568049600367,
+      "date": "2025-01-17",
+      "date_inferred": false,
+      "mutation_length": 0.0005682801585212218,
+      "numdate": 2025.045205479452,
+      "raw_date": "2025-01-17"
+    },
+    "PZ061511.1": {
+      "branch_length": 0.0,
+      "clock_length": 0.0,
+      "date": "2025-01-16",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0424657534247,
+      "raw_date": "2025-01-16"
+    },
+    "PZ061517.1": {
+      "branch_length": 0.0013146893521963996,
+      "clock_length": 0.0013146893521963996,
+      "date": "2025-01-25",
+      "date_inferred": false,
+      "mutation_length": 0.002276518358781644,
+      "numdate": 2025.0671232876712,
+      "raw_date": "2025-01-25"
+    },
+    "PZ061524.1": {
+      "branch_length": 0.0,
+      "clock_length": 0.0,
+      "date": "2025-01-25",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0671232876712,
+      "raw_date": "2025-01-25"
+    },
+    "PZ061527.1": {
+      "branch_length": 2.0726855305006064e-05,
+      "clock_length": 2.0726855305006064e-05,
+      "date": "2025-01-21",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0561643835617,
+      "raw_date": "2025-01-21"
+    },
+    "PZ061534.1": {
+      "branch_length": 0.002103763070098005,
+      "clock_length": 0.002103763070098005,
+      "date": "2025-01-20",
+      "date_inferred": false,
+      "mutation_length": 0.001706918426410611,
+      "numdate": 2025.0534246575342,
+      "raw_date": "2025-01-20"
+    },
+    "PZ061540.1": {
+      "branch_length": 1.5545141478432323e-05,
+      "clock_length": 1.5545141478432323e-05,
+      "date": "2025-01-25",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0671232876712,
+      "raw_date": "2025-01-25"
+    },
+    "PZ061542.1": {
+      "branch_length": 0.00019246187027469183,
+      "clock_length": 0.00019246187027469183,
+      "date": "2025-01-22",
+      "date_inferred": false,
+      "mutation_length": 0.0011368413250273485,
+      "numdate": 2025.058904109589,
+      "raw_date": "2025-01-22"
+    },
+    "PZ061545.1": {
+      "branch_length": 0.0,
+      "clock_length": 0.0,
+      "date": "2025-01-23",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0616438356165,
+      "raw_date": "2025-01-23"
+    },
+    "PZ061550.1": {
+      "branch_length": 3.627199678343839e-05,
+      "clock_length": 3.627199678343839e-05,
+      "date": "2025-01-17",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.045205479452,
+      "raw_date": "2025-01-17"
+    },
+    "PZ061559.1": {
+      "branch_length": 0.0005315479299642946,
+      "clock_length": 0.0005315479299642946,
+      "date": "2025-01-24",
+      "date_inferred": false,
+      "mutation_length": 0.002275440702252242,
+      "numdate": 2025.0643835616438,
+      "raw_date": "2025-01-24"
+    },
+    "PZ061579.1": {
+      "branch_length": 1.0363427652287927e-05,
+      "clock_length": 1.0363427652287927e-05,
+      "date": "2025-01-20",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0534246575342,
+      "raw_date": "2025-01-20"
+    },
+    "PZ061584.1": {
+      "branch_length": 0.0005161888828527869,
+      "clock_length": 0.0005161888828527869,
+      "date": "2025-01-23",
+      "date_inferred": false,
+      "mutation_length": 0.0011364579684714554,
+      "numdate": 2025.0616438356165,
+      "raw_date": "2025-01-23"
+    },
+    "PZ061598.1": {
+      "branch_length": 0.00043634458770539127,
+      "clock_length": 0.00043634458770539127,
+      "date": "2025-01-06",
+      "date_inferred": false,
+      "mutation_length": 0.0017070417156054604,
+      "numdate": 2025.0150684931507,
+      "raw_date": "2025-01-06"
+    },
+    "PZ061602.1": {
+      "branch_length": 0.00045315256440694573,
+      "clock_length": 0.00045315256440694573,
+      "date": "2025-01-07",
+      "date_inferred": false,
+      "mutation_length": 0.000568216381701499,
+      "numdate": 2025.017808219178,
+      "raw_date": "2025-01-07"
+    },
+    "PZ061603.1": {
+      "branch_length": 0.0004078879450517773,
+      "clock_length": 0.0004078879450517773,
+      "date": "2025-01-02",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.004109589041,
+      "raw_date": "2025-01-02"
+    },
+    "PZ061609.1": {
+      "branch_length": 0.00012448081712457433,
+      "clock_length": 0.00012448081712457433,
+      "date": "2025-01-10",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0260273972603,
+      "raw_date": "2025-01-10"
+    },
+    "PZ061610.1": {
+      "branch_length": 0.0,
+      "clock_length": 0.0,
+      "date": "2025-01-17",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.045205479452,
+      "raw_date": "2025-01-17"
+    },
+    "PZ061613.1": {
+      "branch_length": 0.006486894113334142,
+      "clock_length": 0.006486894113334142,
+      "date": "2025-01-03",
+      "date_inferred": false,
+      "mutation_length": 0.010923157257853498,
+      "numdate": 2025.0068493150684,
+      "raw_date": "2025-01-03"
+    },
+    "PZ061615.1": {
+      "branch_length": 0.00015974063238744342,
+      "clock_length": 0.00015974063238744342,
+      "date": "2025-01-18",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0479452054794,
+      "raw_date": "2025-01-18"
+    },
+    "PZ061618.1": {
+      "branch_length": 0.0,
+      "clock_length": 0.0,
+      "date": "2025-01-10",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0260273972603,
+      "raw_date": "2025-01-10"
+    },
+    "PZ061620.1": {
+      "branch_length": 0.0,
+      "clock_length": 0.0,
+      "date": "2025-01-04",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.009589041096,
+      "raw_date": "2025-01-04"
+    },
+    "PZ061622.1": {
+      "branch_length": 0.00040092061568131184,
+      "clock_length": 0.00040092061568131184,
+      "date": "2025-01-18",
+      "date_inferred": false,
+      "mutation_length": 0.0005681358894877881,
+      "numdate": 2025.0479452054794,
+      "raw_date": "2025-01-18"
+    },
+    "PZ061627.1": {
+      "branch_length": 0.0,
+      "clock_length": 0.0,
+      "date": "2025-01-18",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0479452054794,
+      "raw_date": "2025-01-18"
+    },
+    "PZ061628.1": {
+      "branch_length": 0.001243967445679407,
+      "clock_length": 0.001243967445679407,
+      "date": "2025-01-14",
+      "date_inferred": false,
+      "mutation_length": 0.002275492588362273,
+      "numdate": 2025.0369863013698,
+      "raw_date": "2025-01-14"
+    },
+    "PZ061635.1": {
+      "branch_length": 0.0004883998364730953,
+      "clock_length": 0.0004883998364730953,
+      "date": "2025-01-18",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0479452054794,
+      "raw_date": "2025-01-18"
+    },
+    "PZ061637.1": {
+      "branch_length": 2.8182809921422323e-06,
+      "clock_length": 2.8182809921422323e-06,
+      "date": "2025-01-22",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.058904109589,
+      "raw_date": "2025-01-22"
+    },
+    "PZ061638.1": {
+      "branch_length": 0.0,
+      "clock_length": 0.0,
+      "date": "2025-01-17",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.045205479452,
+      "raw_date": "2025-01-17"
+    },
+    "PZ061640.1": {
+      "branch_length": 0.0004954620275477808,
+      "clock_length": 0.0004954620275477808,
+      "date": "2025-01-19",
+      "date_inferred": false,
+      "mutation_length": 0.0005677825312789566,
+      "numdate": 2025.0506849315068,
+      "raw_date": "2025-01-19"
+    },
+    "PZ061641.1": {
+      "branch_length": 0.0005192520089249862,
+      "clock_length": 0.0005192520089249862,
+      "date": "2025-01-22",
+      "date_inferred": false,
+      "mutation_length": 0.0005683783824775551,
+      "numdate": 2025.058904109589,
+      "raw_date": "2025-01-22"
+    },
+    "PZ061648.1": {
+      "branch_length": 0.00019246187027469183,
+      "clock_length": 0.00019246187027469183,
+      "date": "2025-01-22",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.058904109589,
+      "raw_date": "2025-01-22"
+    },
+    "PZ061653.1": {
+      "branch_length": 0.0004513778593481857,
+      "clock_length": 0.0004513778593481857,
+      "date": "2025-01-22",
+      "date_inferred": false,
+      "mutation_length": 0.0022768489562058356,
+      "numdate": 2025.058904109589,
+      "raw_date": "2025-01-22"
+    },
+    "PZ061654.1": {
+      "branch_length": 0.0,
+      "clock_length": 0.0,
+      "date": "2025-01-19",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0506849315068,
+      "raw_date": "2025-01-19"
+    },
+    "PZ061656.1": {
+      "branch_length": 0.0,
+      "clock_length": 0.0,
+      "date": "2025-01-22",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.058904109589,
+      "raw_date": "2025-01-22"
+    },
+    "PZ061657.1": {
+      "branch_length": 0.0,
+      "clock_length": 0.0,
+      "date": "2025-01-19",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0506849315068,
+      "raw_date": "2025-01-19"
+    },
+    "PZ061658.1": {
+      "branch_length": 0.0004513778593481857,
+      "clock_length": 0.0004513778593481857,
+      "date": "2025-01-22",
+      "date_inferred": false,
+      "mutation_length": 0.0005684237587262336,
+      "numdate": 2025.058904109589,
+      "raw_date": "2025-01-22"
+    },
+    "PZ061660.1": {
+      "branch_length": 4.548557032816626e-07,
+      "clock_length": 4.548557032816626e-07,
+      "date": "2025-01-22",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.058904109589,
+      "raw_date": "2025-01-22"
+    },
+    "PZ061662.1": {
+      "branch_length": 0.0005161888828527869,
+      "clock_length": 0.0005161888828527869,
+      "date": "2025-01-23",
+      "date_inferred": false,
+      "mutation_length": 0.000567765130642247,
+      "numdate": 2025.0616438356165,
+      "raw_date": "2025-01-23"
+    },
+    "PZ061663.1": {
+      "branch_length": 0.0012734557782656743,
+      "clock_length": 0.0012734557782656743,
+      "date": "2025-01-19",
+      "date_inferred": false,
+      "mutation_length": 0.003987337074804458,
+      "numdate": 2025.0506849315068,
+      "raw_date": "2025-01-19"
+    },
+    "PZ061672.1": {
+      "branch_length": 0.00015033858036151261,
+      "clock_length": 0.00015033858036151261,
+      "date": "2025-01-15",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0397260273974,
+      "raw_date": "2025-01-15"
+    },
+    "PZ061673.1": {
+      "branch_length": 0.00045655793331704367,
+      "clock_length": 0.00045655793331704367,
+      "date": "2025-01-23",
+      "date_inferred": false,
+      "mutation_length": 0.0017063120933685026,
+      "numdate": 2025.0616438356165,
+      "raw_date": "2025-01-23"
+    },
+    "PZ061676.1": {
+      "branch_length": 0.0004829800121415478,
+      "clock_length": 0.0004829800121415478,
+      "date": "2025-01-15",
+      "date_inferred": false,
+      "mutation_length": 0.0005682314481975776,
+      "numdate": 2025.0397260273974,
+      "raw_date": "2025-01-15"
+    },
+    "PZ061677.1": {
+      "branch_length": 0.0004902803137216368,
+      "clock_length": 0.0004902803137216368,
+      "date": "2025-01-18",
+      "date_inferred": false,
+      "mutation_length": 0.0005679120860800738,
+      "numdate": 2025.0479452054794,
+      "raw_date": "2025-01-18"
+    },
+    "PZ061685.1": {
+      "branch_length": 0.00038487889508075426,
+      "clock_length": 0.00038487889508075426,
+      "date": "2025-01-16",
+      "date_inferred": false,
+      "mutation_length": 0.0005682486811454832,
+      "numdate": 2025.0424657534247,
+      "raw_date": "2025-01-16"
+    },
+    "PZ061697.1": {
+      "branch_length": 0.0,
+      "clock_length": 0.0,
+      "date": "2025-01-16",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0424657534247,
+      "raw_date": "2025-01-16"
+    },
+    "PZ061703.1": {
+      "branch_length": 5.181713826230049e-05,
+      "clock_length": 5.181713826230049e-05,
+      "date": "2025-01-18",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0479452054794,
+      "raw_date": "2025-01-18"
+    },
+    "PZ061715.1": {
+      "branch_length": 0.0,
+      "clock_length": 0.0,
+      "date": "2025-01-03",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0068493150684,
+      "raw_date": "2025-01-03"
+    },
+    "PZ061719.1": {
+      "branch_length": 0.0009037951861975359,
+      "clock_length": 0.0009037951861975359,
+      "date": "2025-01-05",
+      "date_inferred": false,
+      "mutation_length": 0.0011366503413007295,
+      "numdate": 2025.0123287671233,
+      "raw_date": "2025-01-05"
+    },
+    "PZ061720.1": {
+      "branch_length": 0.00044296648184621304,
+      "clock_length": 0.00044296648184621304,
+      "date": "2025-01-05",
+      "date_inferred": false,
+      "mutation_length": 0.001137161135292427,
+      "numdate": 2025.0123287671233,
+      "raw_date": "2025-01-05"
+    },
+    "PZ061721.1": {
+      "branch_length": 0.0005903038964120105,
+      "clock_length": 0.0005903038964120105,
+      "date": "2025-01-06",
+      "date_inferred": false,
+      "mutation_length": 0.001136769128587643,
+      "numdate": 2025.0150684931507,
+      "raw_date": "2025-01-06"
+    },
+    "PZ061723.1": {
+      "branch_length": 0.0,
+      "clock_length": 0.0,
+      "date": "2025-01-07",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.017808219178,
+      "raw_date": "2025-01-07"
+    },
+    "PZ061724.1": {
+      "branch_length": 1.1888235944633452e-05,
+      "clock_length": 1.1888235944633452e-05,
+      "date": "2025-01-12",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.031506849315,
+      "raw_date": "2025-01-12"
+    },
+    "PZ061727.1": {
+      "branch_length": 0.0,
+      "clock_length": 0.0,
+      "date": "2025-01-18",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0479452054794,
+      "raw_date": "2025-01-18"
+    },
+    "PZ061728.1": {
+      "branch_length": 0.0010146365497109692,
+      "clock_length": 0.0010146365497109692,
+      "date": "2025-01-17",
+      "date_inferred": false,
+      "mutation_length": 0.002275560211587129,
+      "numdate": 2025.045205479452,
+      "raw_date": "2025-01-17"
+    },
+    "PZ061736.1": {
+      "branch_length": 0.00048345676384118795,
+      "clock_length": 0.00048345676384118795,
+      "date": "2025-01-13",
+      "date_inferred": false,
+      "mutation_length": 0.0005680097521327072,
+      "numdate": 2025.0342465753424,
+      "raw_date": "2025-01-13"
+    },
+    "PZ061739.1": {
+      "branch_length": 5.181713826187028e-05,
+      "clock_length": 5.181713826187028e-05,
+      "date": "2025-01-14",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0369863013698,
+      "raw_date": "2025-01-14"
+    },
+    "PZ061741.1": {
+      "branch_length": 5.181713826143963e-06,
+      "clock_length": 5.181713826143963e-06,
+      "date": "2025-01-14",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0369863013698,
+      "raw_date": "2025-01-14"
+    },
+    "PZ061748.1": {
+      "branch_length": 9.144480884284642e-06,
+      "clock_length": 9.144480884284642e-06,
+      "date": "2025-01-14",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0369863013698,
+      "raw_date": "2025-01-14"
+    },
+    "PZ061750.1": {
+      "branch_length": 4.6635424435726314e-05,
+      "clock_length": 4.6635424435726314e-05,
+      "date": "2025-01-14",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0369863013698,
+      "raw_date": "2025-01-14"
+    },
+    "PZ061751.1": {
+      "branch_length": 6.218056591458842e-05,
+      "clock_length": 6.218056591458842e-05,
+      "date": "2025-01-14",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0369863013698,
+      "raw_date": "2025-01-14"
+    },
+    "PZ061752.1": {
+      "branch_length": 0.0001387372471179471,
+      "clock_length": 0.0001387372471179471,
+      "date": "2025-01-14",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0369863013698,
+      "raw_date": "2025-01-14"
+    },
+    "PZ061753.1": {
+      "branch_length": 0.0003157866181646282,
+      "clock_length": 0.0003157866181646282,
+      "date": "2025-01-14",
+      "date_inferred": false,
+      "mutation_length": 0.0011363211658467942,
+      "numdate": 2025.0369863013698,
+      "raw_date": "2025-01-14"
+    },
+    "PZ061754.1": {
+      "branch_length": 0.00046173964714318807,
+      "clock_length": 0.00046173964714318807,
+      "date": "2025-01-24",
+      "date_inferred": false,
+      "mutation_length": 0.0005685864908098742,
+      "numdate": 2025.0643835616438,
+      "raw_date": "2025-01-24"
+    },
+    "PZ061755.1": {
+      "branch_length": 0.0008519472337026298,
+      "clock_length": 0.0008519472337026298,
+      "date": "2025-01-15",
+      "date_inferred": false,
+      "mutation_length": 0.0005695730155451496,
+      "numdate": 2025.0397260273974,
+      "raw_date": "2025-01-15"
+    },
+    "PZ061759.1": {
+      "branch_length": 0.0006315169410059255,
+      "clock_length": 0.0006315169410059255,
+      "date": "2025-01-15",
+      "date_inferred": false,
+      "mutation_length": 0.0011359044250014935,
+      "numdate": 2025.0397260273974,
+      "raw_date": "2025-01-15"
+    },
+    "PZ061765.1": {
+      "branch_length": 5.6998852088444886e-05,
+      "clock_length": 5.6998852088444886e-05,
+      "date": "2025-01-24",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0643835616438,
+      "raw_date": "2025-01-24"
+    },
+    "PZ061808.1": {
+      "branch_length": 1.554514147843189e-05,
+      "clock_length": 1.554514147843189e-05,
+      "date": "2025-01-20",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0534246575342,
+      "raw_date": "2025-01-20"
+    },
+    "PZ061822.1": {
+      "branch_length": 0.0,
+      "clock_length": 0.0,
+      "date": "2025-01-15",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0397260273974,
+      "raw_date": "2025-01-15"
+    },
+    "PZ061824.1": {
+      "branch_length": 0.00013352084885329477,
+      "clock_length": 0.00013352084885329477,
+      "date": "2025-01-15",
+      "date_inferred": false,
+      "mutation_length": 0.0005696889551073904,
+      "numdate": 2025.0397260273974,
+      "raw_date": "2025-01-15"
+    },
+    "PZ061827.1": {
+      "branch_length": 3.6271996783868166e-05,
+      "clock_length": 3.6271996783868166e-05,
+      "date": "2025-01-16",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0424657534247,
+      "raw_date": "2025-01-16"
+    },
+    "PZ061830.1": {
+      "branch_length": 0.0,
+      "clock_length": 0.0,
+      "date": "2025-01-16",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0424657534247,
+      "raw_date": "2025-01-16"
+    },
+    "PZ061831.1": {
+      "branch_length": 0.0004297741980246418,
+      "clock_length": 0.0004297741980246418,
+      "date": "2025-01-03",
+      "date_inferred": false,
+      "mutation_length": 0.0005690805857916269,
+      "numdate": 2025.0068493150684,
+      "raw_date": "2025-01-03"
+    },
+    "PZ061834.1": {
+      "branch_length": 8.201994600161517e-05,
+      "clock_length": 8.201994600161517e-05,
+      "date": "2025-01-03",
+      "date_inferred": false,
+      "mutation_length": 0.0005681035220891111,
+      "numdate": 2025.0068493150684,
+      "raw_date": "2025-01-03"
+    },
+    "PZ061836.1": {
+      "branch_length": 0.0004248107753131512,
+      "clock_length": 0.0004248107753131512,
+      "date": "2025-01-03",
+      "date_inferred": false,
+      "mutation_length": 0.0005697057477374761,
+      "numdate": 2025.0068493150684,
+      "raw_date": "2025-01-03"
+    },
+    "PZ061839.1": {
+      "branch_length": 0.0,
+      "clock_length": 0.0,
+      "date": "2025-01-03",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0068493150684,
+      "raw_date": "2025-01-03"
+    },
+    "PZ061841.1": {
+      "branch_length": 4.3284311768276764e-05,
+      "clock_length": 4.3284311768276764e-05,
+      "date": "2025-01-03",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0068493150684,
+      "raw_date": "2025-01-03"
+    },
+    "PZ061843.1": {
+      "branch_length": 0.0004175502257874053,
+      "clock_length": 0.0004175502257874053,
+      "date": "2025-01-02",
+      "date_inferred": false,
+      "mutation_length": 0.0005680544549001013,
+      "numdate": 2025.004109589041,
+      "raw_date": "2025-01-02"
+    },
+    "PZ061845.1": {
+      "branch_length": 0.0,
+      "clock_length": 0.0,
+      "date": "2025-01-04",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.009589041096,
+      "raw_date": "2025-01-04"
+    },
+    "PZ061848.1": {
+      "branch_length": 0.0002625625752533697,
+      "clock_length": 0.0002625625752533697,
+      "date": "2025-01-16",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0424657534247,
+      "raw_date": "2025-01-16"
+    },
+    "PZ061849.1": {
+      "branch_length": 0.0004900942193547119,
+      "clock_length": 0.0004900942193547119,
+      "date": "2025-01-16",
+      "date_inferred": false,
+      "mutation_length": 0.0005681847777670535,
+      "numdate": 2025.0424657534247,
+      "raw_date": "2025-01-16"
+    },
+    "PZ061853.1": {
+      "branch_length": 0.0011291162742669046,
+      "clock_length": 0.0011291162742669046,
+      "date": "2025-01-16",
+      "date_inferred": false,
+      "mutation_length": 0.0005676093669417036,
+      "numdate": 2025.0424657534247,
+      "raw_date": "2025-01-16"
+    },
+    "PZ061857.1": {
+      "branch_length": 0.0003891956535763113,
+      "clock_length": 0.0003891956535763113,
+      "date": "2025-01-10",
+      "date_inferred": false,
+      "mutation_length": 0.0011373933290571424,
+      "numdate": 2025.0260273972603,
+      "raw_date": "2025-01-10"
+    },
+    "PZ061858.1": {
+      "branch_length": 0.0,
+      "clock_length": 0.0,
+      "date": "2025-01-17",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.045205479452,
+      "raw_date": "2025-01-17"
+    },
+    "PZ061867.1": {
+      "branch_length": 2.735887991233213e-05,
+      "clock_length": 2.735887991233213e-05,
+      "date": "2025-01-09",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0232876712328,
+      "raw_date": "2025-01-09"
+    },
+    "PZ061870.1": {
+      "branch_length": 0.00013321368339317676,
+      "clock_length": 0.00013321368339317676,
+      "date": "2025-01-18",
+      "date_inferred": false,
+      "mutation_length": 0.0005683783824775551,
+      "numdate": 2025.0479452054794,
+      "raw_date": "2025-01-18"
+    },
+    "PZ061875.1": {
+      "branch_length": 2.347064694276828e-05,
+      "clock_length": 2.347064694276828e-05,
+      "date": "2025-01-18",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0479452054794,
+      "raw_date": "2025-01-18"
+    },
+    "PZ061877.1": {
+      "branch_length": 0.0003957389018551679,
+      "clock_length": 0.0003957389018551679,
+      "date": "2025-01-17",
+      "date_inferred": false,
+      "mutation_length": 0.0005682360510268317,
+      "numdate": 2025.045205479452,
+      "raw_date": "2025-01-17"
+    },
+    "PZ061878.1": {
+      "branch_length": 0.0,
+      "clock_length": 0.0,
+      "date": "2025-01-20",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0534246575342,
+      "raw_date": "2025-01-20"
+    },
+    "PZ061879.1": {
+      "branch_length": 0.0,
+      "clock_length": 0.0,
+      "date": "2025-01-18",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0479452054794,
+      "raw_date": "2025-01-18"
+    },
+    "PZ061881.1": {
+      "branch_length": 4.6635424435726314e-05,
+      "clock_length": 4.6635424435726314e-05,
+      "date": "2025-01-20",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0534246575342,
+      "raw_date": "2025-01-20"
+    },
+    "PZ061883.1": {
+      "branch_length": 0.0,
+      "clock_length": 0.0,
+      "date": "2025-01-20",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0534246575342,
+      "raw_date": "2025-01-20"
+    },
+    "PZ061884.1": {
+      "branch_length": 0.0005006437413739248,
+      "clock_length": 0.0005006437413739248,
+      "date": "2025-01-20",
+      "date_inferred": false,
+      "mutation_length": 0.0011364579684714554,
+      "numdate": 2025.0534246575342,
+      "raw_date": "2025-01-20"
+    },
+    "PZ061885.1": {
+      "branch_length": 0.0,
+      "clock_length": 0.0,
+      "date": "2025-01-21",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0561643835617,
+      "raw_date": "2025-01-21"
+    },
+    "PZ061892.1": {
+      "branch_length": 0.0,
+      "clock_length": 0.0,
+      "date": "2025-01-21",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0561643835617,
+      "raw_date": "2025-01-21"
+    },
+    "PZ061893.1": {
+      "branch_length": 0.00018135509834391354,
+      "clock_length": 0.00018135509834391354,
+      "date": "2025-01-22",
+      "date_inferred": false,
+      "mutation_length": 0.0005678437521531533,
+      "numdate": 2025.058904109589,
+      "raw_date": "2025-01-22"
+    },
+    "PZ061895.1": {
+      "branch_length": 4.6635424436156526e-05,
+      "clock_length": 4.6635424436156526e-05,
+      "date": "2025-01-16",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0424657534247,
+      "raw_date": "2025-01-16"
+    },
+    "PZ061898.1": {
+      "branch_length": 0.0,
+      "clock_length": 0.0,
+      "date": "2025-01-16",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0424657534247,
+      "raw_date": "2025-01-16"
+    },
+    "PZ061903.1": {
+      "branch_length": 0.00018519421152894244,
+      "clock_length": 0.00018519421152894244,
+      "date": "2025-01-22",
+      "date_inferred": false,
+      "mutation_length": 0.0005680544325699024,
+      "numdate": 2025.058904109589,
+      "raw_date": "2025-01-22"
+    },
+    "PZ061908.1": {
+      "branch_length": 0.0005143084056042453,
+      "clock_length": 0.0005143084056042453,
+      "date": "2025-01-23",
+      "date_inferred": false,
+      "mutation_length": 0.0017069546414509962,
+      "numdate": 2025.0616438356165,
+      "raw_date": "2025-01-23"
+    },
+    "PZ061911.1": {
+      "branch_length": 4.145371060958235e-05,
+      "clock_length": 4.145371060958235e-05,
+      "date": "2025-01-18",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0479452054794,
+      "raw_date": "2025-01-18"
+    },
+    "PZ061918.1": {
+      "branch_length": 1.4326194710428605e-05,
+      "clock_length": 1.4326194710428605e-05,
+      "date": "2025-01-20",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0534246575342,
+      "raw_date": "2025-01-20"
+    },
+    "PZ061921.1": {
+      "branch_length": 0.0005339948869143292,
+      "clock_length": 0.0005339948869143292,
+      "date": "2025-01-23",
+      "date_inferred": false,
+      "mutation_length": 0.0011360437032341879,
+      "numdate": 2025.0616438356165,
+      "raw_date": "2025-01-23"
+    },
+    "PZ061925.1": {
+      "branch_length": 0.0003370871239547599,
+      "clock_length": 0.0003370871239547599,
+      "date": "2025-01-24",
+      "date_inferred": false,
+      "mutation_length": 0.0005692283791948615,
+      "numdate": 2025.0643835616438,
+      "raw_date": "2025-01-24"
+    },
+    "PZ061929.1": {
+      "branch_length": 0.0,
+      "clock_length": 0.0,
+      "date": "2025-01-25",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0671232876712,
+      "raw_date": "2025-01-25"
+    },
+    "PZ061947.1": {
+      "branch_length": 0.00038693667836294703,
+      "clock_length": 0.00038693667836294703,
+      "date": "2025-01-21",
+      "date_inferred": false,
+      "mutation_length": 1.3524641277029489e-21,
+      "numdate": 2025.0561643835617,
+      "raw_date": "2025-01-21"
+    },
+    "PZ062093.1": {
+      "branch_length": 0.0006317576070215929,
+      "clock_length": 0.0006317576070215929,
+      "date": "2025-01-14",
+      "date_inferred": false,
+      "mutation_length": 0.0022766039892670015,
+      "numdate": 2025.0369863013698,
+      "raw_date": "2025-01-14"
+    },
+    "PZ062094.1": {
+      "branch_length": 0.00042028757639089127,
+      "clock_length": 0.00042028757639089127,
+      "date": "2025-01-16",
+      "date_inferred": false,
+      "mutation_length": 0.0005682487518280542,
+      "numdate": 2025.0424657534247,
+      "raw_date": "2025-01-16"
+    },
+    "PZ062095.1": {
+      "branch_length": 0.00040560575038533055,
+      "clock_length": 0.00040560575038533055,
+      "date": "2025-01-20",
+      "date_inferred": false,
+      "mutation_length": 0.001706312276153994,
+      "numdate": 2025.0534246575342,
+      "raw_date": "2025-01-20"
+    },
+    "PZ062280.1": {
+      "branch_length": 0.0005211845023120063,
+      "clock_length": 0.0005211845023120063,
+      "date": "2025-01-22",
+      "date_inferred": false,
+      "mutation_length": 0.0005680544549001013,
+      "numdate": 2025.058904109589,
+      "raw_date": "2025-01-22"
+    }
+  }
+}
