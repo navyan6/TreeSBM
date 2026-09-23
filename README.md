@@ -4,7 +4,7 @@
   <img src="assets/treesbm_overview.png" alt="TreeSBM overview" width="100%"/>
 </p>
 
-<p align="center"><em><strong>Figure.</strong> Overview of TreeSBM. <strong>(A)</strong> Observed Spike trees (FastTree + Augur ASR) with per-node sequences. <strong>(B)</strong> Schrödinger bridge between root-only (\(p_0\)) and full phylogeny (\(p_1\)) joint sequence–tree states. <strong>(C)</strong> Bridge matching with an ESM prior and optional fitness tilt. <strong>(D)</strong> Forward generation from a root. <strong>(E)</strong> Pandemic variant recovery (e.g., Gamma/P.1).</em></p>
+<p align="center"><em><strong>Figure.</strong> Overview of TreeSBM. <strong>(A)</strong> Observed Spike trees (FastTree + Augur ASR) with per-node sequences. <strong>(B)</strong> Schrödinger bridge between root and full phylogeny joint sequence–tree states. <strong>(C)</strong> Bridge matching with an ESM prior and optional fitness tilt. <strong>(D)</strong> Forward generation from a root. <strong>(E)</strong> Pandemic variant recovery (e.g., Gamma/P.1).</em></p>
 
 A generative model for phylogenetic trees. Given a root ancestral sequence, TreeSBM grows a bifurcating phylogeny whose leaves are descendant sequences with biologically plausible mutations and branching topology.
 
