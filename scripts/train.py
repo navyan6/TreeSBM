@@ -29,7 +29,7 @@ from torch.utils.data import DataLoader, Subset
 ROOT = Path(__file__).parent.parent
 import sys; sys.path.insert(0, str(ROOT))
 
-from src.dataset import TreeDataset
+from src.dataset import TreeDataset, ConcatGeneTreeDataset, BalancedGeneSampler
 from src.tree_state import TreeState
 from src.treeencoder.plm_embeddings import ESM2Embedder
 from src.treeencoder.node_encoder import NodeEncoder
@@ -37,7 +37,6 @@ from src.treeencoder.structural_features import compute_structural_features
 from src.treeencoder.laplacian import compute_laplacian_pe
 from src.treeencoder.edges import build_edges
 from src.networks import TreeEncoder, RateHeads
-from src.bridge.shm_site_prior import apply_shm_site_prior
 from src.bridge.fitness_tilt import (
     TILT_FULL_ESM,
     TILT_SITE_LOCAL,
@@ -53,6 +52,65 @@ from src.bridge.losses import (
 )
 from src.bridge.site_stats import compute_msa_column_mut_freq
 from src.bridge.semigroup import sample_time_triple, semigroup_loss_from_predictor
+
+
+def _parse_gene_entries(entries: list[str] | None) -> list[tuple[str, str]]:
+    """Parse repeated gene_id=path CLI entries."""
+    if not entries:
+        return []
+    out = []
+    for raw in entries:
+        if "=" not in raw:
+            raise SystemExit(f"Bad --gene-*-data entry {raw!r}; expected gene_id=path")
+        gid, path = raw.split("=", 1)
+        gid, path = gid.strip(), path.strip()
+        if not gid or not path:
+            raise SystemExit(f"Bad --gene-*-data entry {raw!r}")
+        out.append((gid, path))
+    return out
+
+
+def _gene_ids_for_dataset(ds) -> list[str]:
+    if isinstance(ds, ConcatGeneTreeDataset):
+        return list(ds.gene_ids)
+    if isinstance(ds, Subset):
+        base = ds.dataset
+        return [_gene_ids_for_dataset(base)[i] for i in ds.indices]
+    if hasattr(ds, "gene_id_at"):
+        return [ds.gene_id_at(i) for i in range(len(ds))]
+    return ["default"] * len(ds)
+
+
+def _subset_by_gene(ds, gene: str):
+    """Lightweight view of a dataset restricted to one gene_id."""
+    ids = _gene_ids_for_dataset(ds)
+    indices = [i for i, g in enumerate(ids) if g == gene]
+    return Subset(ds, indices)
+
+
+def _resolve_col_entropy(col_entropy, batch):
+    """Pick per-gene [L] entropy when col_entropy is a gene_id→tensor map."""
+    if col_entropy is None:
+        return None
+    if isinstance(col_entropy, dict):
+        gid = batch.get("gene_id", "default")
+        if isinstance(gid, (list, tuple)):
+            gid = gid[0] if gid else "default"
+        if gid in col_entropy:
+            return col_entropy[gid]
+        if "default" in col_entropy:
+            return col_entropy["default"]
+        # Fallback: any available gene vector (should be rare).
+        return next(iter(col_entropy.values())) if col_entropy else None
+    return col_entropy
+
+
+def _serialize_col_entropy(col_entropy):
+    if col_entropy is None:
+        return None
+    if isinstance(col_entropy, dict):
+        return {k: v.detach().cpu() for k, v in col_entropy.items()}
+    return col_entropy.detach().cpu()
 
 
 def compute_site_entropy_from_log_probs(log_R0_mut: torch.Tensor) -> torch.Tensor:
@@ -169,10 +227,6 @@ def forward_bridge_step(
     fitness_cache: dict | None = None,
     fitness_esm_batch_size: int = 8,
     fitness_esm_top_k: int | None = None,
-    shm_site_boost: float = 0.0,
-    shm_fwr_stay: float = 0.0,
-    shm_use_aid: bool = False,
-    shm_cdr_mask: torch.Tensor | None = None,
     ablate_terminal_only: bool = False,
     ablate_doob: bool = False,
 ) -> tuple[dict | None, int]:
@@ -268,12 +322,14 @@ def forward_bridge_step(
     site_entropy = None
     ent_is_norm = entropy_is_normalized
     if use_site_entropy or use_entropy_loss_weighting or use_entropy_cons_weighting:
-        if col_entropy is not None:
+        ce = _resolve_col_entropy(col_entropy, batch)
+        if ce is not None:
             # Empirical column entropy from the training alignment, already
             # normalized to [0,1]. A [L] vector; RateHeads / bridge_losses
             # broadcast it over active leaves. Used identically here and at
             # generation (loaded from the checkpoint) so the two never diverge.
-            site_entropy = col_entropy.to(device=log_R0_mut.device, dtype=log_R0_mut.dtype)
+            # Multi-gene: dict keyed by gene_id — never pool non-homologous columns.
+            site_entropy = ce.to(device=log_R0_mut.device, dtype=log_R0_mut.dtype)
             ent_is_norm = True
         else:
             # Fallback: ESM self-entropy H(softmax(log_R0)) per position.
@@ -296,16 +352,6 @@ def forward_bridge_step(
         batch_size=fitness_esm_batch_size,
         top_k_aas=fitness_esm_top_k,
     )
-    # Ab Recipe A: SHM stay prior after fitness tilt (β should be 0 for Abs).
-    if shm_site_boost != 0.0 or shm_fwr_stay != 0.0 or shm_use_aid:
-        log_R0_mut = apply_shm_site_prior(
-            log_R0_mut,
-            active_seqs_for_tilt,
-            cdr_mask=shm_cdr_mask if shm_cdr_mask is not None else mut_hotspot_mask,
-            boost=shm_site_boost,
-            fwr_stay=shm_fwr_stay,
-            use_aid=shm_use_aid,
-        )
 
     active_seqs_t = active_seqs_for_tilt
     aa_indices = None
@@ -403,8 +449,9 @@ def forward_bridge_step(
                 log_R0_s = torch.zeros(len(active_s), max_seq_len, 20, device=device)
             site_ent_s = None
             if use_site_entropy or use_entropy_loss_weighting or use_entropy_cons_weighting:
-                if col_entropy is not None:
-                    site_ent_s = col_entropy.to(device=log_R0_s.device, dtype=log_R0_s.dtype)
+                ce_s = _resolve_col_entropy(col_entropy, batch)
+                if ce_s is not None:
+                    site_ent_s = ce_s.to(device=log_R0_s.device, dtype=log_R0_s.dtype)
                 else:
                     site_ent_s = compute_site_entropy_from_log_probs(log_R0_s)
                     if entropy_is_normalized:
@@ -422,15 +469,6 @@ def forward_bridge_step(
                 batch_size=fitness_esm_batch_size,
                 top_k_aas=fitness_esm_top_k,
             )
-            if shm_site_boost != 0.0 or shm_fwr_stay != 0.0 or shm_use_aid:
-                log_R0_s = apply_shm_site_prior(
-                    log_R0_s,
-                    seqs_s,
-                    cdr_mask=shm_cdr_mask if shm_cdr_mask is not None else mut_hotspot_mask,
-                    boost=shm_site_boost,
-                    fwr_stay=shm_fwr_stay,
-                    use_aid=shm_use_aid,
-                )
 
             aa_idx_s = None
             if getattr(rate_heads, "needs_aa_indices", False):
@@ -466,9 +504,45 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--data",        default="data/train")
     parser.add_argument("--val-data",    default=None,
-                        help="Pre-split val dir, e.g. data/h3n2/val (temporal) or "
-                             "data/covid/val (geographic). If set with --test-data, "
-                             "bypasses the random subtype split.")
+                        help="Optional separate validation directory (pre-split). "
+                             "If set, --test-data is also required.")
+    parser.add_argument(
+        "--gene-data",
+        action="append",
+        default=None,
+        help="Panviral multi-source train entry gene_id=path (repeatable). "
+             "When set, overrides --data for training and enables shared-head "
+             "multi-gene loading. Example: --gene-data h3n2_ha=data/h3n2/train",
+    )
+    parser.add_argument(
+        "--gene-val-data",
+        action="append",
+        default=None,
+        help="Optional gene_id=path val entries matching --gene-data.",
+    )
+    parser.add_argument(
+        "--gene-test-data",
+        action="append",
+        default=None,
+        help="Optional gene_id=path test entries matching --gene-data.",
+    )
+    parser.add_argument(
+        "--infer-gene-id",
+        action="store_true",
+        help="Read gene_id/subtype from each group's meta CSV (pan-flu mixed dirs).",
+    )
+    parser.add_argument(
+        "--balanced-gene-sample",
+        action="store_true",
+        help="Sample gene_id uniformly each step, then a tree of that gene "
+             "(avoids Spike/H3 dominating by tree count).",
+    )
+    parser.add_argument(
+        "--panviral-shared-head",
+        action="store_true",
+        help="Panviral defaults: no --per-site-pos-emb, no --pssm-gate, no lit "
+             "hotspot mask; keep site-entropy + mut-aa-emb; shared RateHeads.",
+    )
     parser.add_argument("--test-data",   default=None,
                         help="Pre-split test dir, e.g. data/h3n2/test or data/covid/test.")
     parser.add_argument("--epochs",      type=int,   default=100)
@@ -569,31 +643,11 @@ def main():
              "(big speedup). Remaining AAs keep untilted mass.",
     )
     parser.add_argument(
-        "--shm-site-boost",
-        type=float,
-        default=0.0,
-        help="Ab Recipe A: subtract this from stay logit on CDR∪AID hot sites "
-             "(encourage SHM-like mutation). 0 = off.",
-    )
-    parser.add_argument(
-        "--shm-fwr-stay",
-        type=float,
-        default=0.0,
-        help="Ab Recipe A: add this to stay logit on framework (non-hot) sites.",
-    )
-    parser.add_argument(
-        "--shm-use-aid",
-        action="store_true",
-        help="Ab Recipe A: OR CDR hotspot mask with reverse-translated AID "
-             "WRCH/DGYW motif columns.",
-    )
-    parser.add_argument(
         "--r0-backend",
         default="esm2",
         help="Which frozen R0 mutation prior cache to load (paper Table 7 / D.1). "
              "Must match precompute --r0-backend. "
-             "Default esm2 → legacy group_*_ref_rates.pt (viral + OAS v1/v2). "
-             "thrifty_aa is antibody Recipe B only (group_*_ref_rates_thrifty.pt). "
+             "Default esm2 → legacy group_*_ref_rates.pt. "
              "Also: esm2_650m, esmc, jtt, wag, lg, neutral.",
     )
     parser.add_argument(
@@ -601,14 +655,6 @@ def main():
         default=None,
         help="Override R0 cache filename tag (default derived from --r0-backend). "
              "Pass '' to force legacy group_*_ref_rates.pt.",
-    )
-    parser.add_argument(
-        "--mut-head",
-        default="residual",
-        choices=["residual", "cosine"],
-        help="Mutation RateHead. residual = log R0 + c_θ (viral / OAS v1–v3). "
-             "cosine = CoSiNE-style site CNN (antibody Recipe C). "
-             "cosine auto-enables --ablate-terminal-only (PCP CE) and ignores PSSM/SHM Q0.",
     )
     parser.add_argument("--per-site-pos-emb", action="store_true",
                         help="Add a learned positional embedding to the mutation head so "
@@ -721,22 +767,39 @@ def main():
     )
     args = parser.parse_args()
 
-    if args.mut_head == "cosine":
-        if args.ablate_doob:
-            raise SystemExit("ERROR: --mut-head cosine is incompatible with --ablate-doob")
-        if args.ablate_mut_head:
-            raise SystemExit("ERROR: --mut-head cosine is incompatible with --ablate-mut-head")
-        if not args.ablate_terminal_only:
-            print("cosine mut-head: enabling --ablate-terminal-only (parent→child CE)")
-            args.ablate_terminal_only = True
-        if float(args.fitness_beta) != 0.0:
-            raise SystemExit("REFUSING fitness β>0 with --mut-head cosine")
-        if args.shm_site_boost or args.shm_fwr_stay or args.shm_use_aid:
-            raise SystemExit("REFUSING Recipe A SHM Q0 prior with --mut-head cosine")
+    if args.panviral_shared_head:
+        # Shared RateHeads across genes: drop length-tied site index / PSSM gate /
+        # lit masks; keep entropy + AA emb + shared mut/topology MLPs.
+        if args.per_site_pos_emb:
+            print("NOTE: --panviral-shared-head clears --per-site-pos-emb")
+        args.per_site_pos_emb = False
         if args.pssm_gate:
-            print("NOTE: --pssm-gate ignored for --mut-head cosine")
-            args.pssm_gate = False
-        print("Antibody Recipe C: CoSiNE-style site CNN mut-head (no residual ESM Q0)")
+            print("NOTE: --panviral-shared-head clears --pssm-gate")
+        args.pssm_gate = False
+        args.no_lit_hotspot_mask = True
+        if not args.use_site_entropy:
+            args.use_site_entropy = True
+            print("NOTE: --panviral-shared-head enables --use-site-entropy")
+        if not args.use_entropy_loss_weighting:
+            args.use_entropy_loss_weighting = True
+        if not args.use_entropy_cons_weighting:
+            args.use_entropy_cons_weighting = True
+        # Empirical per-gene column entropy unless user explicitly chose esm_self.
+        if args.entropy_source == "esm_self":
+            args.entropy_source = "empirical"
+            print("NOTE: --panviral-shared-head sets --entropy-source empirical")
+        if not args.mut_aa_emb:
+            args.mut_aa_emb = True
+            print("NOTE: --panviral-shared-head enables --mut-aa-emb")
+        if not args.balanced_gene_sample and (
+            args.gene_data or args.infer_gene_id
+        ):
+            args.balanced_gene_sample = True
+            print("NOTE: --panviral-shared-head enables --balanced-gene-sample")
+        print(
+            "Panviral shared-head: pos_emb=OFF pssm_gate=OFF lit_mask=OFF "
+            f"entropy={args.entropy_source} mut_aa_emb=ON"
+        )
 
     if args.ablate_terminal_only and args.ablate_doob:
         raise SystemExit(
@@ -787,11 +850,6 @@ def main():
                 "(batched). Prefer --fitness-esm-top-k 5 for trainable cost; "
                 "site_local remains the default for existing recipes."
             )
-    if args.shm_site_boost != 0.0 or args.shm_fwr_stay != 0.0 or args.shm_use_aid:
-        print(
-            f"Ab SHM Q0 prior: boost={args.shm_site_boost}  fwr_stay={args.shm_fwr_stay}  "
-            f"use_aid={args.shm_use_aid}  (β fitness should be 0)"
-        )
 
     from src.r0_backends import cache_tag_for_backend, normalize_backend_name, build_r0_backend
 
@@ -809,24 +867,56 @@ def main():
         fitness_scorer = make_sequence_pll_scorer(
             fitness_r0_live, max_seq_len=args.max_seq_len
         )
-    # ── data: pre-split dirs (temporal or geographic) OR random subtype-binned split
-    if args.val_data and args.test_data:
+    # ── data: gene-tagged multi-source OR pre-split dirs OR random subtype split
+    gene_train = _parse_gene_entries(args.gene_data)
+    gene_val = _parse_gene_entries(args.gene_val_data)
+    gene_test = _parse_gene_entries(args.gene_test_data)
+
+    def _mk_ds(path: str, gene_id: str | None = None) -> TreeDataset:
+        return TreeDataset(
+            path,
+            max_seq_len=args.max_seq_len,
+            ref_rates_tag=ref_rates_tag,
+            gene_id=gene_id,
+            infer_gene_id=bool(args.infer_gene_id) and gene_id is None,
+        )
+
+    if gene_train:
+        print(f"Multi-gene train sources: {gene_train}")
+        train_ds = ConcatGeneTreeDataset(
+            [_mk_ds(p, gid) for gid, p in gene_train]
+        )
+        if gene_val:
+            val_ds = ConcatGeneTreeDataset(
+                [_mk_ds(p, gid) for gid, p in gene_val]
+            )
+        elif args.val_data:
+            val_ds = _mk_ds(args.val_data, gene_id=None)
+        else:
+            raise SystemExit("Multi-gene train requires --gene-val-data or --val-data")
+        if gene_test:
+            test_ds = ConcatGeneTreeDataset(
+                [_mk_ds(p, gid) for gid, p in gene_test]
+            )
+        elif args.test_data:
+            test_ds = _mk_ds(args.test_data, gene_id=None)
+        else:
+            raise SystemExit("Multi-gene train requires --gene-test-data or --test-data")
+        dataset = train_ds
+        Path(args.ckpt_dir).mkdir(exist_ok=True)
+        print(f"Total — Train: {len(train_ds)}  Val: {len(val_ds)}  Test: {len(test_ds)}")
+    elif args.val_data and args.test_data:
         print("Pre-split data: loading train/val/test from separate dirs")
-        train_ds = TreeDataset(
-            args.data, max_seq_len=args.max_seq_len, ref_rates_tag=ref_rates_tag
-        )
-        val_ds = TreeDataset(
-            args.val_data, max_seq_len=args.max_seq_len, ref_rates_tag=ref_rates_tag
-        )
-        test_ds = TreeDataset(
-            args.test_data, max_seq_len=args.max_seq_len, ref_rates_tag=ref_rates_tag
-        )
+        train_ds = _mk_ds(args.data, gene_id=None)
+        val_ds = _mk_ds(args.val_data, gene_id=None)
+        test_ds = _mk_ds(args.test_data, gene_id=None)
         dataset = train_ds  # used for the PLM-cache probe / export below
         Path(args.ckpt_dir).mkdir(exist_ok=True)
         print(f"Total — Train: {len(train_ds)}  Val: {len(val_ds)}  Test: {len(test_ds)}")
     else:
         dataset = TreeDataset(
-            args.data, max_seq_len=args.max_seq_len, ref_rates_tag=ref_rates_tag
+            args.data, max_seq_len=args.max_seq_len, ref_rates_tag=ref_rates_tag,
+            infer_gene_id=bool(args.infer_gene_id),
         )
 
         def subtype_of(group: int) -> str:
@@ -874,7 +964,20 @@ def main():
             json.dump({"train": train_ds.indices, "val": val_ds.indices, "test": test_ds.indices}, f)
 
     # batch_size=1 (trees vary in node count — no collation)
-    train_loader = DataLoader(train_ds, batch_size=1, shuffle=True,  collate_fn=lambda x: x[0])
+    if args.balanced_gene_sample:
+        gene_ids = _gene_ids_for_dataset(train_ds)
+        n_unique = len(set(gene_ids))
+        print(f"Balanced gene sampler over {n_unique} genes: {sorted(set(gene_ids))}")
+        sampler = BalancedGeneSampler(
+            gene_ids, num_samples=len(train_ds), seed=args.seed
+        )
+        train_loader = DataLoader(
+            train_ds, batch_size=1, sampler=sampler, collate_fn=lambda x: x[0]
+        )
+    else:
+        train_loader = DataLoader(
+            train_ds, batch_size=1, shuffle=True, collate_fn=lambda x: x[0]
+        )
     val_loader   = DataLoader(val_ds,   batch_size=1, shuffle=False, collate_fn=lambda x: x[0])
     test_loader  = DataLoader(test_ds,  batch_size=1, shuffle=False, collate_fn=lambda x: x[0])
 
@@ -899,7 +1002,6 @@ def main():
         d_aa=args.mut_aa_emb_dim,
         use_pssm_gate=args.pssm_gate,
         pssm_gate_fixed_w=args.pssm_gate_fixed_w,
-        mut_head_type=args.mut_head,
     ).to(device)
     rate_heads.ablate_mut_head = bool(args.ablate_mut_head)
     rate_heads.ablate_stop_head = bool(args.ablate_stop_head)
@@ -953,10 +1055,28 @@ def main():
         )
     )
     if need_entropy:
-        print("Computing empirical column entropy from the training alignment...")
-        col_entropy = compute_empirical_column_entropy(train_ds, args.max_seq_len).to(device)
-        print(f"  col_entropy: [{col_entropy.numel()}]  mean={col_entropy.mean():.3f}  "
-              f"max={col_entropy.max():.3f}  nonzero={(col_entropy > 0).sum().item()}")
+        gene_ids = sorted(set(_gene_ids_for_dataset(train_ds)))
+        if len(gene_ids) > 1:
+            print(
+                "Computing per-gene empirical column entropy "
+                f"(genes={gene_ids}) — never pool non-homologous columns..."
+            )
+            col_entropy = {}
+            for gid in gene_ids:
+                sub = _subset_by_gene(train_ds, gid)
+                if len(sub) == 0:
+                    continue
+                ce = compute_empirical_column_entropy(sub, args.max_seq_len).to(device)
+                col_entropy[gid] = ce
+                print(
+                    f"  [{gid}] col_entropy[{ce.numel()}] mean={ce.mean():.3f} "
+                    f"max={ce.max():.3f}"
+                )
+        else:
+            print("Computing empirical column entropy from the training alignment...")
+            col_entropy = compute_empirical_column_entropy(train_ds, args.max_seq_len).to(device)
+            print(f"  col_entropy: [{col_entropy.numel()}]  mean={col_entropy.mean():.3f}  "
+                  f"max={col_entropy.max():.3f}  nonzero={(col_entropy > 0).sum().item()}")
 
     if hotspot_requested:
         if args.mut_hotspot_mask is not None:
@@ -1135,10 +1255,6 @@ def main():
                     fitness_cache=fitness_cache,
                     fitness_esm_batch_size=args.fitness_esm_batch_size,
                     fitness_esm_top_k=args.fitness_esm_top_k,
-                    shm_site_boost=args.shm_site_boost,
-                    shm_fwr_stay=args.shm_fwr_stay,
-                    shm_use_aid=args.shm_use_aid,
-                    shm_cdr_mask=mut_hotspot_mask,
                     ablate_terminal_only=args.ablate_terminal_only,
                     ablate_doob=args.ablate_doob,
                 )
@@ -1201,10 +1317,6 @@ def main():
                     fitness_cache=fitness_cache,
                     fitness_esm_batch_size=args.fitness_esm_batch_size,
                     fitness_esm_top_k=args.fitness_esm_top_k,
-                    shm_site_boost=args.shm_site_boost,
-                    shm_fwr_stay=args.shm_fwr_stay,
-                    shm_use_aid=args.shm_use_aid,
-                    shm_cdr_mask=mut_hotspot_mask,
                     ablate_terminal_only=args.ablate_terminal_only,
                     ablate_doob=args.ablate_doob,
                 )
@@ -1263,7 +1375,6 @@ def main():
                 "patience_counter": patience_counter,
                 "val_loss": val_loss,
                 "config": {
-                    "mut_head_type": args.mut_head,
                     "use_pos_emb": args.per_site_pos_emb,
                     "use_site_entropy": args.use_site_entropy,
                     "deep_mut_head": args.deep_mut_head,
@@ -1292,9 +1403,6 @@ def main():
                     "fitness_tilt_mode": args.fitness_tilt_mode,
                     "fitness_esm_batch_size": args.fitness_esm_batch_size,
                     "fitness_esm_top_k": args.fitness_esm_top_k,
-                    "shm_site_boost": args.shm_site_boost,
-                    "shm_fwr_stay": args.shm_fwr_stay,
-                    "shm_use_aid": args.shm_use_aid,
                     "r0_backend": r0_backend,
                     "ref_rates_tag": ref_rates_tag,
                     "freeze_encoder": bool(args.freeze_encoder),
@@ -1306,7 +1414,7 @@ def main():
                 },
                 # empirical column-entropy vector [L] (None for esm_self), so
                 # generation reuses the exact same signal training saw.
-                "col_entropy": col_entropy.cpu() if col_entropy is not None else None,
+                "col_entropy": _serialize_col_entropy(col_entropy),
                 "mut_hotspot_mask": (
                     mut_hotspot_mask.cpu() if mut_hotspot_mask is not None else None
                 ),
