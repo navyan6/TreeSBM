@@ -1,41 +1,8 @@
 #!/usr/bin/env python3
-"""
-Prepare a CLADE-HOLDOUT split of the COVID Spike dataset (leaf recovery).
+"""Prepare a COVID Spike clade-holdout split for leaf recovery.
 
-Analogous to prepare_h1n1_leafholdout.py, but held-out leaves are a clade
-(Nextclade / Nextstrain clade label), not a random leaf fraction:
-
-  * Trees are built from single-country, date-ordered chunks (same grouping
-    shape as prepare_covid_geo.py), then randomly assigned to train/val/test
-    at the *tree* level (not geographic — every split can contain any country).
-  * Within EVERY tree, one clade's leaves are pulled out BEFORE tree-building
-    and saved under heldout/. Remaining leaves build the reduced train tree.
-  * Default clade choice per tree: the largest non-majority clade that still
-    leaves >= min-group tree-building leaves (or --holdout-clade if set).
-
-Clade labels:
-  * Preferred: Nextclade TSV with columns seqName + clade (or Nextclade_pango).
-    Produce via --write-clade-tsv / nextclade, or pass --clade-tsv PATH.
-  * Fallback (--mode majority-year): hold out the minority calendar-year block
-    inside each multi-year chunk (documented as a weak proxy when Nextclade
-    is unavailable — not a real Nextstrain clade).
-
-Does NOT touch data/covid/ geographic dirs — writes to data/covid_cladeholdout/.
-
-Output:
-  data/covid_cladeholdout/{split}/covidch{split}_group_NNN.fasta (+.csv)
-  data/covid_cladeholdout/heldout/covidch_{split}_group_NNN_heldout.fasta (+.csv)
-  data/covid_cladeholdout/SPLIT_PROTOCOL.json
-
-Eval (same format as H1N1 leafholdout):
-  python scripts/eval_leaf_holdout.py \\
-      --checkpoint checkpoints/covid_cladeholdout_v1/best.pt \\
-      --data data/covid_cladeholdout --max-seq-len 1280
-
-Prereq:
-  sbatch scripts/slurm_covid_extract.sh
-  # optional clade TSV:
-  python scripts/prepare_covid_cladeholdout.py --write-clade-tsv
+Holds out one clade per tree; writes reduced trees under train/val/test and
+held-out leaves under ``heldout/``. Output: ``data/covid_cladeholdout``.
 """
 
 from __future__ import annotations
@@ -440,7 +407,7 @@ def main():
     print("\nNext:")
     print("  scripts/run_all_groups.py --data-dir data/covid_cladeholdout/{split} "
           "--prefix covidch{split}")
-    print("  sbatch scripts/slurm_covid_cladeholdout_pipeline.sh")
+    print("Next: run_all_groups → precompute_plm/ref_rates → train.py")
     print("  scripts/eval_leaf_holdout.py --data data/covid_cladeholdout "
           "--checkpoint checkpoints/covid_cladeholdout_v1/best.pt --max-seq-len 1280")
 

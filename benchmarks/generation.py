@@ -37,12 +37,14 @@ class TreeSBMGenerator:
         r0_backend=None,
         fitness_beta: float | None = None,
         ablate_bridge: bool = False,
+        gene_id: str | None = None,
     ):
         self.device = device or ("cuda" if torch.cuda.is_available() else "cpu")
         self.max_seq_len = max_seq_len
         self.r0_backend = r0_backend
         self.fitness_beta = fitness_beta
         self.ablate_bridge = ablate_bridge
+        self.gene_id = gene_id
         self.node_enc, self.tree_enc, self.rate_heads, self.col_entropy = load_models(
             checkpoint, self.device, max_seq_len
         )
@@ -54,6 +56,20 @@ class TreeSBMGenerator:
         self.aa_token_ids = torch.tensor(
             [self.tokenizer.convert_tokens_to_ids(aa) for aa in AA_VOCAB], dtype=torch.long
         )
+
+    def _resolved_col_entropy(self):
+        """Panviral ckpts store gene_id→[L]; single-gene trains store a tensor."""
+        ce = self.col_entropy
+        if ce is None or not isinstance(ce, dict):
+            return ce
+        if self.gene_id and self.gene_id in ce:
+            return ce[self.gene_id]
+        if "default" in ce:
+            return ce["default"]
+        # Deterministic fallback so generation still runs; prefer matching gene_id.
+        key = next(iter(ce))
+        print(f"WARN: col_entropy dict has no key {self.gene_id!r}; using {key!r}")
+        return ce[key]
 
     def generate_k(
         self,
@@ -67,6 +83,7 @@ class TreeSBMGenerator:
         cache_esm: bool = True,
     ) -> list[TreeState]:
         trees: list[TreeState] = []
+        col_entropy = self._resolved_col_entropy()
         for k in range(K):
             random.seed(base_seed + k)
             torch.manual_seed(base_seed + k)
@@ -74,7 +91,7 @@ class TreeSBMGenerator:
                 root_seq, n_steps, self.max_seq_len, branch_rate_scale, max_leaves,
                 mutation_rate_scale, self.node_enc, self.tree_enc, self.rate_heads,
                 self.embedder, self.tokenizer, self.esm_model, self.aa_token_ids, self.device,
-                col_entropy=self.col_entropy,
+                col_entropy=col_entropy,
                 cache_esm=cache_esm,
                 fitness_beta=self.fitness_beta,
                 ablate_bridge=self.ablate_bridge,

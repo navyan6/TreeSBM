@@ -155,7 +155,9 @@ def stage_refine(g: int, treefile: Path, aligned: Path, meta_csv: Path) -> tuple
         "--clock-rate", clock_rate,
         "--coalescent", "opt",
         "--date-inference", "marginal",
-        "--clock-filter-iqd", "4",
+        # 0: identical year-only tip dates still crash TreeTime's clock filter
+        # even with --clock-rate (reroot regression needs variation).
+        "--clock-filter-iqd", os.environ.get("TREESBM_CLOCK_FILTER_IQD", "0"),
     ], "augur refine")
     log(g, f"refine done (clock-rate={clock_rate})")
     return rooted, bl_json

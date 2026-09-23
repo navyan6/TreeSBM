@@ -1,20 +1,4 @@
-"""
-Semigroup regularizer L_semi (§4.5).
-
-Paper:
-  L_semi = E[ d(G_{s,t}, G_{r,t} ∘ G_{s,r}) ],  0 ≤ s < r < t ≤ t_max
-  L_TreeSBM = L_bridge + λ_semi L_semi
-
-Full tree-rollout composition is too expensive every train step. Default mode is
-a cheap **rate-space** surrogate: from a fixed bridge state T_s, query the
-network at three **absolute** bridge clocks s, r, t (same ``t_scalar``
-convention as the main bridge step), compose the short-hop rates by
-duration-weighted averaging, and match to the long-hop rates (MSE on mut
-logits / branch λ / BL / stop). Durations enter only the composition weights.
-
-Optional ``rollout`` distance (sequence-matched RF + Hamming) is exposed for
-rare offline checks via ``tree_composition_distance``.
-"""
+"""Semigroup / rate-composition regularizer for bridge matching."""
 
 from __future__ import annotations
 

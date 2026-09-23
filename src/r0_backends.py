@@ -1,7 +1,7 @@
 """
 Multi-pLM / substitution R0 backends for TreeSBM reference mutation priors.
 
-Paper Table 7 / appendix D.1 compare mutation priors as frozen R0 sources:
+Frozen R0 mutation prior backends:
   JTT/WAG/LG substitution | ESM-2-650M ± fitness | ESM-C ± fitness | ProGen2 | …
 TreeSBM keeps ``log R_θ = log R0(+tilt) + c_θ``; these wrappers only swap how
 ``log R0`` is produced. They are adapters, not new networks.
@@ -298,7 +298,7 @@ class SubstitutionMatrixR0Backend(R0Backend):
 
     For current residue a at each site, build a destination distribution from the
     CTMC jump chain of Q, with residual stay mass on a. Context-independent —
-    paper Table 7 / D.1 "Substitution-only" / JTT/WAG/LG row.
+    empirical substitution-matrix R0 (JTT / WAG / LG).
     """
 
     def __init__(self, model: str = "JTT", stay_mass: float = 0.5):
@@ -370,7 +370,7 @@ def build_r0_backend(
     device: Optional[str] = None,
 ) -> R0Backend:
     """
-    Factory for Table 7 / D.1 R0 backends.
+    Factory for frozen R0 backends.
 
     ``model_id`` overrides the default HF / ESM-C checkpoint when applicable.
     """
@@ -379,7 +379,7 @@ def build_r0_backend(
         hints = {
             BACKEND_PROGEN2: (
                 "ProGen2 is not bundled; install salesforce/progen and wire a "
-                "causal-LM → site marginal adapter, or skip this Table 7 row."
+                "causal-LM → site marginal adapter, or skip this backend."
             ),
             BACKEND_EVO2: (
                 "Evo2 is heavy (OOM risk on mig GPUs); use API/distill or skip "

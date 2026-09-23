@@ -1,30 +1,8 @@
 #!/usr/bin/env python3
-"""
-Post-process PhylaFlow sampled trees into a TreeSBM pool for Table 2.
+"""Convert PhylaFlow sampled trees into a Newick topology pool.
 
-PhylaFlow is posterior-basin transport in BHV space for a fixed alignment — it is
-NOT root-conditioned forward generation. This adapter never reimplements the
-flow; it only consumes trees from PhylaFlow's own sampling scripts and writes
-anonymized newicks (BLs kept by default for native row `phylaflow`;
-topology-only with --no-keep-branch-lengths for `phylaflow_adapted`).
-
-Typical upstream (H3N2-trained ckpt inside PhylaFlow env; see EXTERNAL.md —
-NOT DS1–8 / launch_ds_local.sh ds*):
-    python scripts/evaluate_per_dataset_sample_kl.py \\
-        --config configs/h3n2_N16.yaml --checkpoint /path/to.ckpt \\
-        --sample-config ... --output-dir samples/treesbm_N16 \\
-        --num-samples 50 --dump-trees
-
-Then (treesbm or PhylaFlow env; needs ete3):
-    python phylaflow_sample.py \\
-        --input-dir samples/treesbm_N16/tree_dumps \\
-        --ntips 16 --n-samples 300 \\
-        --out /path/to/DiscreteTreeFlows/benchmarks/external_pools/sampled/phylaflow_N16.nwk
-
-Also accepts a single .nwk (one topology per line) or a .json dump with a
-`sampled_trees` list.
-
-COPY into $LABHOME/baselines/PhylaFlow/ if convenient; paths are absolute-safe.
+Reads PhylaFlow outputs and writes ``prefix_N{N}.nwk`` pools for the
+topology-prior baseline adapters.
 """
 
 from __future__ import annotations

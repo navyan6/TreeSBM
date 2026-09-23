@@ -1,19 +1,13 @@
 #!/usr/bin/env python3
-"""
-Sample K new topologies from a trained ARTreeFormer TDE model (true
-unconditional/autoregressive sampling via VBPIbase.sample_trees -- the
-transformer's own generative process, not a separate decode-from-vector
-step; each taxon's attachment point is sampled conditioned on the partial
-tree built so far).
+"""Sample topologies from a trained ARTreeFormer TDE checkpoint.
 
-COPY THIS FILE into ARTreeFormer/TDE/ before running (needs repo-relative
-imports `from datasets import ...`, `from models import TDE`, same as
-TDE/main.py). Run in the artreeformer conda env.
+Place this script in the upstream ARTreeFormer ``TDE/`` directory and run it
+in that environment (needs local ``models`` / ``datasets`` imports).
 
-Usage (from inside ARTreeFormer/TDE/):
-    python artreeformer_sample.py \
-        --checkpoint results/DATASET/repo1/transformer_.../final.pt \
-        --ntips 16 --n-samples 300 --out ../../pools/artreeformer_N16.nwk
+Example::
+
+    python artreeformer_sample.py --checkpoint final.pt --ntips 16 \
+        --n-samples 300 --out artreeformer_N16.nwk
 """
 
 import argparse

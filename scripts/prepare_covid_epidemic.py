@@ -1,16 +1,8 @@
 #!/usr/bin/env python3
-"""
-Epidemic-aware COVID Spike split: country × lineage trees + temporal cutoffs.
+"""Prepare an epidemic-aware COVID Spike split.
 
-Same year bands as prepare_covid_temporal.py (train≤2022 / val2023 / test2024–2025),
-but each tree = one (country, clade) epidemic unit instead of arbitrary date chunks.
-
-Clade labels: Nextclade TSV (seqName + clade / Nextclade_pango). Fallback:
-(country, collection_year) when clade missing.
-
-Output: data/covid_epidemic/{train,val,test}/covidetrain_group_NNN.fasta(+csv)
-Prereq: sbatch scripts/slurm_covid_extract.sh
-Optional: python scripts/prepare_covid_cladeholdout.py --write-clade-tsv
+Builds trees by country × lineage with temporal cutoffs.
+Output: ``data/covid_epidemic``.
 """
 
 from __future__ import annotations

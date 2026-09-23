@@ -1,10 +1,5 @@
 #!/usr/bin/env python3
-"""
-Reconstruct SPLIT_PROTOCOL.json from existing group CSVs (metadata-only snapshot).
-
-Use when FASTA/group files were built on Betty but protocol JSON was not synced.
-Does not rewrite FASTA or change assignments — counts + year/season histograms only.
-"""
+"""Rebuild ``SPLIT_PROTOCOL.json`` from existing group CSVs."""
 
 from __future__ import annotations
 
@@ -111,7 +106,7 @@ def reconstruct(data_dir: Path, force: bool = False) -> dict | None:
         **infer_defaults(data_dir),
         "out_base": str(data_dir.relative_to(ROOT)) if data_dir.is_relative_to(ROOT) else str(data_dir),
         "reconstructed_from_csv": True,
-        "note": "Rebuilt from group CSVs; full prep metadata may differ on Betty.",
+        "note": "Rebuilt from group CSVs; original prep metadata may be incomplete.",
         "counts": counts,
         "n_groups": n_groups,
         "year_hist": year_hist,

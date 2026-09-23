@@ -1,26 +1,7 @@
 #!/usr/bin/env python3
-"""
-Leaf-holdout / clade-holdout recovery eval.
+"""Leaf-holdout / clade-holdout recovery eval.
 
-For each tree under --data/{split}/, the model never saw the leaves in
---data/heldout/*_{split}_group_NNN_heldout.fasta during training (they were
-pulled out before the tree was built by prepare_h1n1_leafholdout.py or
-prepare_covid_cladeholdout.py). This generates a fresh tree from that tree's
-real root sequence and checks whether the bridge-matching process recovers
-those true held-out leaves: best-match sequence identity, plus positional
-recovery at mutating vs. conserved sites (same metrics as eval_single_tree.py).
-
-Usage:
-    python scripts/eval_leaf_holdout.py \
-        --checkpoint checkpoints/h1n1_leafholdout_v1/best.pt \
-        --data       data/h1n1_leafholdout \
-        --n-steps    30
-
-    # COVID clade holdout (same heldout naming pattern):
-    python scripts/eval_leaf_holdout.py \
-        --checkpoint checkpoints/covid_cladeholdout_v1/best.pt \
-        --data       data/covid_cladeholdout \
-        --max-seq-len 1280
+Loads held-out FASTAs under ``heldout/`` and scores recovery of withheld leaves.
 """
 
 import argparse

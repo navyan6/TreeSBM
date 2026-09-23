@@ -1,9 +1,7 @@
 #!/usr/bin/env python3
-"""
-Synthetic demo for absolute-e coverage + clade recall (no H3N2 data / GPU).
+"""Synthetic smoke demo for absolute-e coverage and clade recall.
 
-Writes a tiny CSV + optional matplotlib/R-free ASCII summary so the new schema
-can be inspected offline. For real curves, run coverage_curves.py on Betty.
+No real data or GPU required; useful for checking metric plumbing offline.
 """
 
 from __future__ import annotations

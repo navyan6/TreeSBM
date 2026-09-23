@@ -1,52 +1,5 @@
 #!/usr/bin/env python3
-"""
-Convert EVE evolutionary-index CSV output into a static [max_seq_len, 20] score
-tensor aligned to the TreeSBM column frame (AA order ACDEFGHIKLMNPQRSTVWY).
-
-This is an OFFLINE prep step. eval_eve_baseline.py only needs the saved .pt file.
-
-How to obtain EVE CSV output
-----------------------------
-1. Clone EVE under your baselines directory:
-       git clone https://github.com/OATML-Markslab/EVE $LABHOME/baselines/EVE
-       cd $LABHOME/baselines/EVE
-
-2. Install EVE dependencies (`conda env create -f protein_env.yml`).
-
-3. Provide a protein MSA (download from https://evemodel.org/ or build your own).
-
-4. Train the Bayesian VAE (see examples/train_VAE.sh):
-       bash examples/train_VAE.sh
-
-5. Compute evolutionary indices for all single-AA mutants:
-       bash examples/compute_evol_indices.sh
-   This writes a CSV with columns like:
-       protein_name, mutations, evol_indices
-   where mutations are strings "M1A" (wt + 1-based position + mutant).
-   Or download precomputed tables from evemodel.org and point --csv-path at them.
-
-6. Align scores to TreeSBM columns and save eve_scores.pt:
-
-   HA (H3N2 / H1N1, L=566):
-       python scripts/prepare_eve_scores.py \\
-           --csv-path $LABHOME/baselines/EVE/results/evol_indices/HA_20000_samples.csv \\
-           --output data/h3n2/eve_ha.pt \\
-           --data data/h3n2/train --ref-from-group 1 --max-seq-len 566
-
-   Spike (COVID, L=1280 — full TreeSBM spike frame):
-       python scripts/prepare_eve_scores.py \\
-           --csv-path $LABHOME/baselines/EVE/results/evol_indices/Spike_20000_samples.csv \\
-           --output data/covid/eve_spike.pt \\
-           --data data/covid/train --ref-from-group 1 --max-seq-len 1280
-       # If the EVE MSA is mature spike / RBD-truncated, pass --position-offset
-       # or --ref-seq so WT match rate stays ≥ --min-match-rate (default 0.90).
-
-If the CSV file does not exist, this script exits with these instructions
-instead of inventing placeholder scores. See also benchmarks/EXTERNAL.md.
-
-Output dict keys (same shape convention as prepare_evescape.py):
-    scores [L,20], reference_seq, match_rate, source_csv
-"""
+"""Build a static [L, 20] EVE evolutionary-index tensor from CSV output."""
 
 import argparse
 import csv

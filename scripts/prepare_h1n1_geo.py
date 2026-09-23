@@ -1,34 +1,7 @@
 #!/usr/bin/env python3
-"""
-Prepare the geographically-split H1N1 HA dataset for the TreeSBM pipeline.
+"""Prepare a geographically split H1N1 HA dataset.
 
-Raw data: data/h1n1/train/*_h1n1.fasta (one file per world region; each record is
-a segment-4 HA nucleotide CDS ~1701 nt, ready for mafft/fasttree/augur -- no gene
-extraction needed, unlike COVID spike).
-
-Header layout (pipe-delimited, DIFFERENT from COVID's date|length|country):
-    >ACCESSION |description|LOCATION|DATE|COUNTRY|LENGTH
-      field 2 = LOCATION  ("USA: California", "Botswana: Gaborone", "Kenya", ...)
-      field 3 = DATE      ("2024-06-27" / "2023-04" / "2024")
-      field 4 = COUNTRY   ("USA", "Botswana", "Kenya", ...)
-
-Grouping (per user's design):
-  * Group unit = the fine LOCATION (field 2, normalized) when that location has
-    >= LOC_MIN sequences; otherwise the sequence falls back to its COUNTRY
-    (field 4) so small sub-locations still pool into viable trees.
-  * Within each unit, order by collection date and chunk into date-contiguous
-    trees of ~GROUP_SIZE (kept within [MIN_GROUP, GROUP_SIZE]); this yields e.g.
-    "Kenya 2022-2024"-style trees.
-
-Split: GEOGRAPHIC hold-out (like COVID). Whole units go entirely to train / val
-/ test, targeting ~80/10/10 by sequence count via a greedy largest-first
-allocation -- no location appears in two splits, so val/test are unseen places.
-
-Output (compatible with run_all_groups.py, exactly like prepare_covid_geo.py):
-    data/h1n1/{split}/h1n1{split}_group_NNN.fasta   ( >ACC,DATE\nSEQ )
-    data/h1n1/{split}/h1n1{split}_group_NNN.csv     ( name,date )
-
-Then: run_all_groups.py --data-dir data/h1n1/{split} --prefix h1n1{split}
+Output: ``data/h1n1``.
 """
 
 import argparse

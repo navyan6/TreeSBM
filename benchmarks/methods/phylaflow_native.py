@@ -1,23 +1,6 @@
-"""
-Native PhylaFlow Table-2 row (`phylaflow`).
+"""PhylaFlow baseline using native sampled topologies.
 
-Uses trees produced by the official PhylaFlow sampler (topology + branch lengths
-from BHV flow matching). This is NOT root-conditioned forward generation —
-PhylaFlow transports random starts toward a posterior basin for a fixed
-alignment / bank case. For a fair Table-2 comparison the offline bank must be
-built from **our H3N2 train** data (same empirical distribution as TreeSBM /
-n≈97 eval) — not PhylaFlow paper DS1–8. For the held-out-root table we:
-
-  1. Offline: train + sample in the PhylaFlow repo on an H3N2 size-N bank →
-     dump newicks (with BLs).
-  2. Convert dumps → `benchmarks/external_pools/sampled/phylaflow_N{N}.nwk`
-     (see `external_adapters/phylaflow_sample.py --keep-branch-lengths`).
-  3. At request time: draw a size-N tree from that pool, rescale BLs so mean
-     root-to-tip == H (validity), evolve sequences from `root_seq` with the
-     shared JTT adapter (PhylaFlow does not emit novel AA sequences).
-
-Contrast `phylaflow_adapted` (TopologyPriorMethod): same pool topologies but
-shared BranchLengthAdapter instead of PhylaFlow BLs.
+Loads PhylaFlow trees and applies the shared branch-length adapter when needed.
 """
 
 from __future__ import annotations

@@ -1,24 +1,4 @@
-"""
-SARS-CoV-2 spike domain bands in Wuhan-Hu-1 / UniProt P0DTC2 coordinates.
-
-Indexing (see results/covid_mutfreq_vs_lit/COORD_VALIDATION.json):
-  - spike positions are **1-based**
-  - MSA / tensor columns are **0-based**; col = spike_pos - 1
-  - absolute columns are homologous only for ungapped full-length L=1273
-    (indel-shifted shorter seqs are approximate)
-
-Standard approximate domain spans (inclusive 1-based), cross-checked against
-PMC10142771 / PAPER_INSIGHTS (RBD ~319–541; NTD–RBD contact cited near 333–528;
-RBM loop highlighted around S477–G485; we use the conventional RBM band 438–506):
-
-Landmarks (1-based Wuhan / P0DTC2; WT AA on full-length ungapped spike):
-  NTD:   A222, L212
-  RBD:   K417, L452, E484, N501, …
-  RBM:   S477–G485 flexible ACE2-contact loop
-  furin: P681 / PRRAR↓S S1/S2 cleavage motif neighborhood (680–685)
-  S1/S2: boundary at 685/686 (furin cut → S2 starts 686)
-  fitness: D614G (col 613)
-"""
+"""SARS-CoV-2 Spike domain bands in Wuhan-Hu-1 / UniProt P0DTC2 coordinates."""
 
 from __future__ import annotations
 

@@ -1,25 +1,7 @@
 #!/usr/bin/env python3
-"""
-Prepare the geographically-split COVID Spike dataset for the TreeSBM pipeline.
+"""Prepare a geographically split COVID Spike dataset.
 
-Raw data (data/covid/train/*_covid_seqs.fasta) is complete SARS-CoV-2 genomes
-tagged with |date|length|country in the header; covid_extract_spike.py pulls
-out the Spike CDS per accession (data/covid/train/{region}_spike.fasta). This
-script joins that back to date/country, groups sequences into single-country,
-date-ordered trees of ~group-size leaves, and assigns each COUNTRY (not each
-sequence) to train/val/test -- so val/test are held-out populations, unlike
-H3N2's held-out time window. New raw *_covid_seqs.fasta files dropped into
-data/covid/train/ are picked up automatically on the next run.
-
-Pipeline:
-  1. covid_extract_spike.py (nextclade)  -> data/covid/train/{region}_spike.fasta
-  2. this script                          -> data/covid/{split}/covid{split}_group_NNN.fasta(+.csv)
-  3. run_all_groups.py --data-dir data/covid/{split} --prefix covid{split}  (unchanged)
-
-Splits (geographic, confirmed design -- sized for ~80/10/10 by sequence count):
-  val   = Australia   (9,971  / 110,332 = 9.0%)
-  test  = Brazil       (11,907 / 110,332 = 10.8%)
-  train = every other country (~80.2%; grows as more raw files are added)
+Groups sequences by country (date-ordered chunks). Output: ``data/covid``.
 """
 
 import argparse

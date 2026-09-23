@@ -1,57 +1,13 @@
 #!/usr/bin/env python3
-"""
-Convert an official EVEscape per-substitution CSV into a static [max_seq_len, 20]
-score tensor aligned to the TreeSBM column frame.
+"""Build a static [L, 20] EVEscape score tensor from the official CSV.
 
-EVEscape is an EXTERNAL EVALUATOR of generated lineages (score escape of
-generated mutations), NOT baked into the reference process R0.
+Writes a ``.pt`` matrix aligned to the pathogen sequence length. Use a
+pathogen-matched matrix (Spike RBD vs flu HA) at eval time.
 
----------------------------------------------------------------------------
-Score scale (IMPORTANT — do not confuse with EVE or [0,1] logistics)
----------------------------------------------------------------------------
-Official EVEscape (Thadani et al., Nature 2023) for each mutant is:
+Example::
 
-    evescape = log σ(z(fitness_eve)/T_f)
-             + log σ(z(accessibility_wcn)/T_a)
-             + log σ(z(dissimilarity)/T_d)
-
-where σ is logistic, z is standardization across mutants, and T_* are
-temperatures. The final score is therefore a **sum of three log-probabilities**:
-typically **negative and NOT in [0,1]** (flu H1 / Spike RBD means ≈ −2.3).
-
-Do NOT confuse with:
-  - fitness_eve / evol_indices  → raw EVE (flu mean ≈ −11; Spike ≈ −6)
-  - σ(z(component))             → intermediate terms in (0,1)
-  - a second z-score of evescape → destroys the paper scale (avoid)
-
-Default here is **--no-standardize**: keep the official ``evescape`` column as-is.
-Pass ``--standardize`` only if you deliberately want a z-scored lookup table.
-
-Preferred CSVs (Marks release, already include all three components):
-  https://github.com/OATML-Markslab/EVEscape/tree/main/results/summaries_with_scores
-    flu_h1_evescape.csv          → H1N1 HA (NOT H3N2)
-    spike_rbd_evescape.csv       → SARS-CoV-2 Spike RBD only
-    full_spike_evescape.csv      → full Spike (if needed)
-
-No PDB is required when using those summary CSVs. Recomputing from scratch
-needs PDB + EVE + WT fasta (flu: 1RVX; see EVEscape process_protein_data.py).
-
-Why alignment (not ``position - 1``):
-    Flu EVEscape uses WSN33 / paper WT numbering; our trees are seasonal HA
-    (signal peptide included). Reconstruct EVEscape WT from the CSV and align
-    to our reference to map positions. Strain divergence lowers WT match rate
-    (H1 often ~0.80–0.85) even when homology mapping is correct — that is OK.
-
-Pathogen separation:
-    H1 flu CSV → data/evescape_h1n1_ha.pt (L=566)
-    Spike RBD  → data/covid/evescape_spike_rbd.pt (L=1280)
-    Do not score H1 trees with the Spike RBD matrix (or vice versa).
-
-Output dict:
-    scores [L,20], reference_seq, positions, match_rate, standardized,
-    mean, std, score_col, source_csv, pathogen,
-    optional component tensors: fitness_eve, accessibility_wcn,
-    dissimilarity_charge_hydro (same shape, raw CSV columns, not re-z-scored).
+    python scripts/prepare_evescape.py --csv path/to/evescape.csv \
+        --out data/covid/evescape_spike_rbd.pt --max-seq-len 1280
 """
 
 from __future__ import annotations

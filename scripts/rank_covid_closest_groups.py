@@ -272,10 +272,11 @@ def main() -> None:
             n_gen = len(T.leaf_labels(gen))
             if len(T.leaf_labels(obs)) != n_gen:
                 obs_m = size_match_obs(obs, n_gen, seed=args.obs_subsample_seed)
-                # write matched observed newick via ete-less to_newick
-                (out_dir / f"group_{g3}_observed_matched.nwk").write_text(
-                    T.to_newick(obs_m) + "\n"
-                )
+            else:
+                obs_m = obs
+            (out_dir / f"group_{g3}_observed_matched.nwk").write_text(
+                T.to_newick(obs_m) + "\n"
+            )
 
             src_nwk = Path(r["gen_nwk"])
             src_fa = Path(r["gen_fasta"])

@@ -1,36 +1,5 @@
 #!/usr/bin/env python3
-"""
-Aggregate held-out eval with EVE (Marks lab) evolutionary-index baseline scoring.
-
-Generates a tree from each test root (same path as eval_evescape_enrichment /
-eval_single_tree: load_models, generate_tree, positional_recovery), then optionally
-scores mutations with a precomputed EVE index matrix for Table 7 / B.3 columns.
-
-Precomputed score tensor (--eve-scores):
-    Shape [L, 20], AA order ACDEFGHIKLMNPQRSTVWY (same as EVEscape / TreeSBM).
-    May be a bare tensor or a dict {"scores": Tensor, ...} from prepare_eve_scores.py.
-    Runtime does NOT require the EVE repo when this file is supplied.
-
-Producing the tensor from EVE (offline — see benchmarks/EXTERNAL.md § EVE):
-    git clone https://github.com/OATML-Markslab/EVE $LABHOME/baselines/EVE
-    # MSA from evemodel.org → train_VAE → compute_evol_indices → CSV
-    # HA:   prepare_eve_scores.py → data/h3n2/eve_ha.pt    (L=566)
-    # Spike: prepare_eve_scores.py → data/covid/eve_spike.pt (L=1280)
-
-Metrics when --eve-scores is set:
-  - mean EVE of recovered GT mutations vs random AA @ GT mut sites
-  - Pearson/Spearman of TreeSBM root mut log-probs vs EVE at GT mut sites
-
-Without --eve-scores, mutation recovery / conserved retention / identity still run
-(like eval_evescape_enrichment without --evescape).
-
-Usage:
-    python scripts/eval_eve_baseline.py \\
-        --checkpoint checkpoints/h3n2_v2/best.pt --data data/h3n2/test \\
-        --max-seq-len 566 --eve-scores data/h3n2/eve_ha.pt \\
-        --mutation-rate-scale 0.3 --n-steps 100 --max-trees 20
-    # cluster: sbatch scripts/slurm_eval_eve.sh <ckpt> <data> <eve.pt> [L]
-"""
+"""Held-out eval with EVE evolutionary-index scoring instead of EVEscape."""
 
 import argparse
 import json

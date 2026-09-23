@@ -152,6 +152,14 @@ def build_methods(args, params, esm, train_trees: list[TreeState] | None = None)
         # Native PhylaFlow does not need train_trees (no shared BL fit); adapted
         # rows still skipped until train_trees are loaded.
         pass
+
+    want = getattr(args, "methods", None)
+    if want:
+        allow = set(want)
+        methods = [m for m in methods if m.name in allow]
+        missing = allow - {m.name for m in methods}
+        if missing:
+            print(f"WARNING: requested methods not built: {sorted(missing)}")
     return methods
 
 
@@ -179,18 +187,30 @@ def main():
                          "ARTreeFormer/PhyloVAE/PhylaFlow adapted rows, if pools exist.")
     ap.add_argument("--params", default="benchmarks/results/params.json")
     ap.add_argument("--checkpoint", default=None)
+    ap.add_argument(
+        "--methods", nargs="+", default=None,
+        help="Optional method-name filter (e.g. treesbm). Default: all built methods.",
+    )
     ap.add_argument("--empirical-model", default="JTT")
     ap.add_argument("--N", type=int, nargs="+", default=[16])
     ap.add_argument("--K", type=int, default=100)
     ap.add_argument("--M", type=int, default=50)
     ap.add_argument("--max-roots", type=int, default=100)
-    ap.add_argument("--regimes", nargs="+", default=REGIMES)
+    ap.add_argument(
+        "--regimes", nargs="*", default=None,
+        help="Sim-track regimes (default: all REGIMES). Pass empty (--regimes) "
+             "to skip simulated track entirely (needed when roots contain X).",
+    )
+    ap.add_argument(
+        "--no-sim", action="store_true",
+        help="Skip simulated reference track (empirical RF/quartet/W1/edit only).",
+    )
     ap.add_argument("--no-esm", action="store_true")
     ap.add_argument("--max-seq-len", type=int, default=566,
                     help="ESM logits + TreeSBM RateHeads length "
                          "(H3N2/H1=566, COVID Spike=1280)")
     ap.add_argument("--r0-backend", default=None,
-                    help="Table 7: swap TreeSBM frozen R0 prior.")
+                    help="Swap TreeSBM frozen R0 prior backend.")
     ap.add_argument("--r0-model", default=None)
     ap.add_argument("--fitness-beta", type=float, default=None)
     ap.add_argument("--ablate-bridge", action="store_true")
@@ -199,6 +219,13 @@ def main():
     args = ap.parse_args()
 
     params = json.loads((ROOT / args.params).read_text())
+    if args.no_sim:
+        regimes = []
+    elif args.regimes is None:
+        regimes = list(REGIMES)
+    else:
+        regimes = list(args.regimes)
+    print(f"regimes={regimes or '(none — empirical only)'}")
     esm = None if args.no_esm else ESM(
         "cuda" if _cuda() else "cpu", max_len=args.max_seq_len)
     pool_dir = ROOT / "benchmarks/external_pools/sampled"
@@ -214,27 +241,53 @@ def main():
     with open(out, "w", newline="") as f:
         w = csv.DictWriter(f, fieldnames=FIELDS)
         w.writeheader()
+        f.flush()
         for N in args.N:
             examples = build_examples(ROOT / args.test_data, N, seed=args.seed)[: args.max_roots]
-            print(f"N={N}: {len(examples)} roots x {len(methods)} methods")
+            print(f"N={N}: {len(examples)} roots x {len(methods)} methods", flush=True)
             for ex in examples:
                 target = rebuild_target(ex)
                 root_seq, H = ex["root_seq"], ex["H"]
                 # refs don't depend on method -- compute once per (root, regime),
                 # not once per (root, method, regime) (was a 3x redundant cost).
-                regime_refs = {
-                    regime: simulate_reference(root_seq, N, H, regime, args.M,
-                                               params["birth"], params["death"],
-                                               seed=args.seed + hash(ex["root_id"]) % 9973)
-                    for regime in args.regimes
-                }
+                regime_refs = {}
+                for regime in regimes:
+                    try:
+                        regime_refs[regime] = simulate_reference(
+                            root_seq, N, H, regime, args.M,
+                            params["birth"], params["death"],
+                            seed=args.seed + hash(ex["root_id"]) % 9973,
+                        )
+                    except Exception as e:
+                        print(
+                            f"  SKIP sim regime={regime} root={ex['root_id']}: {e}",
+                            flush=True,
+                        )
                 for method in methods:
                     gens, valids = [], []
                     for k in range(args.K):
-                        g = method.generate(root_seq, N, H, seed=args.seed * 10000 + k)
-                        vr = V.validate(g.tree, root_seq, N, H)
+                        try:
+                            g = method.generate(root_seq, N, H, seed=args.seed * 10000 + k)
+                            vr = V.validate(g.tree, root_seq, N, H)
+                        except Exception as e:
+                            print(
+                                f"  GEN/VALID fail method={method.name} "
+                                f"root={ex['root_id']} k={k}: {e}",
+                                flush=True,
+                            )
+                            continue
                         gens.append(g); valids.append(vr)
                     valid_trees = [g.tree for g, vr in zip(gens, valids) if vr["valid"]]
+                    if not valid_trees and valids:
+                        reasons = {}
+                        for vr in valids:
+                            for r in vr.get("reasons", []) or [str(vr)]:
+                                reasons[r] = reasons.get(r, 0) + 1
+                        print(
+                            f"  0/{len(valids)} valid method={method.name} "
+                            f"root={ex['root_id']} reasons={reasons}",
+                            flush=True,
+                        )
                     base = dict(method=method.name, root_id=ex["root_id"], N=N, H=H,
                                 valid=len(valid_trees), sample_seed=args.seed,
                                 runtime=sum(g.meta.get("runtime", 0.0) for g in gens))

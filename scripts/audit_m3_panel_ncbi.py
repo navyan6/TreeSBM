@@ -48,7 +48,7 @@ PANEL = [
         "max_seq_len": 566,
         "source": "ncbi",
         "query": '"Influenza B virus"[Organism] AND HA[Title] AND 1400:2000[SLEN] AND 2009:2026[PDAT]',
-        "status": "ingested_betty",
+        "status": "ingested",
     },
     {
         "gene_id": "sarscov2_spike",
@@ -152,7 +152,7 @@ def esearch_count(query: str, db: str = "protein") -> int | None:
 
     On macOS Python.org installs, SSL often fails with CERTIFICATE_VERIFY_FAILED
     until `Install Certificates.command` is run (or certifi is used). Prefer
-    running this on Betty / a machine with a working system CA store.
+    running this on a machine with a working system CA store.
     """
     import ssl
     import urllib.error

@@ -2,7 +2,7 @@
 """
 Precompute reference mutation log-rates [N, L, 20] for all groups.
 
-Supports multi-pLM / substitution R0 backends (paper Table 7 / D.1):
+Supports multiple frozen R0 backends:
   --r0-backend esm2|esm2_650m|esmc|jtt|wag|lg|neutral|progen2|evo2
 
 Default ``esm2`` writes legacy ``group_XXX_ref_rates.pt``.

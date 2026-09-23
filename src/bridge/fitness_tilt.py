@@ -1,38 +1,4 @@
-"""
-Paper §4.2 exponential tilting / fitness weighting.
-
-Mutation prior with fitness:
-    Q⁰_F(x, x') ∝ Q⁰(x, x') exp(β F(x'))
-
-Two implementations:
-
-**Option A — ``site_local`` (default, cheap):**
-Treat the ESM site score of amino acid ``a`` as local fitness F for proposing
-``a`` at that position. With score_a = log R0_a or log_softmax(log R0)_a:
-
-    log q_F(a) = log_softmax(log_R0)_a + β · score_a
-    log R0_tilted = log_softmax(log q_F)
-
-**Option B — ``full_esm`` (expensive):**
-F(x') is the full-sequence fitness of the single-AA mutant, scored as mean
-per-position log-prob under an ESM MLM forward of x' (one-pass PLL proxy;
-same convention as ``esm_pll_seq`` / gen fitness gate). For each site i and AA a:
-
-    F_{i,a} = PLL(seq with position i → a)
-    log q_F(i,a) = log_softmax(log_R0)_{i,a} + β · F_{i,a}
-    then re-softmax over AA at each site.
-
-Cost: up to N × L × 19 ESM forwards per tilt call. Mitigations:
-  - LRU / dict cache keyed by (seq, pos, aa)
-  - batched ESM scoring (``batch_size``)
-  - optional ``top_k_aas``: only score the top-k untilted AAs per site;
-    remaining AAs keep untilted log-prob (no β boost)
-
-β = 0 disables tilting (identity). TreeSBM keeps
-log R_θ = log R0_tilted + c_θ.
-
-Poisson branching λ(x) is intentionally NOT implemented here.
-"""
+"""Exponential fitness tilting of reference mutation rates (log R0)."""
 
 from __future__ import annotations
 

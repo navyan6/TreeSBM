@@ -1,24 +1,4 @@
-"""
-Unit tests for benchmarks/metrics/trees.py on a hand-built tree with
-known-by-hand statistics.
-
-Tree:
-        root
-       /    \\
-      a      b        (b is a leaf)
-     / \\
-    c   d              (c, d leaves)
-
-All branch lengths = 1.0.
-Leaves = {b, c, d}.
-Hand-computed:
-  depths: root0 a1 b1 c2 d2
-  Sackin = 2(c)+2(d)+1(b) = 5
-  cherry = 1  (a's children c,d both leaves)
-  Colless = |a=2 leaves - b=1 leaf| + |c=1 - d=1| = 1 + 0 = 1
-  clades  = { {b,c,d} excluded (full set), {c,d} }  -> just {c,d}
-  patristic height = 2 ; topological height = 2
-"""
+"""Unit tests for ``benchmarks.metrics.trees``."""
 
 import sys
 from pathlib import Path

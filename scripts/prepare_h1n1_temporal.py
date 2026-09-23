@@ -1,36 +1,11 @@
 #!/usr/bin/env python3
-"""
-Prepare a TEMPORALLY-split H1N1 HA dataset for flu-season forecasting.
+"""Prepare a temporally split H1N1 HA dataset.
 
-Unlike prepare_h1n1_geo.py (geographic hold-out of locations), this assigns
-sequences by collection year:
+Default cutoffs: train ≤2023, val=2024, test=2025. Output: ``data/h1n1_temporal``.
 
-  train = year <= --train-end-year   (default 2023)
-  val   = --val-year                 (default 2024)
-  test  = years in [test-start, test-end]  (default 2025–2025)
+Example::
 
-Grouping (same as geo prep, for coherent trees):
-  * Unit = fine LOCATION when it has >= loc-min seqs in that split, else COUNTRY
-  * Within each unit, date-order and chunk into trees of ~group-size with
-    max-span-years so each tree is a coherent season window
-
-Does NOT touch data/h1n1/ (geographic) — writes to data/h1n1_temporal/.
-
-Output:
-  data/h1n1_temporal/{split}/h1n1t{split}_group_NNN.fasta (+.csv)
-  data/h1n1_temporal/SPLIT_PROTOCOL.json
-
-Examples:
-  # Next-season forecast (train through 2023, val 2024, test 2025):
-  python scripts/prepare_h1n1_temporal.py
-
-  # Train ≤2022, test 2023–2025 (multi-season):
-  python scripts/prepare_h1n1_temporal.py --train-end-year 2022 --val-year 2023 \\
-      --test-start-year 2024 --test-end-year 2025
-
-Next:
-  scripts/run_all_groups.py --data-dir data/h1n1_temporal/{split} --prefix h1n1t{split}
-  sbatch scripts/slurm_h1n1_temporal_pipeline.sh
+    python scripts/prepare_h1n1_temporal.py
 """
 
 from __future__ import annotations
@@ -244,7 +219,7 @@ def main():
     print(f"Wrote {base / 'SPLIT_PROTOCOL.json'}")
     print("\nNext: run_all_groups.py --data-dir data/h1n1_temporal/{split} "
           "--prefix h1n1t{split}")
-    print("  sbatch scripts/slurm_h1n1_temporal_pipeline.sh")
+    print("Next: run_all_groups → precompute_plm/ref_rates → train.py")
 
 
 if __name__ == "__main__":

@@ -1,26 +1,4 @@
-"""
-Ground-truth mapping: global group number -> source dataset -> protein.
-
-The global `group_NNN` numbering in data/train is a flattened concatenation of
-per-source splits. Each source was processed by run_all_groups.py with a fixed
-`--group-offset` (local group N -> global group N+offset). The offsets are
-authoritative, taken from scripts/slurm_pipeline_all.sh:
-
-    master_h3n2             offset   0   ->  groups   1- 48   (H3N2 HA)
-    h3n2_swine_all          offset  48   ->  groups  49- 55   (H3N2 swine HA)
-    avian_h1n1_2010_2020_HA offset  55   ->  group   56       (H1N1 HA)
-    h1n1_human_ha_2010_2017 offset  56   ->  groups  57-106   (H1N1 HA)
-    human_h1n1_NA_2005_2015 offset 106   ->  groups 107-156   (NA)
-    human_h1n1_2015_2018    offset 156   ->  groups 157-206   (H1N1 HA)
-    fluB_yamagata_alltime   offset 206   ->  groups 207-238   (Flu B HA)
-    fluB_victoria_all       offset 238   ->  groups 239-284   (Flu B HA)
-
-Verified: group_001_aligned.fasta is byte-identical to
-master_h3n2_group_001_aligned.fasta, and the ranges sum to 284 groups.
-
-General group->source/protein utility: per-subtype train/eval splits, and
-selecting the H3N2 HA groups that EVEscape (external evaluator) applies to.
-"""
+"""Map global group IDs to source dataset and protein."""
 
 # (source, protein, first_global, last_global)  — inclusive, 1-indexed
 SOURCE_RANGES = [

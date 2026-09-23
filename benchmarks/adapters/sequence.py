@@ -26,6 +26,20 @@ AA_TO_IDX = {a: i for i, a in enumerate(AA_VOCAB)}
 
 # ── pyvolve: neutral / empirical AA substitution ─────────────────────────────
 
+def sanitize_aa_for_pyvolve(root_seq: str) -> str:
+    """Map gaps / X / non-canonical residues to a standard AA so pyvolve accepts the root.
+
+    ASR trees often carry ``X`` (ambiguous) or ``-``; pyvolve's 20-letter alphabet
+    rejects those and aborts NeutralBD / ARTreeFormer sequence adapters.
+    """
+    counts: dict[str, int] = {}
+    for ch in root_seq.upper():
+        if ch in AA_TO_IDX:
+            counts[ch] = counts.get(ch, 0) + 1
+    fill = max(counts, key=counts.get) if counts else "A"
+    return "".join(ch if ch in AA_TO_IDX else fill for ch in root_seq.upper())
+
+
 def evolve_pyvolve(topology: TreeState, root_seq: str, model: str = "JTT",
                    seed: int = 0) -> dict[str, str]:
     """
@@ -34,6 +48,8 @@ def evolve_pyvolve(topology: TreeState, root_seq: str, model: str = "JTT",
     exchangeabilities (a flat CTMC).
     """
     import pyvolve
+
+    root_seq = sanitize_aa_for_pyvolve(root_seq)
 
     # pyvolve rejects the internal NODE_* labels our TreeState serializer emits
     # for adapted-topology rows; keep branch lengths but omit internal labels.

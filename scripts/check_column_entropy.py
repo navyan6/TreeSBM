@@ -1,21 +1,5 @@
 #!/usr/bin/env python3
-"""
-Sanity check: mean column Shannon entropy is higher on mutating sites than conserved.
-
-Uses the same empirical column entropy as training
-(`scripts/train.py::compute_empirical_column_entropy`, normalized by log(20)).
-
-Site labels (train split only):
-  mutating  — root ≠ some descendant at that column in ≥1 tree
-              (or parent→child mut frequency > 0 if --label-mode mut_freq)
-  conserved — never differs (or mut frequency == 0)
-
-Pass criterion: mean(entropy | mutating) > mean(entropy | conserved) + margin.
-
-Usage:
-  python scripts/check_column_entropy.py --data data/train --max-seq-len 566
-  python scripts/check_column_entropy.py --data data/covid/train --max-seq-len 1280
-"""
+"""Compare column Shannon entropy on mutating vs conserved alignment sites."""
 
 from __future__ import annotations
 

@@ -1,24 +1,5 @@
 #!/usr/bin/env python3
-"""
-Extract the Spike (S) gene CDS from raw whole-genome SARS-CoV-2 FASTAs.
-
-The raw files in data/covid/train/*_covid_seqs.fasta are complete ~29.9kb
-genomes (unlike H3N2's already-single-segment HA data), so TreeSBM needs one
-extra step before grouping: reference-coordinate-align each genome with
-nextclade, then slice out the Spike CDS by its known reference coordinates
-(Wuhan-Hu-1 / NC_045512.2, CDS 21563-25384, 1-based inclusive -- the
-standard annotation used throughout SARS-CoV-2 genomics). nextclade puts
-every input sequence into that same reference coordinate frame, so a fixed
-column slice recovers each sequence's own Spike region, gaps stripped.
-
-One-time setup (cluster, treesbm env):
-    conda install -n treesbm -c bioconda -c conda-forge nextclade
-    nextclade dataset get --name sars-cov-2 --output-dir data/covid/nextclade_dataset
-
-Usage:
-    python scripts/covid_extract_spike.py data/covid/train/africa_covid_seqs.fasta
-    # -> data/covid/train/africa_spike.fasta (ungapped in-frame nt CDS, id = accession)
-"""
+"""Extract Spike (S) CDS from whole-genome SARS-CoV-2 FASTAs."""
 
 import argparse
 import os

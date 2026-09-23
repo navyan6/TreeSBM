@@ -1,26 +1,10 @@
 #!/usr/bin/env python3
 """
-Algorithm 3 ReferenceRollout — paper Table 7 / D.1 / D.2 reference-only rows.
+Algorithm 3: reference-process rollout (frozen R0, no learned correction).
 
 Generates trees under P^0 without TreeSBM bridge control:
   Q^0 from --r0-backend (± --fitness-beta tilt) + Poisson λ branching.
 
-Examples (map to paper rows):
-  # D.2: pLM mutation only (no fitness, constant λ≈0 → mostly linear)
-  python scripts/reference_rollout.py --root-seq $SEQ --r0-backend esm2 \\
-      --fitness-beta 0 --ref-lambda 0.05 --out ref_plm_only.nwk
-
-  # D.2 / Table 7: ESM-2 + fitness
-  python scripts/reference_rollout.py --root-seq $SEQ --r0-backend esm2_650m \\
-      --fitness-beta 1.0 --ref-lambda 1.0 --out ref_esm2_fit.nwk
-
-  # D.2: pLM + seq-dep branching (MLP needs --branch-mlp-ckpt; else constant λ)
-  python scripts/reference_rollout.py --root-seq $SEQ --r0-backend esmc \\
-      --fitness-beta 0 --ref-lambda 1.5 --out ref_esmc_branch.nwk
-
-  # Table 7 substitution-only
-  python scripts/reference_rollout.py --root-seq $SEQ --r0-backend jtt \\
-      --fitness-beta 0 --ref-lambda 1.0 --out ref_jtt.nwk
 """
 
 from __future__ import annotations

@@ -1,13 +1,5 @@
 #!/usr/bin/env python3
-"""
-Merge H3N2 + H1N1 (+ optional Flu B) HA pools for pan-flu forecast training.
-
-Writes per-subtype inventory FASTAs under data/panflu_pool/ and a master protocol.
-Headers: >ACCESSION,DATE,subtype={h3n2|h1n1|flub}
-
-Prereq: existing temporal/geo pools on Betty (data/h3n2, data/h1n1) or raw FASTA.
-Flu B: ingest to data/flub/train/flubtrain.fasta if missing (GISAID/NCBI).
-"""
+"""Merge H3N2 + H1N1 (+ optional Flu B) HA pools for multi-subtype training."""
 
 from __future__ import annotations
 

@@ -1,36 +1,8 @@
 #!/usr/bin/env python3
-"""
-Prepare a TEMPORALLY-split COVID Spike dataset for forecasting evals.
+"""Prepare a temporally split COVID Spike dataset.
 
-Unlike prepare_covid_geo.py (country hold-out: val=Australia, test=Brazil),
-this assigns sequences by collection year:
-
-  train = year <= --train-end-year   (default 2022)
-  val   = --val-year                 (default 2023)
-  test  = years in [test-start, test-end]  (default 2024–2025)
-
-Grouping: still single-country, date-ordered trees of ~group-size leaves
-(same shape as geo prep) so each tree is a coherent local outbreak window
-within one year-band. Groups never cross the temporal cutoffs.
-
-Prereq:
-  sbatch scripts/slurm_covid_extract.sh   # -> data/covid/train/{region}_spike.fasta
-
-Does NOT touch data/covid/{train,val,test} geographic dirs — writes to
-data/covid_temporal/.
-
-Output:
-  data/covid_temporal/{split}/covidt{split}_group_NNN.fasta (+.csv)
-  data/covid_temporal/SPLIT_PROTOCOL.json
-
-Examples:
-  python scripts/prepare_covid_temporal.py
-  python scripts/prepare_covid_temporal.py --train-end-year 2023 --val-year 2024 \\
-      --test-start-year 2025 --test-end-year 2025
-
-Next:
-  scripts/run_all_groups.py --data-dir data/covid_temporal/{split} --prefix covidt{split}
-  sbatch scripts/slurm_covid_temporal_pipeline.sh
+Requires Spike FASTAs from ``covid_extract_spike.py``. Default cutoffs:
+train ≤2022, val=2023, test=2024–2025. Output: ``data/covid_temporal``.
 """
 
 from __future__ import annotations
@@ -222,7 +194,7 @@ def main():
     print(f"Wrote {base / 'SPLIT_PROTOCOL.json'}")
     print("Next: run_all_groups.py --data-dir data/covid_temporal/{split} "
           "--prefix covidt{split}")
-    print("  sbatch scripts/slurm_covid_temporal_pipeline.sh")
+    print("Next: run_all_groups → precompute_plm/ref_rates → train.py")
 
 
 if __name__ == "__main__":

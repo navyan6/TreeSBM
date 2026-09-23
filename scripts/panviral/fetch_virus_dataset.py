@@ -1,33 +1,5 @@
 #!/usr/bin/env python3
-"""
-Stage 2 of the pan-viral pipeline: turn one virus taxon into tree-ready groups.
-
-Produces the exact layout scripts/run_all_groups.py consumes --
-{prefix}_group_{NNN}.fasta plus a matching .csv of name,date -- so stage 3 is
-the existing pipeline with no changes.
-
-Three things make this harder than "download some sequences":
-
-1. Most GenBank virus records carry no CDS annotation at all, so the protein of
-   interest cannot be read off the record. The annotated RefSeq defines the
-   coordinates instead, and every genome is aligned into that frame with
-   `mafft --keeplength --addfragments`. This is what covid_extract_spike.py does
-   with nextclade, but nextclade only ships datasets for a handful of viruses,
-   and this has to work for anything.
-
-2. Flaviviruses annotate one ~10 kb polyprotein CDS, so naively taking a CDS
-   gives the whole polyprotein rather than the envelope protein. When the chosen
-   CDS looks like a polyprotein we descend into its mat_peptide features.
-
-3. TreeTime needs real dates and the splits need geography, so records without a
-   resolved collection date or a country are dropped before grouping.
-
-Groups are (country, time window) buckets -- "Ebola, 2016-2017, Sierra Leone" --
-which keeps a tree within one population's actual transmission chain instead of
-mixing unrelated lineages.
-
-    python scripts/panviral/fetch_virus_dataset.py --taxid 186538 --name ebola
-"""
+"""Panviral stage 2: download and form tree-ready groups for one virus taxon."""
 
 from __future__ import annotations
 

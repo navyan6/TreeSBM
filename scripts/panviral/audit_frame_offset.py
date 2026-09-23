@@ -1,29 +1,5 @@
 #!/usr/bin/env python3
-"""
-Decide, per dataset, whether the gap-aware retranslation is the right repair.
-
-The gap-aware translator only produces correct protein if column 0 of the
-alignment is the first base of a codon. That held for COVID because the spike
-alignment is reference-anchored. It is not safe to assume elsewhere: two of
-these alignments have widths that are not multiples of three, which is already
-evidence that the window was not cut on codon boundaries.
-
-So for each dataset this reports three things.
-
-1. Reading frame. Translate the modal full-length leaf at column offsets 0, 1
-   and 2 and count internal stop codons. A correct frame gives essentially one
-   terminal stop; a wrong frame scatters stops every ~21 codons.
-
-2. Gap topology. A gap run at the start or end of a sequence is ragged
-   sequencing coverage -- the leaf simply does not cover the whole gene. An
-   internal run is a deletion or an alignment artifact. These need different
-   handling and conflating them is how the COVID bug survived so long: a
-   leading gap run whose length is not a multiple of three silently shifts the
-   whole downstream translation when gaps are stripped.
-
-3. Protein sanity. Modal length of the existing aa file against what the frame
-   implies, so a repair that "succeeds" while producing nonsense is visible.
-"""
+"""Audit whether gap-aware ancestral retranslation is needed per dataset."""
 
 from __future__ import annotations
 

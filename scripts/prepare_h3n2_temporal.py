@@ -1,41 +1,12 @@
 #!/usr/bin/env python3
-"""
-Prepare a temporally-split H3N2 HA dataset for TreeSBM forecasting evals.
+"""Prepare a temporally split H3N2 HA dataset.
 
-Default protocol (next-season / next-few-seasons flu forecast):
-  train = years <= --train-end-year   (default 2022)
-  val   = --val-year                  (default 2023)
-  test  = years in [--test-start-year, --test-end-year]  (default 2024–2024)
+Default cutoffs: train ≤2022, val=2023, test=2024. Writes groups under
+``--out-base`` (default ``data/h3n2``) plus ``SPLIT_PROTOCOL.json``.
 
-Groups are date-ordered chunks of --group-size sequences within each split.
-A group inherits the season window of its constituent sequences (all sequences
-in a split share the same year-cutoff band; within-split groups are contiguous
-in collection date, typically spanning weeks–months of one flu season).
+Example::
 
-Output layout (gitignore this):
-  {out-base}/train/h3n2train_group_NNN.fasta (+ .csv)
-  {out-base}/val/h3n2val_group_NNN.fasta
-  {out-base}/test/h3n2test_group_NNN.fasta
-  {out-base}/SPLIT_PROTOCOL.json   # cutoffs + window mapping
-
-Recommended dirs:
-  data/h3n2                      — default historical protocol (train≤2022 / val2023 / test2024)
-  data/h3n2_temporal_forecast    — e.g. train≤2023 / val empty or 2024 / test 2025
-
-Examples:
-  # Classic (reuse data/h3n2):
-  python scripts/prepare_h3n2_temporal.py
-
-  # Forecast into 2025 with train through 2023:
-  python scripts/prepare_h3n2_temporal.py \\
-      --out-base data/h3n2_temporal_forecast \\
-      --train-end-year 2023 --val-year 2024 \\
-      --test-start-year 2025 --test-end-year 2025
-
-Downstream:
-  run_all_groups.py --data-dir {out}/train --prefix h3n2train   (+ val, test)
-  precompute_plm.py / precompute_ref_rates.py --data {out}/{split}
-  train.py --data {out}/train --val-data {out}/val --test-data {out}/test
+    python scripts/prepare_h3n2_temporal.py
 """
 
 from __future__ import annotations
@@ -261,7 +232,7 @@ def main():
         split_fasta_by_date(str(pool), args.group_size, str(out_dir))
 
     print("\nDone. Next: run_all_groups.py --data-dir on each non-empty split dir.")
-    print(f"  sbatch scripts/slurm_h3n2_pipeline.sh   # if out-base=data/h3n2")
+    print("Next: run_all_groups → precompute_plm/ref_rates → train.py")
     print(f"  # or edit prefixes/dirs for {args.out_base}")
 
 

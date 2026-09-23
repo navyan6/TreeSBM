@@ -1,24 +1,5 @@
 #!/usr/bin/env python3
-"""
-Algorithm 4: Controlled tree generation. 
-
-Starting from a root sequence, generates a bifurcating phylogenetic tree by
-sampling from R_theta(T, T', t) = R0(T, T') * exp(c_theta(T, t)).
-
-Mutation sampling:
-  For each position pos, the probability of a mutation in step dt is
-  (1 - p_current_aa) * dt, where p_current_aa = softmax(log_R_theta_mut)[pos, current_aa].
-  Positions the model is confident about mutate rarely (conserved pos); uncertain ones mutate more.
-
-Bifurcating constraint: sampled child count is clamped to max 2.
-
-Usage:
-    python scripts/generate_tree.py \\
-        --checkpoint checkpoints/best.pt \\
-        --root-seq ACDEFG \\
-        --n-steps 50 \\
-        --output generated_tree.nwk
-"""
+"""Controlled tree generation from a root sequence and TreeSBM checkpoint."""
 
 import argparse
 import math
@@ -403,7 +384,7 @@ def main():
         "--r0-backend",
         default=None,
         help="Frozen R0 prior for live logits (default: checkpoint config, else esm2). "
-             "Table 7: esm2 / esm2_650m / esmc / jtt / wag / lg.",
+             "Frozen R0 backend: esm2 / esm2_650m / esmc / jtt / wag / lg.",
     )
     parser.add_argument(
         "--r0-model",

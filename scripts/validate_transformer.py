@@ -1,31 +1,7 @@
 #!/usr/bin/env python3
-"""
-Frozen-embedding linear-probe suite for the node encoder / graph transformer.
+"""Linear-probe suite for the node encoder / graph transformer.
 
-Paper mapping: Appendix Table J.1 — does GraphTF add information beyond sequence
-embeddings? Freeze each embedding source, train linear heads only.
-
-Targets / metrics:
-  leaf vs internal          AUROC, F1
-  node depth                R², MAE
-  root-to-node distance     R², MAE
-  subtree size              R², Spearman
-  number of children        Acc, macro-F1
-  parent-child pairs        AUROC
-  Hamming to parent         R², MAE
-  substitutions from root   R², MAE
-  mutated residue position  Acc, macro-F1  (single-substitution edges)
-  ancestral AA identity     Acc, macro-F1  (single-substitution edges)
-
-Baselines (frozen sources):
-  plm                 raw ESM-2
-  topological_only    structural + Laplacian PE
-  esm_branch          ESM + structure/PE + branch length + root distance (no MP)
-  node_encoder        trained NodeEncoder (checkpoint)
-  graph_transformer   trained GraphTF (checkpoint)
-  graph_random        randomly initialized GraphTF
-
-Outputs (CSV / JSON) are written for appendix paste-in — do not invent numbers.
+Trains simple probes on frozen embeddings and writes CSV/JSON metrics.
 """
 
 from __future__ import annotations

@@ -1,33 +1,7 @@
-"""
-Literature antigenic HA sites from Li et al., Nat Microbiol 2016
-(nmicrobiol201658 / PMID 27572841 / PMC5087998).
+"""Literature antigenic HA site lists (Li et al., Nat Microbiol 2016).
 
-STRICT SEPARATION: this module is FLU-ONLY. Never import into COVID PMC
-pipelines; never mix with results/covid_mutfreq_vs_lit/ spike/RBD masks.
-
-PROVENANCE / GAPS:
-  - Cursor upload ``nmicrobiol201658-0.md`` is a Nature **paywall stub**
-    (abstract + access options + figure titles + supp table titles + refs).
-    It does NOT contain the full Results body or XLSX mutation tables.
-  - Site lists below were curated from the **Cambridge institutional author
-    manuscript** of the same DOI (repository bitstream; same article as
-    Nature Microbiology 1:16058), plus figure legends that list TX/50 escape
-    genotypes (#1–#29). Supplementary XLSX tables 5/8–11/15/20–21/23–24 were
-    **not** downloaded — frequency-ranked full escape catalogs are a GAP.
-  - Do NOT invent additional sites beyond those manuscript sources.
-
-Numbering:
-  H3: mature HA1 H3 numbering (residue 1 = first AA after 16-aa signal).
-  H1: mature HA H1 numbering as used in the paper (Sa/Sb sites).
-
-Our TreeSBM H3N2 columns are full-length HA ORF including the signal peptide
-(L≈566). Convert with:
-  col_0based = h3_pos + SIGNAL_LEN - 1
-  orf_1based = h3_pos + SIGNAL_LEN
-where SIGNAL_LEN = 16 for H3 (MKTIIALSYILCLVFA → QKLPGNDNSTATLCL…).
-
-H1 pdm09 typically uses a 17-aa signal; do NOT reuse H3 offsets for H1 masks
-without validate_ha_coords.py --subtype h1.
+Flu HA only. Converts mature H3/H1 numbering to full-ORF column indices
+(including signal peptide).
 """
 
 from __future__ import annotations
@@ -162,7 +136,7 @@ H1_FIELD_GUIDANCE = [
 ]
 
 # pdm09 antigenic-site cores in **orf_met** numbering (Frontiers Immunol 2017
-# Table 1 / Caton sites remapped to A/California/07/2009-like frame). Validated
+# Caton antigenic sites remapped to A/California/07/2009-like frame). Validated
 # against data/h1n1 geo consensus (Cb=LSTARS, Ca2a=CPHAGA, Sa_b=VKKGN, …).
 H1_ANTIGENIC_SITES_ORF_MET: dict[str, list[int]] = {
     "Cb": list(range(87, 93)),
@@ -376,7 +350,7 @@ def ha_region_annotations(
         "notes": (
             "HA_head = globular-head library span H3 #63–252 "
             "(mut_hotspot_mask_h3_globular_head.pt). HA_RBS = landmark "
-            "site-set Y98/W153/H183/Y195/N225. STRICT SEPARATION from "
+            "site-set Y98/W153/H183/Y195/N225. Distinct from "
             "COVID spike/RBD bands. Do not reuse H3 offsets for H1."
         ),
     }

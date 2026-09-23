@@ -1,27 +1,8 @@
 #!/usr/bin/env python3
-"""
-Pan-flu forecast holdout splits (calendar 2020 + NH season 2019-2020 + subtype rotation).
+"""Build pan-flu forecast holdout splits.
 
-Train-pool ablation:
-  h3n2       — H3N2 only
-  h3n2_h1n1  — H3N2 + H1N1
-  panflu     — H3N2 + H1N1 + FluB (requires data/flub or --panflu-pool)
-
-Test holdout (one subtype at a time):
-  --test-subtype h3n2|h1n1|flub
-  --test-mode calendar|season
-  --test-year 2020  OR  --test-season 2019-2020
-
-Trees: one FastTree group = (subtype, NH season) when pool has multiple subtypes.
-
-Output example:
-  data/panflu_forecast_h3n2_cal/   (train_pool=panflu, test=H3N2 calendar 2020)
-  data/h3n2_forecast_2020_cal/   (--alias-out for row B0 baseline)
-
-Matrix rows (checkpoint names in protocol):
-  B0 h3n2_only → H3N2 cal 2020
-  B1 h3n2_only → H3N2 season 2019-20
-  G1 dual → H3N2 cal; G2 dual → H1N1 cal; G3-G7 pan-flu variants
+Calendar-year and Northern-Hemisphere season tests with subtype rotation.
+Writes matrix dirs and ``SPLIT_PROTOCOL.json``.
 """
 
 from __future__ import annotations
@@ -84,10 +65,14 @@ def assign_record(
     if test_mode == "calendar":
         if subtype == test_subtype and y == test_year:
             return "test"
-        if y <= train_end_year:
+        # Val = final pre-holdout year of non-test subtypes (was previously
+        # unreachable because y <= train_end_year always hit train first).
+        if y < train_end_year:
             return "train"
-        if y == train_end_year and subtype != test_subtype:
-            return "val"
+        if y == train_end_year:
+            if subtype != test_subtype:
+                return "val"
+            return "train"
         return None
 
     if subtype == test_subtype and season == test_season:

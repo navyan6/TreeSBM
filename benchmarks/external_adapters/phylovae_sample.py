@@ -1,39 +1,12 @@
 #!/usr/bin/env python3
-"""
-Sample K new topologies from a trained PhyloVAE model.
+"""Sample topologies from a trained PhyloVAE checkpoint.
 
-Not autoregressive like ARTreeFormer: LVMTree.forward() only *evaluates*
-existing tree vectors against a given z, it never exposes an unconditional
-"sample a new tree" method (main.py only has train/test/rep modes -- `rep`
-computes 2D embeddings of *existing* training-set topologies, not new
-samples). The actual generative process, traced from LVMTree itself:
-    z ~ N(0, I)                                  (the VAE prior)
-    latent_logits = decoder(z)                   [K, (ntips-3)*(ntips-1)]
-    cond_probs_mat = cond_prob_mat(latent_logits) [K, ntips-3, 2*ntips-4]
-then each of the (ntips-3) attachment decisions is drawn *independently*
-from its row of cond_probs_mat (all conditioned on the same z, not on each
-other -- the continuous latent is what's supposed to capture the
-correlation between decisions), and decoded to a tree via vec2tree(), the
-exact inverse of the tree2vec() encoding process_data() used to build the
-training vectors in the first place. Verified the edge_mask valid-position
-arithmetic matches vec2tree's construction step-for-step (row i has
-2i+3 valid positions matching an (i+3)-taxon tree's edge count; total
-valid positions ((ntips-3)(ntips-1)/2 summed) exactly equals the decoder's
-flat output dim) -- not executed against a real checkpoint, so verify the
-first sampled pool looks sane (right leaf count, no crashes) before trusting
-it at scale.
+Run from the upstream PhyloVAE repo root so local imports resolve.
 
-COPY THIS FILE into the PhyloVAE repo root before running (needs
-`from src.latent_tree_model import VAETree`, same as main.py). Run in the
-phylovae conda env.
+Example::
 
-Usage (from PhyloVAE repo root; base.mode/data.* args just need to match
-whatever was used for training, only to load the same architecture):
-    python phylovae_sample.py \
-        base.mode=train data.dataset=DATASET data.rep_id=1 \
-        decoder.num_layers=4 decoder.latent_dim=2 objective.batch_size=10 objective.n_particles=32 \
-        --checkpoint results/tde/DATASET/rep_1/.../final.pt \
-        --ntips 16 --n-samples 300 --out ../pools/phylovae_N16.nwk
+    python phylovae_sample.py --checkpoint model.pt --ntips 16 \
+        --n-samples 300 --out phylovae_N16.nwk
 """
 
 import argparse

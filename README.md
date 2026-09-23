@@ -77,10 +77,7 @@ python scripts/eval_test_set.py \
 
 ## Data splits
 
-Prior (geo / temporal) and epidemic holdout protocols:
-
-- [`benchmarks/SPLITS.md`](benchmarks/SPLITS.md)
-- [`benchmarks/EPIDEMIC_TREE_SPLITS.md`](benchmarks/EPIDEMIC_TREE_SPLITS.md)
+See [`benchmarks/SPLITS.md`](benchmarks/SPLITS.md) for temporal, geographic, holdout, and epidemic prep.
 
 ## Repository layout
 

@@ -1,49 +1,13 @@
 #!/usr/bin/env python3
-"""
-Table 3 coverage curves on H3N2 held-out roots.
+"""Coverage curves on held-out roots.
 
-Generates K_max trees per (root, N, H) for NeutralBD / PLMPrior /
-artreeformer_adapted / TreeSBM, then scores prefixes K = K_step … K_max.
+For each root, generate up to K_max trees per method and score coverage at
+prefixes K = K_step … K_max. Writes CSV/JSON under the chosen output directory.
 
-Primary curve metrics (leaf pool over the first K trees):
-  - coverage_obs_e{E}     fraction of observed leaves within E AA of some gen leaf
-  - frac_gen_e{E}         fraction of gen leaves within E AA of some observed leaf
-  - coverage_obs_unique_e{E}  same as coverage_obs but over unique obs sequences
-  - clade_recall          fraction of GT mutational clades hit by ≥1 gen leaf
-  - coverage / eps_frac   legacy fractional Coverage@ε (Track A default 0.02)
-  - mean_min_edit, site_recall, …
+Example::
 
-See checkpoints/COVERAGE_REDEFINITION_BRAINSTORM.md for set notation.
-
-Tree cache (recommended for TreeSBM):
-  --cache-dir DIR   save each TreeState JSON for later rescoring
-  --rescore-from DIR  skip generation; reload trees and recompute metrics
-
-    # NeutralBD only, tiny smoke (CPU):
-    python benchmarks/coverage_curves.py \
-        --test-data data/h3n2/test --params benchmarks/results/params.json \
-        --N 16 --K-max 20 --K-step 10 --max-roots 2 --methods neutral_bd \
-        --no-esm --e-list 0 1 2 3 5 --out benchmarks/results/coverage_curves_smoke.csv
-
-    # Full 5-root × methods on Betty (GPU for PLM + TreeSBM), with cache:
-    python benchmarks/coverage_curves.py \
-        --test-data data/h3n2/test --train-data data/h3n2/train \
-        --params benchmarks/results/params.json \
-        --N 16 --K-max 100 --K-step 10 --max-roots 5 \
-        --methods neutral_bd plm_prior artreeformer_adapted treesbm \
-        --checkpoint checkpoints/h3n2_v3_lit_hotspot/best.pt \
-        --e-list 0 1 2 3 5 8 10 \
-        --cache-dir benchmarks/results/coverage_cache_h3n2_N16 \
-        --out benchmarks/results/coverage_curves_h3n2_N16_eabs.csv
-
-    # Rescore only (after cache exists):
-    python benchmarks/coverage_curves.py \
-        --test-data data/h3n2/test --params benchmarks/results/params.json \
-        --N 16 --K-max 100 --K-step 10 --max-roots 5 \
-        --methods neutral_bd plm_prior artreeformer_adapted treesbm \
-        --rescore-from benchmarks/results/coverage_cache_h3n2_N16 \
-        --e-list 0 1 2 3 5 \
-        --out benchmarks/results/coverage_curves_h3n2_N16_eabs_rescore.csv
+    python benchmarks/coverage_curves.py --data data/h3n2/test \
+        --methods neutral_bd plm_prior artreeformer_adapted treesbm
 """
 
 from __future__ import annotations
@@ -558,12 +522,12 @@ def main():
     ap.add_argument("--no-esm", action="store_true")
     ap.add_argument(
         "--r0-backend", default=None,
-        help="Table 7: swap TreeSBM frozen R0 (esm2 / esm2_650m / esmc / jtt / wag / lg).",
+        help="Swap TreeSBM frozen R0 backend (esm2 / esm2_650m / esmc / jtt / wag / lg).",
     )
     ap.add_argument("--r0-model", default=None)
     ap.add_argument("--fitness-beta", type=float, default=None)
     ap.add_argument("--ablate-bridge", action="store_true",
-                    help="Table 7 rows 1–6: force log R_θ = log R0 (pure reference process).")
+                    help="Force log R_θ = log R0 (pure reference process, no learned correction).")
     ap.add_argument("--seed", type=int, default=0)
     ap.add_argument("--out", default="benchmarks/results/coverage_curves_h3n2.csv")
     args = ap.parse_args()
@@ -581,7 +545,7 @@ def main():
     if not list_groups(test_dir):
         raise SystemExit(
             f"no processed groups (group_*_rooted.nwk + *_anc_aa.fasta) in {test_dir}. "
-            "On Betty these live under data/h3n2/test after the H3N2 pipeline; "
+            "Typically under data/h3n2/test after the H3N2 pipeline; "
             "local checkout currently has FASTA-only shards.")
 
     if args.rescore_from:

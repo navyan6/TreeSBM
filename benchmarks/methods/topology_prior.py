@@ -1,19 +1,8 @@
-"""
-Adapted topology-prior methods (ARTreeFormer, PhyloVAE, PhylaFlow).
+"""Topology-prior baselines (ARTreeFormer, PhyloVAE, PhylaFlow).
 
-These are phylogenetic topology-density / posterior-transport methods, not
-forward generators. We use them honestly as **unconditional topology priors**:
-the official repo (cloned + pinned, run in its own env) is trained/sampled to
-produce a pool of newick topologies. This adapter then, per request, draws a
-topology of size N from that pool, assigns branch lengths with the shared
-BranchLengthAdapter (targeting H), and fills sequences with the shared sequence
-adapter. Everything except the topology comes from shared adapters, so sequence
-quality is never attributed to the topology model. Rows are labeled `-adapted`
-(`artreeformer_adapted`, `phylovae_adapted`, `phylaflow_adapted`).
-
-The topology pool is produced offline (see benchmarks/EXTERNAL.md); this adapter
-only consumes `pool_by_N: {N: [newick, ...]}` from
-`benchmarks/external_pools/sampled/{prefix}_N{N}.nwk`.
+Draw an unconditional topology of size N from a precomputed Newick pool,
+assign branch lengths with the shared BranchLengthAdapter, and fill sequences
+with the shared sequence adapter. Only the topology comes from the external model.
 """
 
 from __future__ import annotations

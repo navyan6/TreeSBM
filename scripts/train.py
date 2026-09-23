@@ -645,7 +645,7 @@ def main():
     parser.add_argument(
         "--r0-backend",
         default="esm2",
-        help="Which frozen R0 mutation prior cache to load (paper Table 7 / D.1). "
+        help="Which frozen R0 mutation prior cache to load. "
              "Must match precompute --r0-backend. "
              "Default esm2 → legacy group_*_ref_rates.pt. "
              "Also: esm2_650m, esmc, jtt, wag, lg, neutral.",
@@ -740,7 +740,7 @@ def main():
         "--no-lit-hotspot-mask", "--no-mut-hotspot-mask",
         action="store_true",
         dest="no_lit_hotspot_mask",
-        help="Table 8 train ablation: disable lit/PMC/MSA hotspot mask even if "
+        help="Disable lit/PMC/MSA hotspot mask even if "
              "--mut-hotspot-mask / topk / frac were passed.",
     )
     parser.add_argument("--max-seq-len", type=int,   default=566)

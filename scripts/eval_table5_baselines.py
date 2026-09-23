@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Table 5 baseline enrichment: pLM prior + ARTreeFormer-adapted on COVID / H1N1.
+Baseline enrichment eval: pLM prior and ARTreeFormer-adapted generators.
 
 Matches enrichment KPIs (site_recall, aa_acc_given_hit, cons_retention,
 lit/pmc hotspot frac, EVEscape means) without TreeSBM generation.
@@ -29,6 +29,7 @@ import torch
 
 from src.dataset import TreeDataset
 from benchmarks.metrics.sequences import positional_recovery
+from benchmarks.methods.bd_methods import NeutralBD, EmpiricalBD
 from benchmarks.methods.plm_prior import PLMPrior
 from benchmarks.methods.topology_prior import TopologyPriorMethod
 from benchmarks.adapters.branch_length import BranchLengthAdapter
@@ -42,12 +43,29 @@ from scripts.eval_evescape_enrichment import (
     hotspot_mut_frac,
     load_hotspot_mask,
 )
-from scripts.eval_single_tree import get_leaves, seq_identity
+from scripts.eval_single_tree import get_leaves, seq_identity, esm_pll_seq
 
 
 def _mean(xs):
     xs = [x for x in xs if x == x]
     return sum(xs) / len(xs) if xs else float("nan")
+
+
+def _plm_nll_leaves(esm, gen_seqs, max_seq_len, chunk=8):
+    """Mean −PLL/pos over generated leaves (same def as eval_evescape_enrichment)."""
+    if esm is None or not gen_seqs:
+        return float("nan")
+    leaf_nlls = []
+    for s0 in range(0, len(gen_seqs), chunk):
+        chunk_seqs = gen_seqs[s0 : s0 + chunk]
+        log_R0 = esm._gl(
+            esm.tok, esm.model, esm.aa, chunk_seqs, max_seq_len, esm.device
+        )
+        for j, seq in enumerate(chunk_seqs):
+            pll = esm_pll_seq(log_R0[j], seq, max_seq_len)
+            if pll == pll and pll != float("-inf"):
+                leaf_nlls.append(-pll)
+    return _mean(leaf_nlls)
 
 
 def load_evescape_tensor(path: str, L: int) -> torch.Tensor:
@@ -63,6 +81,10 @@ def build_methods(args, params, esm):
     methods = []
     birth, death = params["birth"], params["death"]
     want = set(args.methods)
+    if "neutral_bd" in want:
+        methods.append(NeutralBD(birth, death))
+    if "empirical_bd" in want:
+        methods.append(EmpiricalBD(birth, death, model=args.seq_model))
     if "plm_prior" in want:
         if esm is None:
             raise SystemExit("plm_prior needs ESM")
@@ -89,7 +111,10 @@ def build_methods(args, params, esm):
     return methods
 
 
-def score_gen(root_seq, gen_tree, gt_seqs, evescape, lit_mask, L, rng, gt_leaves_sampled):
+def score_gen(
+    root_seq, gen_tree, gt_seqs, evescape, lit_mask, L, rng, gt_leaves_sampled,
+    esm=None, compute_plm_nll=True,
+):
     gen_leaves = get_leaves(gen_tree)
     gen_seqs = [gen_tree.node_seqs[g] for g in gen_leaves]
     gt_sample = rng.sample(gt_seqs, min(gt_leaves_sampled, len(gt_seqs)))
@@ -127,6 +152,10 @@ def score_gen(root_seq, gen_tree, gt_seqs, evescape, lit_mask, L, rng, gt_leaves
                 sc_ag, _, _ = mutation_evescape(
                     root_seq, gt_seq, evescape, L, site_mask=lit_mask)
                 gt_ev_ag.extend(sc_ag)
+    plm_nll = (
+        _plm_nll_leaves(esm, gen_seqs, L)
+        if compute_plm_nll else float("nan")
+    )
     return {
         "site_recall": _mean(t_site),
         "aa_acc_given_hit": _mean(t_aa),
@@ -138,6 +167,7 @@ def score_gen(root_seq, gen_tree, gt_seqs, evescape, lit_mask, L, rng, gt_leaves
         "gt_evescape": _mean(gt_ev),
         "evescape_mean_antigenic_muts": _mean(model_ev_ag),
         "gt_evescape_mean_antigenic_muts": _mean(gt_ev_ag),
+        "plm_nll": plm_nll,
         "gen_leaves": len(gen_seqs),
     }
 
@@ -160,7 +190,16 @@ def main():
     ap.add_argument("--seed", type=int, default=42)
     ap.add_argument("--out", required=True)
     ap.add_argument("--no-esm", action="store_true")
+    ap.add_argument(
+        "--compute-plm-nll", action="store_true", default=True,
+        help="Score mean ESM-2 −PLL/pos on generated leaves (default on).",
+    )
+    ap.add_argument(
+        "--no-compute-plm-nll", action="store_true",
+        help="Skip pLM NLL scoring.",
+    )
     args = ap.parse_args()
+    do_plm_nll = bool(args.compute_plm_nll) and not bool(args.no_compute_plm_nll)
 
     params_path = Path(args.params) if args.params else (
         ROOT / "benchmarks/results" / f"params_{Path(args.train_data).parent.name}.json"
@@ -173,7 +212,15 @@ def main():
     else:
         params = json.loads(params_path.read_text())
 
-    esm = None if args.no_esm else ESM("cuda" if _cuda() else "cpu")
+    need_esm = (not args.no_esm) and (
+        do_plm_nll or "plm_prior" in set(args.methods)
+    )
+    esm = None
+    if need_esm:
+        esm = ESM(
+            "cuda" if _cuda() else "cpu",
+            max_len=args.max_seq_len,
+        )
     methods = build_methods(args, params, esm)
     if not methods:
         raise SystemExit("no methods available")
@@ -192,7 +239,9 @@ def main():
 
     out = {
         "n_trees": n, "N": args.N, "data": args.data,
-        "lit_hotspot_mask": lit_meta, "methods": {},
+        "lit_hotspot_mask": lit_meta,
+        "compute_plm_nll": do_plm_nll,
+        "methods": {},
     }
     rng = random.Random(args.seed)
 
@@ -220,12 +269,18 @@ def main():
             row = score_gen(
                 root_seq, tree, gt_seqs, evescape, lit_mask, L, rng,
                 args.gt_leaves_sampled,
+                esm=esm, compute_plm_nll=do_plm_nll,
             )
             row["tree"] = i
             per.append(row)
+            nll_s = (
+                f" plm_nll={row['plm_nll']:.4f}"
+                if row.get("plm_nll") == row.get("plm_nll") else ""
+            )
             print(
                 f"  [{i+1}/{n}] site_r={row['site_recall']:.3f} "
                 f"aa|hit={row['aa_acc_given_hit']:.3f} cons={row['cons_retention']:.3f}"
+                f"{nll_s}"
             )
 
         keys = [
@@ -233,6 +288,7 @@ def main():
             "lit_hotspot_mut_frac", "gt_lit_hotspot_mut_frac",
             "model_evescape", "gt_evescape",
             "evescape_mean_antigenic_muts", "gt_evescape_mean_antigenic_muts",
+            "plm_nll",
         ]
         summary = {k: _mean([p[k] for p in per]) for k in keys} if per else {}
         if evescape is not None and summary:

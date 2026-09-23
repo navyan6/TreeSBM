@@ -1,25 +1,5 @@
 #!/usr/bin/env python3
-"""
-Score TreeSBM-generated trees: ESM-2 R0 mean per-position PLL on terminal (leaf) seqs.
-
-Same PLL proxy as generation fitness gating / eval_single_tree.esm_pll_seq
-(one unmasked forward — not true masked PLL).
-
-Writes a sibling JSON next to each .nwk/.fasta pair:
-  data/generated/.../group_XXX_generated_matched.pll.json
-
-Leaf keys match FASTA headers exactly (e.g. "root_child_0|leaf"); Newick tip
-labels are the node_id prefix before "|".
-
-Usage:
-  python scripts/score_generated_leaf_pll.py \\
-      --input-dir data/generated/covid/matched \\
-      --max-seq-len 1280 --batch-size 8
-
-  python scripts/score_generated_leaf_pll.py \\
-      --input-dir data/generated --recursive \\
-      --r0-backend esm2
-"""
+"""Score generated trees with ESM-2 mean per-position PLL on leaf sequences."""
 
 from __future__ import annotations
 

@@ -1,24 +1,5 @@
 #!/usr/bin/env python3
-"""
-EVEREST clade forecasting eval (priority-viruses forecasting_dataset, inline).
-
-Reads clade CSVs at eval time — no prepare_everest_clades.py / data/everest/ layer.
-Pattern: scripts/eval_bdbv_outbreak_variants.py + eval_evescape_enrichment generation.
-
-For each clade CSV matching the checkpoint virus:
-  - Select test roots with collection dates before the clade window end
-  - Generate K leaves per root
-  - Report emerging_mut_recall@K, weighted_recall, enrichment_vs_random,
-    mut_recovery, coverage_obs_e2 (leaf metrics on best-match GT leaf)
-
-Usage:
-  python scripts/eval_everest_forecasting.py \\
-    --checkpoint checkpoints/h3n2_v4_epidemic_mutrec/best.pt \\
-    --data data/h3n2_epidemic/test \\
-    --virus h3n2 --max-seq-len 566 \\
-    --everest-root external/priority-viruses/data/forecasting_dataset/H3N2 \\
-    --K 16 --max-trees 10 --out benchmarks/results/everest_h3n2_epidemic.json
-"""
+"""Clade forecasting eval on priority-virus forecasting datasets."""
 
 from __future__ import annotations
 

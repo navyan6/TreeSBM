@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Aggregate the long-format benchmark results into the paper table(s).
+Aggregate long-format benchmark results into summary tables.
 
 Input: long-format CSV (one row per method × track × N × root, metrics already
 reduced over the K samples). Output: per-(track, N) CSV + LaTeX with mean ± SE

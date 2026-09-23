@@ -1,41 +1,14 @@
 #!/usr/bin/env python3
-"""
-Aggregate held-out eval: generate a tree from each test root, then report
-(1) mutation recovery / conserved retention averaged over roots, and
-(2) EVEscape enrichment -- mean per-mutation EVEscape of root→leaf substitutions
-    (optionally restricted to antigenic / lit-hotspot sites), vs GT leaves and
-    a random baseline over the same site set.
+"""Held-out eval: mutation recovery plus EVEscape enrichment.
 
-Reuses eval_single_tree's tested generate_tree / load_models / positional_recovery
-(so generation is identical to the single-tree smoke test, including the saved
-col_entropy and --mutation-rate-scale). EVEscape is position-agnostic, so it
-survives generation stochasticity in a way single-tree positional recovery does
-not.
+Generates trees from each test root and reports recovery metrics and mean
+per-mutation EVEscape (optionally restricted to a lit-hotspot mask).
 
-Pathogen separation for --evescape:
-  - COVID Spike RBD: data/covid/evescape_spike_rbd.pt (L≈1280)
-  - H1N1 HA:         data/evescape_h1n1_ha.pt (L=566; Marks flu_h1 CSV)
-  Omit --evescape when no pathogen-matched matrix exists (e.g. H3N2).
-  Never use COVID RBD EVEscape / PMC mask on flu HA (or vice versa).
+Example::
 
-EVEscape aggregation (NOT a strain-level product/sum):
-  Official CSV values are already log-scale per substitution. We report the
-  **simple mean** of those per-mut scores over the chosen mutation set:
-  - evescape_mean_all_scored_muts / model_evescape: all root→leaf muts with
-    nonzero tensor entry (legacy companion; scored region ≈ RBD or full HA)
-  - evescape_mean_antigenic_muts: same mean, but only muts at antigenic /
-    lit-hotspot sites (--lit-hotspot-mask: H1 Sa/Sb/Ca1/Ca2/Cb∪guidance,
-    H3 lit/head/RBS, COVID PMC lit). Preferred paper KPI for flu antigenic.
-
-Score scale: official EVEscape is log(product of 3 temperature-scaled logistics),
-so values are typically **negative / not in [0,1]** (random baseline ≈ −2.3).
-That is NOT raw EVE (fitness_eve ≈ −6 to −12). See scripts/prepare_evescape.py.
-
-Usage:
-    python scripts/eval_evescape_enrichment.py \\
-        --checkpoint checkpoints/covid_v2_entropy/best.pt --data data/covid/test \\
-        --max-seq-len 1280 --evescape data/covid/evescape_spike_rbd.pt \\
-        --mutation-rate-scale 0.3 --n-steps 100 --max-trees 20
+    python scripts/eval_evescape_enrichment.py \
+        --checkpoint checkpoints/.../best.pt --data data/covid/test \
+        --max-seq-len 1280 --evescape data/covid/evescape_spike_rbd.pt
 """
 
 import argparse
@@ -207,7 +180,7 @@ def load_hotspot_mask(path: str | None, L: int) -> tuple[torch.Tensor | None, di
 def _lit_family(meta: dict) -> str:
     """Classify lit mask as 'flu' | 'covid' | 'unknown' from score/path only.
 
-    STRICT SEPARATION: never infer family from max_seq_len alone.
+    Infer pathogen family from mask metadata / path, not max_seq_len alone.
     """
     score = str(meta.get("score") or "").lower()
     path = str(meta.get("path") or "").lower()
@@ -315,7 +288,7 @@ def main():
     ap.add_argument(
         "--lit-hotspot-mask",
         default=None,
-        help="Explicit bool [L] curated lit hotspot .pt. STRICT SEPARATION: "
+        help="Bool [L] curated lit-hotspot mask .pt. Use pathogen-matched masks: "
              "flu → results/flu_mutfreq_vs_lit/mut_hotspot_mask_nmicrobiol_lit.pt; "
              "COVID → results/covid_mutfreq_vs_lit/mut_hotspot_mask_pmc_lit.pt. "
              "No cross-default. Empty string disables.",
@@ -351,18 +324,18 @@ def main():
         help="Write region_annotations.json under this dir (default: "
              "results/covid_mutfreq_vs_lit or results/flu_mutfreq_vs_lit).",
     )
-    # Table 8 gen-time ablations (reuse full ckpt; no retrain)
+    # Generation ablations (reuse full checkpoint; no retrain)
     ap.add_argument("--ablate-bridge", action="store_true",
-                    help="Table 8: force log R_θ = log R0 (no learned c_θ).")
+                    help="Force log R_θ = log R0 (no learned c_θ).")
     ap.add_argument("--ablate-tree-context", action="store_true",
-                    help="Table 8: zero tree-encoder embeddings into RateHeads.")
+                    help="Zero tree-encoder embeddings into RateHeads.")
     ap.add_argument("--ablate-branch-length-head", action="store_true",
-                    help="Table 8: use constant BL=dt instead of BL head.")
+                    help="Use constant BL=dt instead of the branch-length head.")
     ap.add_argument("--ablate-internal-node-seqs", action="store_true",
-                    help="Table 8: zero PLM embeddings for non-leaf (internal) nodes.")
+                    help="Zero PLM embeddings for non-leaf (internal) nodes.")
     ap.add_argument("--branching-mode", choices=["learned", "poisson_ref"],
                     default="learned",
-                    help="Table 8: poisson_ref = no seq-dependent branching.")
+                    help="poisson_ref: disable sequence-dependent branching.")
     ap.add_argument("--ref-lambda", type=float, default=1.0,
                     help="Constant Poisson λ when --branching-mode poisson_ref.")
     ap.add_argument("--fitness-beta", type=float, default=None,
@@ -370,13 +343,13 @@ def main():
     ap.add_argument(
         "--r0-backend",
         default=None,
-        help="Table 7: swap frozen R0 prior (esm2 / esm2_650m / esmc / jtt / wag / lg / progen2).",
+        help="Swap frozen R0 prior (esm2 / esm2_650m / esmc / jtt / wag / lg / progen2).",
     )
     ap.add_argument("--r0-model", default=None, help="Optional R0 model id override.")
     ap.add_argument(
         "--no-lit-hotspot-mask",
         action="store_true",
-        help="Table 8: turn OFF curated lit/PMC hotspot mask at eval "
+        help="Turn off curated lit/PMC hotspot mask at eval "
              "(no antigenic/pmc_hotspot_mut_frac; generation unchanged).",
     )
     args = ap.parse_args()
@@ -429,7 +402,7 @@ def main():
         print(f"R0 backend override: {r0_name}")
         if r0_name in STUB_BACKENDS:
             raise SystemExit(
-                f"R0 backend {r0_name!r} is stubbed (Table 7 row skipped). "
+                f"R0 backend {r0_name!r} is stubbed (skipped). "
                 "Install/wire it or pick esm2 / esm2_650m / esmc / jtt / wag / lg."
             )
         r0_live = build_r0_backend(r0_name, model_id=args.r0_model, device=device)

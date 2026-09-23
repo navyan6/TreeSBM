@@ -1,32 +1,7 @@
-"""
-Sequence-recovery metrics for forecasting: compare a generated leaf-sequence set
-to observed/true sequences, anchored on the root.
+"""Sequence metrics for generated vs observed leaves.
 
-Used by both synthetic (Track A) and real viral blind forecasting (Track B1),
-where generated leaves do NOT share identities with observed leaves — so metrics
-are coverage / recovery based (best-of-K, coverage@K, mutation P/R/F1), not RF.
-
-## Leaf vs tree (important)
-
-Primary KPIs ``mut_recovery`` / ``site_recall`` / ``aa_acc_given_hit`` /
-``cons_retention`` from ``positional_recovery`` are **leaf-only**:
-
-  - GT: terminal (leaf) sequences vs root
-  - Gen: best-matching generated **leaf** vs that GT leaf
-  - Internal / ancestral nodes are **not** scored
-
-This is intentional for forecasting (observed tips). Timing of when a mutation
-appears on an internal edge does not enter the primary metric — only the leaf
-AA matters. If GT mutations are tip-restricted while the model mutates on
-internal edges (or vice versa), leaf scoring is still the fair end-state check;
-use the tree-wide helpers below when you also want path-aggregated credit.
-
-Tree-wide / fairer companions (do **not** replace the primary leaf metrics):
-  - ``any_descendant_mut_recovery``: credit a GT leaf mut if **any** gen leaf
-    reaches the GT AA (or mutates the site)
-  - ``path_union_mutation_recovery``: union of mut sites over all GT leaves vs
-    union over gen leaves (set recovery)
-  - ``mutation_pr_f1`` (already leaf-union): precision/recall of mut sets
+Includes mutation recovery, conservation retention, Hamming/identity summaries,
+and related leaf-set comparisons against the root.
 """
 
 from __future__ import annotations

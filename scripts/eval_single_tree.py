@@ -228,7 +228,13 @@ def load_models(checkpoint, device, max_seq_len):
     # than silently mismatching.
     col_entropy = ckpt.get("col_entropy", None)
     if col_entropy is not None:
-        col_entropy = col_entropy.to(device)
+        if isinstance(col_entropy, dict):
+            col_entropy = {
+                k: (v.to(device) if hasattr(v, "to") else v)
+                for k, v in col_entropy.items()
+            }
+        else:
+            col_entropy = col_entropy.to(device)
     elif cfg.get("entropy_source") == "empirical":
         raise RuntimeError(
             "checkpoint has entropy_source=empirical but no saved col_entropy; "
@@ -272,21 +278,25 @@ def generate_tree(root_seq, n_steps, max_seq_len, branch_rate_scale, max_leaves,
                   ref_lambda: float = 1.0,
                   ablate_branch_length_head: bool = False,
                   ablate_internal_node_seqs: bool = False,
+                  ablate_site_entropy: bool = False,
                   r0_backend=None):
     """Generate a tree (Algorithm 4).
+
+    ``ablate_site_entropy`` is accepted for call-site compatibility with
+    ``eval_evescape_enrichment``; currently unused (entropy comes from ckpt).
 
     ``cache_esm`` (default True): keep in-memory seq→embedding and seq→log_R0
     caches across steps. Unchanged AA strings reuse cached tensors; misses run
     a full ESM forward (exact recompute, not freeze-R0).
 
-    Table 8 gen ablations (no retrain):
+    Generation ablations (no retrain):
       ablate_bridge: force log R_θ = log R0 (zero c_θ)
       ablate_tree_context: zero H_T before RateHeads
       branching_mode='poisson_ref': constant-λ Poisson branching (no seq-dep head)
       ablate_branch_length_head: use constant BL=dt instead of BL head
       ablate_internal_node_seqs: zero PLM embeddings for non-leaf nodes
 
-    Table 7: pass ``r0_backend`` (from ``src.r0_backends.build_r0_backend``) to
+    Pass ``r0_backend`` (from ``src.r0_backends.build_r0_backend``) to
     swap the frozen mutation prior (JTT / ESM-2-650M / ESM-C / …).
     """
     tree = TreeState.root_only(root_seq)
@@ -361,7 +371,7 @@ def generate_tree(root_seq, n_steps, max_seq_len, branch_rate_scale, max_leaves,
         branch_lens_t = edge_attr_t.squeeze(-1).to(device)
         node_seqs = [tree.node_seqs[nid] for nid in node_ids_t]
         if ablate_internal_node_seqs:
-            # Table 8: without internal-node sequences — only leaf PLM features
+            # Without internal-node sequences — only leaf PLM features
             # enter NodeEncoder/TreeEncoder; internals get zero embeddings.
             # Stack is a fresh tensor (cache stores CPU copies), so in-place
             # zeroing cannot poison emb_cache.
@@ -439,7 +449,7 @@ def generate_tree(root_seq, n_steps, max_seq_len, branch_rate_scale, max_leaves,
                 log_pssm=log_pssm,
             )
             if ablate_bridge:
-                # Table 8: without bridge matching → pure R0 (no learned c_θ).
+                # Without bridge matching → pure R0 (no learned c_θ).
                 out = dict(out)
                 out["log_R_theta_mut"] = log_R0_mut
 
@@ -516,8 +526,11 @@ def eval_sequence_quality(gen_tree, gen_leaves, root_seq, max_seq_len,
     leaf_div = [1.0 - seq_identity(gen_tree.node_seqs[a], gen_tree.node_seqs[b])
                 for a, b in pairs]
     print(f"Leaf-to-leaf pairwise diversity ({len(pairs)} pairs):")
-    print(f"  mean={sum(leaf_div)/len(leaf_div):.4f}  "
-          f"min={min(leaf_div):.4f}  max={max(leaf_div):.4f}")
+    if leaf_div:
+        print(f"  mean={sum(leaf_div)/len(leaf_div):.4f}  "
+              f"min={min(leaf_div):.4f}  max={max(leaf_div):.4f}")
+    else:
+        print("  (skipped: need >=2 leaves)")
 
     # ESM PLL
     leaf_seqs = [gen_tree.node_seqs[l] for l in gen_leaves]
@@ -812,7 +825,7 @@ def main():
     parser.add_argument(
         "--r0-backend",
         default=None,
-        help="Table 7 frozen R0 prior (esm2 / esm2_650m / esmc / jtt / wag / lg). "
+        help="Frozen R0 prior (esm2 / esm2_650m / esmc / jtt / wag / lg). "
              "Default: checkpoint config / ESM-2-8M logits path.",
     )
     parser.add_argument("--r0-model", default=None, help="Optional R0 model id override.")

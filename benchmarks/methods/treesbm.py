@@ -1,13 +1,7 @@
-"""
-TreeSBM (row 8) with an (N, H) conditioning adapter over its native sampler.
+"""TreeSBM baseline wrapper.
 
-TreeSBM's sampler doesn't natively take (N, H); we adapt it honestly:
-  - N: generate past N leaves, then select exactly N leaves and take the induced
-    subtree (same collapse as the dataset construction) so the output has exactly
-    N terminals — matching how the BD baselines produce exactly N.
-  - H: map the horizon to the sampler's mutation-rate scale (divergence ≈ scale).
-The sampler still receives ONLY the root sequence (+ these two scalars); it never
-sees the hidden target subtree. Labeled as an (N,H) sampler adapter.
+Maps the benchmark ``(root_seq, N, H)`` interface onto TreeSBM's native
+root-conditioned sampler (leaf cap / rate scaling).
 """
 
 from __future__ import annotations
@@ -28,11 +22,11 @@ class TreeSBMMethod(Method):
     def __init__(self, checkpoint: str, n_steps: int = 50, branch_rate_scale: float = 6.0,
                  rate_per_H: float = 1.2, max_seq_len: int = 566, cushion: float = 1.6,
                  max_retries: int = 4, r0_backend=None, fitness_beta: float | None = None,
-                 ablate_bridge: bool = False):
+                 ablate_bridge: bool = False, gene_id: str | None = None):
         self.gen = TreeSBMGenerator(
             checkpoint, max_seq_len=max_seq_len,
             r0_backend=r0_backend, fitness_beta=fitness_beta,
-            ablate_bridge=ablate_bridge,
+            ablate_bridge=ablate_bridge, gene_id=gene_id,
         )
         self.n_steps = n_steps
         self.branch_rate_scale = branch_rate_scale

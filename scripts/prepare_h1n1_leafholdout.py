@@ -1,34 +1,8 @@
 #!/usr/bin/env python3
-"""
-Prepare a LEAF-HOLDOUT split of the H1N1 HA dataset (NOT geographic).
+"""Prepare an H1N1 HA random leaf-holdout split.
 
-Reuses prepare_h1n1_geo.py's location/date grouping to build the same
-date-contiguous per-location trees, but changes what "split" means:
-
-  * Train/val/test assignment is a plain RANDOM shuffle over trees, not a
-    whole-location geographic hold-out -- every split can contain trees from
-    any region/country (this is the "not geographic" part).
-  * Within EVERY tree (regardless of split), --holdout-frac of its leaves are
-    pulled out BEFORE tree-building and saved separately as
-    data/h1n1_leafholdout/heldout/h1n1lh_{split}_group_NNN_heldout.fasta(.csv).
-    The remaining leaves build the tree (run_all_groups.py pipeline, same as
-    prepare_h1n1_geo.py). After training on the reduced trees, run
-    scripts/eval_leaf_holdout.py to generate from each tree's root and check
-    whether the process recovers the real held-out leaf sequences.
-
-Does NOT touch data/h1n1/{train,val,test} (the existing geographic split) --
-this writes to a separate data/h1n1_leafholdout/ tree.
-
-Output:
-  data/h1n1_leafholdout/{split}/h1n1lh{split}_group_NNN.fasta (+.csv)   [feeds run_all_groups.py]
-  data/h1n1_leafholdout/heldout/h1n1lh_{split}_group_NNN_heldout.fasta (+.csv)  [eval ground truth]
-
-Next:
-  scripts/run_all_groups.py --data-dir data/h1n1_leafholdout/{split} --prefix h1n1lh{split}
-  scripts/precompute_plm.py / precompute_ref_rates.py --data data/h1n1_leafholdout/{split}
-  scripts/train.py --data data/h1n1_leafholdout/train --val-data data/h1n1_leafholdout/val \
-      --test-data data/h1n1_leafholdout/test --ckpt-dir checkpoints/h1n1_leafholdout_v1
-  scripts/eval_leaf_holdout.py --data data/h1n1_leafholdout --checkpoint checkpoints/h1n1_leafholdout_v1/best.pt
+Holds out a fraction of leaves per tree for recovery eval.
+Output: ``data/h1n1_leafholdout``.
 """
 
 import argparse

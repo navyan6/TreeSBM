@@ -1,27 +1,7 @@
 #!/usr/bin/env python3
-"""Build a PhylaFlow H3N2 size-N bank for fair TreeSBM Table 2 (NOT DS1–8).
+"""Build a size-N H3N2 topology bank for PhylaFlow sampling.
 
-Takes anonymized H3N2 train topologies from export_train_topologies.py and
-writes PhylaFlow's fixed-pair + short-run-trprobs layout under:
-
-  $PHYLAFLOW_DATA_ROOT/h3n2_N{N}/
-    short_run/H3N2_N{N}/*.trprobs
-    golden_run/H3N2_N{N}/*.trprobs   (symlink/copy of short for metrics)
-    fixed_path_artifacts/            start/target JSON pairs
-    topology_stream_index.jsonl      optional stream index
-  $PHYLAFLOW_REPO/configs/h3n2_N{N}.yaml
-
-Fairness note: targets are H3N2 train subtree shapes (same pool as
-ARTreeFormer/PhyloVAE). Starts are random N-leaf trees from PhylaFlow's
-Tree(..., random=True). Do NOT point this at short_run_data_DS1-8.
-
-Usage (PhylaFlow env, on Betty):
-  python build_h3n2_phylaflow_bank.py \\
-      --topologies /path/to/train_topologies_N16.nwk \\
-      --trprobs /path/to/train_topologies_N16.trprobs \\
-      --N 16 --n-cases 42 \\
-      --data-root $PHYLAFLOW_DATA_ROOT \\
-      --repo-dir $LABHOME/baselines/PhylaFlow
+Uses TreeSBM H3N2 train subtree shapes as targets (not public DS1–8 banks).
 """
 
 from __future__ import annotations
@@ -402,7 +382,7 @@ def build(args: argparse.Namespace) -> dict:
 
 def main(argv=None) -> int:
     ap = argparse.ArgumentParser(description=__doc__)
-    ap.add_argument("--N", type=int, required=True, help="Leaf count (16 or 32 for Table 2)")
+    ap.add_argument("--N", type=int, required=True, help="Leaf count (typically 16 or 32)")
     ap.add_argument("--topologies", type=Path, required=True)
     ap.add_argument("--trprobs", type=Path, default=None)
     ap.add_argument("--n-cases", type=int, default=42)

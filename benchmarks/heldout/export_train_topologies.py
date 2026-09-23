@@ -1,36 +1,8 @@
 #!/usr/bin/env python3
-"""
-Export a pool of TRAIN-set topologies for ARTreeFormer/PhyloVAE training
-(benchmarks/EXTERNAL.md step 1: "training topologies").
+"""Export train-set topologies for external topology models.
 
-Reuses build_examples() -- same (tree, internal-root) selection and induced-
-subtree sampling the held-out-root task uses for its target subtrees -- just
-applied to TRAIN (not TEST) trees, with branch lengths and sequences stripped.
-
-Leaves are anonymized to a fixed generic label set "0".."N-1" (not the real
-H3N2 strain ids). Both external repos hard-require a single shared taxon set
-across every tree in a training dataset (they build per-taxon identity
-embeddings from one `taxa` list -- see ARTreeFormer/PhyloVAE's own
-process_data()); our pool instead has many *different* subtrees with
-different real leaf sets. Anonymizing makes every example share the exact
-same taxon alphabet, so what gets learned is the exchangeable distribution
-over N-leaf tree shapes (an unconditional topology prior), not per-strain
-identity -- consistent with how TopologyPriorMethod only ever consumes bare
-topology shape (leaf identity is thrown away and sequence-matched downstream
-regardless, see benchmarks/methods/topology_prior.py).
-
-Output per N:
-  - train_topologies_N{N}.nwk      bare newick, one per line (reference/debug)
-  - train_topologies_N{N}.trprobs  NEXUS trees block, uniform-weighted, in the
-                                    exact format Bio.Phylo.parse(..., 'nexus')
-                                    / mcmc_treeprob() expects (validated locally
-                                    via round-trip through Phylo.write ->
-                                    ete3.Tree, the same path both repos use)
-
-Usage:
-    python benchmarks/heldout/export_train_topologies.py \
-        --data-dir data/h3n2/train --N 16 32 64 --per-tree 20 \
-        --out-dir benchmarks/external_pools
+Writes binary Newick pools sized by leaf count N for ARTreeFormer / PhyloVAE
+training or sampling.
 """
 
 import argparse
